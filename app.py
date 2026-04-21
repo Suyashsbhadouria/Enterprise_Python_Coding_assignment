@@ -16,16 +16,42 @@ from urllib.parse import quote_plus
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 from dotenv import load_dotenv
+<<<<<<< HEAD
+from flask import Flask, render_template, jsonify, request, g, session, redirect, url_for
+from etl_pipeline import run_pipeline
+=======
 from flask import Flask, render_template, jsonify, request, g
 from Appwrite.appwrite_db import get_matches as appwrite_get_matches
 from Appwrite.appwrite_db import get_batting as appwrite_get_batting
 from Appwrite.appwrite_db import get_bowling as appwrite_get_bowling
+>>>>>>> origin
 from logging_config import configure_logging, get_log_file_path
+
+# Import our new modular extensions
+from extensions import db, oauth
+from auth import auth_bp, admin_required
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 app = Flask(__name__)
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "fallback_secret_for_dev_change_me")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI", "sqlite:///users.db")
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Initialize modular plugins
+db.init_app(app)
+oauth.init_app(app)
+oauth.register(
+    name='google',
+    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
+    client_id=os.getenv("GOOGLE_CLIENT_ID"),
+    client_secret=os.getenv("GOOGLE_CLIENT_SECRET"),
+    client_kwargs={'scope': 'openid email profile'}
+)
+
+app.register_blueprint(auth_bp)
+
 logger = configure_logging(__name__)
 
 LOG_FILE_PATH = get_log_file_path()
@@ -504,6 +530,24 @@ def transform_overview():
 
 
 @app.before_request
+def global_auth_lockdown():
+    """Firewall: ensure all routes are protected unless explicitly exempted."""
+    allowed_endpoints = ['auth.login', 'auth.auth_callback', 'public_login_page', 'static']
+    if request.endpoint not in allowed_endpoints:
+        if 'user_id' not in session:
+            # For API routes, return 401 instead of redirecting
+            if request.path.startswith('/api/'):
+                return jsonify({"error": "Authentication required."}), 401
+            return redirect(url_for('public_login_page'))
+    
+    # Load user into global 'g' for templates if logged in
+    if 'user_id' in session:
+        from models import User
+        g.user = db.session.get(User, session['user_id'])
+    else:
+        g.user = None
+
+@app.before_request
 def log_request_start():
     g.request_start = time.perf_counter()
     logger.info("Request started %s %s", request.method, request.path)
@@ -747,6 +791,12 @@ def team_abbr(name):
 
 # ─── Routes ───
 
+@app.route("/login-page")
+def public_login_page():
+    if 'user_id' in session:
+        return redirect(url_for('overview'))
+    return render_template("login.html")
+
 @app.route("/")
 def overview():
     data = transform_overview()
@@ -780,6 +830,7 @@ def live_match_center():
 
 
 @app.route("/settings")
+@admin_required
 def settings_page():
     return render_template(
         "info.html",
@@ -791,6 +842,7 @@ def settings_page():
 
 
 @app.route("/support")
+@admin_required
 def support_page():
     return render_template(
         "info.html",
@@ -863,6 +915,7 @@ def api_chat():
 
 
 @app.route("/api/logs")
+@admin_required
 def api_logs():
     level = request.args.get("level", "").strip().upper()
     if level and level not in VALID_LOG_LEVELS:
@@ -923,5 +976,11 @@ def safe_int(value):
     
 if __name__ == "__main__":
     logger.info("Starting dashboard bootstrap")
+<<<<<<< HEAD
+    with app.app_context():
+        db.create_all()
+    ensure_csv_data()
+=======
+>>>>>>> origin
     logger.info("Starting Flask development server on 0.0.0.0:5000")
     app.run(debug=True, host="0.0.0.0", port=5000)
