@@ -89,6 +89,7 @@ Optional Gemini chat configuration (for floating in-app chatbot):
 ```powershell
 $env:GEMINI_API_KEY="your_api_key_here"
 $env:GEMINI_MODEL="gemini-2.5-flash-lite"
+$env:SLACK_WEBHOOK_URL="url"
 ```
 
 Or use a local `.env` file in project root:
