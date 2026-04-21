@@ -1,110 +1,121 @@
 {% extends 'base.html' %}
 
-{% block title %}Match Analysis - The Kinetic Analyst{% endblock %}
+{% block title %}Match Analysis - {{ APP_NAME }}{% endblock %}
 {% block page_header %}Match Analysis{% endblock %}
+{% block page_subheader %}Explore fixture outcomes by city and team with instant filtering and venue-level context.{% endblock %}
 
 {% block topbar_search %}
-<div class="relative hidden md:block">
-    <input id="match-search" class="w-72 bg-surface-container-highest rounded-full border-none py-2 pl-10 pr-4 text-sm placeholder:text-slate-400 focus:ring-2 focus:ring-secondary/30" placeholder="Search matches..." type="text" />
-    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
-</div>
+<label aria-label="Search matches" class="search-wrap" style="flex:1;max-width:350px;">
+    <span class="material-symbols-outlined">search</span>
+    <input class="topbar-input" data-filter-input data-filter-target="matches" id="match-search" placeholder="Search matches, teams, venue" type="text" />
+</label>
 {% endblock %}
 
 {% block content %}
-<div class="mb-8">
-    <h2 class="font-headline text-4xl font-extrabold tracking-tight">Match Analysis</h2>
-    <p class="text-on-surface-variant mt-2 text-sm max-w-2xl">Filter fixtures by city or team and inspect outcomes across venues.</p>
-</div>
+<section class="hero" data-reveal style="--reveal-delay:0s;">
+    <span class="eyebrow">
+        <span class="material-symbols-outlined">stadium</span>
+        Fixtures And Venues
+    </span>
+    <h2>Break down every completed fixture by place, teams involved, and winner in one sortable workspace.</h2>
+    <p>Use the city and team selectors for precise segmentation, then use the top search box for quick in-table discovery.</p>
+</section>
 
-<form method="get" action="{{ url_for('matches_page') }}" class="mb-8 flex flex-wrap items-center gap-3">
-    <select name="city" class="bg-surface-container-low rounded-xl border border-outline-variant/20 py-2 px-4 text-sm focus:ring-2 focus:ring-secondary/30">
+<form method="get" action="{{ url_for('matches_page') }}" class="inline-form" data-reveal style="--reveal-delay:.08s;">
+    <select name="city" class="select">
         <option {% if selected_city == 'All Cities' %}selected{% endif %}>All Cities</option>
         {% for city in data.all_cities %}
         <option {% if selected_city == city %}selected{% endif %}>{{ city }}</option>
         {% endfor %}
     </select>
-    <select name="team" class="bg-surface-container-low rounded-xl border border-outline-variant/20 py-2 px-4 text-sm focus:ring-2 focus:ring-secondary/30">
+    <select name="team" class="select">
         <option {% if selected_team == 'All Teams' %}selected{% endif %}>All Teams</option>
         {% for team in data.all_teams %}
         <option {% if selected_team == team %}selected{% endif %}>{{ team }}</option>
         {% endfor %}
     </select>
-    <button class="bg-secondary text-[#003732] rounded-xl px-4 py-2 text-sm font-semibold" type="submit">Apply Filters</button>
-    <a class="text-tertiary text-sm" href="{{ url_for('matches_page') }}">Reset</a>
+    <button class="button" type="submit">Apply Filters</button>
+    <a class="link-button" href="{{ url_for('matches_page') }}">Reset</a>
 </form>
 
-<div class="grid grid-cols-12 gap-8">
-    <section class="col-span-12 xl:col-span-8 bg-surface-container-high rounded-xl overflow-hidden">
-        <div class="p-6">
-            <h3 class="font-headline font-bold text-xl">Match History</h3>
-            <p class="text-sm text-on-surface-variant">Comprehensive record of tournament fixtures.</p>
+<section class="grid-main">
+    <article class="card" data-reveal style="--reveal-delay:.14s;">
+        <div class="panel-head">
+            <div>
+                <h3 class="section-title">Match History</h3>
+                <p class="section-subtitle">Comprehensive record of all fixtures matching your filters.</p>
+            </div>
+            <span class="tag strong">{{ data.match_history|length }} matches</span>
         </div>
-        <div class="overflow-x-auto">
-            <table class="w-full text-left">
+
+        <div class="table-shell">
+            <table class="data-table">
                 <thead>
-                    <tr class="text-xs uppercase text-on-surface-variant bg-surface-container-low">
-                        <th class="py-3 px-6">Match ID</th>
-                        <th class="py-3 px-4">Date</th>
-                        <th class="py-3 px-4">Teams</th>
-                        <th class="py-3 px-4">Venue & City</th>
-                        <th class="py-3 px-6 text-right">Winner</th>
+                    <tr>
+                        <th>Match ID</th>
+                        <th>Date</th>
+                        <th>Teams</th>
+                        <th>Venue</th>
+                        <th class="right">Winner</th>
                     </tr>
                 </thead>
-                <tbody id="matches-table" class="text-sm divide-y divide-outline-variant/20">
+                <tbody>
                     {% for m in data.match_history %}
-                    <tr class="hover:bg-surface-container-lowest transition-colors match-row">
-                        <td class="py-4 px-6 text-on-surface-variant text-xs">{{ m.display_id }}</td>
-                        <td class="py-4 px-4">{{ m.date }}</td>
-                        <td class="py-4 px-4 font-semibold">{{ m.team1 }} vs {{ m.team2 }}</td>
-                        <td class="py-4 px-4 text-on-surface-variant">{{ m.venue }}, {{ m.city }}</td>
-                        <td class="py-4 px-6 text-right text-secondary font-semibold">{{ m.winner or 'No result' }}</td>
+                    <tr data-filter-row="matches" data-search="{{ m.display_id }} {{ m.date }} {{ m.team1 }} {{ m.team2 }} {{ m.venue }} {{ m.city }} {{ m.winner }}">
+                        <td><span class="rank-pill">{{ m.display_id }}</span></td>
+                        <td>{{ m.date }}</td>
+                        <td><strong>{{ m.team1 }}</strong> vs <strong>{{ m.team2 }}</strong></td>
+                        <td>{{ m.venue }}, {{ m.city }}</td>
+                        <td class="right"><span class="tag strong">{{ m.winner or 'No result' }}</span></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
-    </section>
+        {% if not data.match_history %}
+        <p class="empty-note" style="margin-top:0.9rem;">No matches found for the selected city and team combination.</p>
+        {% endif %}
+    </article>
 
-    <aside class="col-span-12 xl:col-span-4 space-y-6">
-        <div class="bg-surface-container-high rounded-xl p-6">
-            <h3 class="font-headline text-xl font-bold mb-4">Top Match Cities</h3>
-            <div class="space-y-3">
-                {% for city, count in data.venue_volume %}
+    <aside class="stack-list" data-reveal style="--reveal-delay:.2s;">
+        <article class="card">
+            <div class="panel-head">
                 <div>
-                    <div class="flex justify-between text-sm mb-1">
+                    <h3 class="section-title">Top Match Cities</h3>
+                    <p class="section-subtitle">Where the tournament was most active.</p>
+                </div>
+            </div>
+            <div class="progress-list">
+                {% for city, count in data.venue_volume %}
+                <div class="progress-item">
+                    <div class="row">
                         <span>{{ city }}</span>
-                        <span>{{ count }}</span>
+                        <span>{{ count }} matches</span>
                     </div>
-                    <div class="h-2 rounded-full bg-surface-container-lowest overflow-hidden">
-                        <div class="h-full bg-secondary" style="width: {{ (count / data.max_volume * 100)|round(1) }}%"></div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: {{ (count / data.max_volume * 100)|round(1) }}%;"></div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-        </div>
+        </article>
 
-        <div class="bg-surface-container-high rounded-xl p-6">
-            <h3 class="font-headline text-xl font-bold">Highest Scoring Venue</h3>
-            <p class="text-secondary text-lg font-semibold mt-2">{{ data.best_venue }}</p>
-            <p class="text-on-surface-variant text-sm mt-1">{{ data.best_city }}</p>
-            <p class="text-tertiary text-sm mt-3">Avg runs per match: {{ data.best_avg }}</p>
-        </div>
+        <article class="card">
+            <div class="panel-head">
+                <div>
+                    <h3 class="section-title">Highest Scoring Venue</h3>
+                    <p class="section-subtitle">Best run environment by tournament average.</p>
+                </div>
+            </div>
+            <p class="metric-number" style="font-size:1.35rem;">{{ data.best_venue or 'N/A' }}</p>
+            <p class="metric-note">{{ data.best_city or 'Unknown city' }}</p>
+            <div class="stat-list" style="margin-top:0.8rem;">
+                <div class="stat-row">
+                    <span>Average runs per match</span>
+                    <span>{{ data.best_avg }}</span>
+                </div>
+            </div>
+        </article>
     </aside>
-</div>
-{% endblock %}
-
-{% block scripts %}
-<script>
-  (function () {
-    const search = document.getElementById('match-search');
-    const rows = Array.from(document.querySelectorAll('.match-row'));
-    if (!search) return;
-    search.addEventListener('input', function () {
-      const q = search.value.trim().toLowerCase();
-      rows.forEach((row) => {
-        row.style.display = row.innerText.toLowerCase().includes(q) ? '' : 'none';
-      });
-    });
-  })();
-</script>
+</section>
 {% endblock %}

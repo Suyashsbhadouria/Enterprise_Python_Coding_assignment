@@ -1,21 +1,51 @@
 """
 Flask Web Application for Women's Cricket World Cup Analytics Dashboard.
-Loads transformed CSV data and serves the 'The Kinetic Analyst' dashboard.
+Loads transformed CSV data and serves the analytics dashboard.
 """
 
 import os
 import csv
 import time
+import json
+import re
+from glob import glob
+from datetime import datetime
 from collections import defaultdict, Counter
+from urllib.parse import quote_plus
+from urllib.request import Request, urlopen
+from urllib.error import URLError, HTTPError
+from dotenv import load_dotenv
 from flask import Flask, render_template, jsonify, request, g
 from etl_pipeline import run_pipeline
-from logging_config import configure_logging
+from logging_config import configure_logging, get_log_file_path
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 app = Flask(__name__)
 logger = configure_logging(__name__)
 
-CSV_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "csv_data")
+CSV_DIR = os.path.join(BASE_DIR, "csv_data")
+LOG_FILE_PATH = get_log_file_path()
 
+DATE_FORMATS = ("%Y-%m-%d", "%d-%m-%Y", "%d/%m/%Y", "%m/%d/%Y")
+LOG_DATE_FORMATS = ("%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%d")
+APP_NAME = os.getenv("APP_NAME", "BoundaryLine Intelligence")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-lite")
+CHAT_DECLINE_MESSAGE = "I can only answer cricket questions using this dashboard dataset."
+LOG_LINE_TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M:%S"
+VALID_LOG_LEVELS = {"DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"}
+
+CORE_CRICKET_KEYWORDS = {
+    "cricket", "match", "matches", "innings", "inning", "run", "runs", "wicket", "wickets",
+    "bat", "batter", "batters", "batting", "bowl", "bowler", "bowlers", "bowling",
+    "economy", "strike", "rate", "rpb", "over", "overs", "team", "teams", "venue",
+    "city", "winner", "won", "lost", "score", "scores", "tournament", "world", "cup",
+    "final", "semi", "group", "powerplay", "boundary", "boundaries", "fours", "sixes",
+}
+
+_chat_base_context = None
+_cricket_lexicon = None
 
 def ensure_csv_data():
     """Generate CSV outputs from dataset JSON files if required files are missing."""
@@ -26,6 +56,12 @@ def ensure_csv_data():
         run_pipeline()
     else:
         logger.info("CSV outputs are present; skipping ETL bootstrap")
+
+
+@app.context_processor
+def inject_global_template_vars():
+    """Expose global branding variables to all templates."""
+    return {"APP_NAME": APP_NAME}
 
 
 def load_csv(filename):
@@ -68,6 +104,380 @@ def get_bowling():
     return _bowling
 
 
+def parse_match_date(value):
+    """Parse supported date formats and return a sortable datetime."""
+    if not value:
+        return datetime.min
+
+    for date_format in DATE_FORMATS:
+        try:
+            return datetime.strptime(value, date_format)
+        except ValueError:
+            continue
+
+    try:
+        return datetime.fromisoformat(value)
+    except ValueError:
+        return datetime.min
+
+
+def safe_int(value):
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return 0
+
+
+def parse_log_filter_datetime(value, *, end_of_day=False):
+    """Parse date/datetime filters accepted by /api/logs endpoint."""
+    if not value:
+        return None
+
+    raw = value.strip()
+    for fmt in LOG_DATE_FORMATS:
+        try:
+            parsed = datetime.strptime(raw, fmt)
+            if fmt == "%Y-%m-%d" and end_of_day:
+                parsed = parsed.replace(hour=23, minute=59, second=59)
+            return parsed
+        except ValueError:
+            continue
+
+    try:
+        normalized = raw.replace("Z", "+00:00")
+        parsed = datetime.fromisoformat(normalized)
+        if parsed.tzinfo is not None:
+            parsed = parsed.astimezone().replace(tzinfo=None)
+        return parsed
+    except ValueError:
+        return None
+
+
+def parse_log_line(raw_line):
+    """Parse one formatted log line into a structured entry."""
+    parts = raw_line.rstrip("\n").split(" | ", 3)
+    if len(parts) != 4:
+        return None
+
+    timestamp_str, level, logger_name, message = parts
+    try:
+        timestamp = datetime.strptime(timestamp_str, LOG_LINE_TIMESTAMP_FORMAT)
+    except ValueError:
+        return None
+
+    return {
+        "timestamp": timestamp_str,
+        "level": level,
+        "logger": logger_name,
+        "message": message,
+        "_dt": timestamp,
+    }
+
+
+def get_log_file_candidates(include_archived=False):
+    """Return log files to search, oldest to newest."""
+    if include_archived:
+        pattern = f"{LOG_FILE_PATH}*"
+        candidates = [path for path in glob(pattern) if os.path.isfile(path)]
+    else:
+        candidates = [LOG_FILE_PATH] if os.path.isfile(LOG_FILE_PATH) else []
+
+    candidates.sort(key=lambda path: os.path.getmtime(path))
+    return candidates
+
+
+def query_log_entries(limit=200, level=None, query=None, since=None, until=None, include_archived=False):
+    """Read and filter log entries from one or many log files."""
+    search_text = (query or "").strip().lower()
+    target_level = level.upper() if level else ""
+    matching = []
+
+    source_files = get_log_file_candidates(include_archived=include_archived)
+    for path in source_files:
+        try:
+            with open(path, "r", encoding="utf-8", errors="replace") as handle:
+                for raw in handle:
+                    parsed = parse_log_line(raw)
+                    if parsed is None:
+                        continue
+
+                    if target_level and parsed["level"] != target_level:
+                        continue
+                    if since and parsed["_dt"] < since:
+                        continue
+                    if until and parsed["_dt"] > until:
+                        continue
+                    if search_text:
+                        haystack = f"{parsed['logger']} {parsed['message']} {parsed['level']}".lower()
+                        if search_text not in haystack:
+                            continue
+
+                    parsed.pop("_dt", None)
+                    matching.append(parsed)
+        except OSError:
+            continue
+
+    if limit > 0:
+        matching = matching[-limit:]
+
+    return matching, source_files
+
+
+def get_cricket_lexicon():
+    """Build a token lexicon from dataset entities for lightweight topical checks."""
+    global _cricket_lexicon
+    if _cricket_lexicon is not None:
+        return _cricket_lexicon
+
+    lexicon = set(CORE_CRICKET_KEYWORDS)
+
+    for match in get_matches():
+        combined = " ".join(
+            [
+                match.get("team1", ""),
+                match.get("team2", ""),
+                match.get("venue", ""),
+                match.get("city", ""),
+                match.get("event_stage", ""),
+                match.get("winner", ""),
+            ]
+        ).lower()
+        lexicon.update(token for token in re.findall(r"[a-z0-9]+", combined) if len(token) > 2)
+
+    for row in get_batting():
+        combined = f"{row.get('batter', '')} {row.get('team', '')}".lower()
+        lexicon.update(token for token in re.findall(r"[a-z0-9]+", combined) if len(token) > 2)
+
+    for row in get_bowling():
+        combined = f"{row.get('bowler', '')} {row.get('team', '')}".lower()
+        lexicon.update(token for token in re.findall(r"[a-z0-9]+", combined) if len(token) > 2)
+
+    _cricket_lexicon = lexicon
+    return _cricket_lexicon
+
+
+def is_cricket_query(question):
+    """Allow only likely cricket/domain questions for the chatbot."""
+    if not question:
+        return False
+
+    tokens = {token for token in re.findall(r"[a-z0-9]+", question.lower()) if len(token) > 2}
+    if not tokens:
+        return False
+
+    return bool(tokens & get_cricket_lexicon())
+
+
+def build_chat_base_context():
+    """Build a compact, authoritative context block from dashboard data."""
+    global _chat_base_context
+    if _chat_base_context is not None:
+        return _chat_base_context
+
+    overview = transform_overview()
+    batters = transform_batters()
+    teams = transform_teams()
+
+    lines = [
+        "DATASET_SCOPE: Women's Cricket World Cup analytics sourced only from local csv_data outputs.",
+        f"TOTAL_MATCHES: {overview['total_matches']}",
+        f"TOTAL_RUNS: {overview['total_runs']}",
+        f"TEAM_COUNT: {overview['team_count']}",
+        f"VENUE_COUNT: {overview['venue_count']}",
+        f"CITY_COUNT: {overview['city_count']}",
+        "TOP_WINNING_TEAMS:",
+    ]
+
+    for team, wins in overview["top_winners"][:8]:
+        lines.append(f"- {team}: {wins} wins")
+
+    lines.append("TOP_BATTERS_BY_RUNS:")
+    for batter in batters["leaderboard"][:10]:
+        lines.append(
+            f"- {batter['batter']} ({batter['team']}): runs={batter['runs']}, SR={batter['strike_rate']}, innings={batter['innings']}"
+        )
+
+    lines.append("TOP_ECONOMY_BOWLERS:")
+    for bowler in teams["elite_bowlers"][:10]:
+        lines.append(
+            f"- {bowler['bowler']} ({bowler['team']}): economy={bowler['economy']}, wickets={bowler['wickets']}, deliveries={bowler['deliveries']}"
+        )
+
+    _chat_base_context = "\n".join(lines)
+    return _chat_base_context
+
+
+def build_chat_query_context(question):
+    """Add query-relevant slices from matches/batting/bowling to the base context."""
+    terms = [t for t in re.findall(r"[a-z0-9]+", question.lower()) if len(t) > 2]
+
+    def has_term(text):
+        lowered = (text or "").lower()
+        return any(term in lowered for term in terms)
+
+    matches_sorted = sorted(
+        get_matches(),
+        key=lambda row: (parse_match_date(row.get("date")), row.get("match_id", "")),
+        reverse=True,
+    )
+
+    relevant_matches = []
+    for match in matches_sorted:
+        blob = " ".join(
+            [
+                match.get("date", ""),
+                match.get("team1", ""),
+                match.get("team2", ""),
+                match.get("venue", ""),
+                match.get("city", ""),
+                match.get("event_stage", ""),
+                match.get("winner", ""),
+            ]
+        )
+        if terms and not has_term(blob):
+            continue
+
+        result_text = match.get("winner") or "No result"
+        if match.get("winner") and match.get("win_margin") and match.get("win_by"):
+            result_text = f"{match['winner']} won by {match['win_margin']} {match['win_by']}"
+
+        relevant_matches.append(
+            f"- {match.get('date', '')}: {match.get('team1', '')} vs {match.get('team2', '')} | {result_text} | {match.get('venue', '')}, {match.get('city', '')}"
+        )
+        if len(relevant_matches) >= 12:
+            break
+
+    if not relevant_matches:
+        for match in matches_sorted[:8]:
+            relevant_matches.append(
+                f"- {match.get('date', '')}: {match.get('team1', '')} vs {match.get('team2', '')} | winner={match.get('winner', '') or 'No result'}"
+            )
+
+    batter_totals = defaultdict(lambda: {"runs": 0, "team": ""})
+    for row in get_batting():
+        name = row.get("batter", "")
+        if not name:
+            continue
+        batter_totals[name]["runs"] += safe_int(row.get("runs"))
+        batter_totals[name]["team"] = row.get("team", batter_totals[name]["team"])
+
+    batter_rows = []
+    for name, stats in batter_totals.items():
+        blob = f"{name} {stats['team']}"
+        if terms and not has_term(blob):
+            continue
+        batter_rows.append((name, stats["team"], stats["runs"]))
+    batter_rows.sort(key=lambda row: row[2], reverse=True)
+
+    bowler_totals = defaultdict(lambda: {"runs": 0, "balls": 0, "team": ""})
+    for row in get_bowling():
+        name = row.get("bowler", "")
+        if not name:
+            continue
+        bowler_totals[name]["runs"] += safe_int(row.get("runs_conceded"))
+        bowler_totals[name]["balls"] += safe_int(row.get("legal_deliveries"))
+        bowler_totals[name]["team"] = row.get("team", bowler_totals[name]["team"])
+
+    bowler_rows = []
+    for name, stats in bowler_totals.items():
+        if stats["balls"] <= 0:
+            continue
+        blob = f"{name} {stats['team']}"
+        if terms and not has_term(blob):
+            continue
+        economy = round(stats["runs"] / (stats["balls"] / 6), 2)
+        bowler_rows.append((name, stats["team"], economy))
+    bowler_rows.sort(key=lambda row: row[2])
+
+    chunks = [build_chat_base_context(), "", "QUERY_RELEVANT_MATCHES:"]
+    chunks.extend(relevant_matches[:12])
+
+    if batter_rows:
+        chunks.append("QUERY_RELEVANT_BATTERS:")
+        for name, team, runs in batter_rows[:8]:
+            chunks.append(f"- {name} ({team}): runs={runs}")
+
+    if bowler_rows:
+        chunks.append("QUERY_RELEVANT_BOWLERS:")
+        for name, team, economy in bowler_rows[:8]:
+            chunks.append(f"- {name} ({team}): economy={economy}")
+
+    return "\n".join(chunks)
+
+
+def call_gemini_chat(message, history, context_block, api_key):
+    """Call Gemini REST API with strict policy instructions."""
+    endpoint = (
+        "https://generativelanguage.googleapis.com/v1beta/models/"
+        f"{GEMINI_MODEL}:generateContent?key={quote_plus(api_key)}"
+    )
+
+    system_prompt = (
+        "You are the Kinetic Cricket Assistant for this dashboard. "
+        "Strict rules: (1) Answer only cricket-related questions. "
+        "(2) Use only facts from DATA_CONTEXT supplied in the final user turn; do not use external knowledge. "
+        f"(3) If the question is outside cricket OR not answerable from DATA_CONTEXT, reply exactly: '{CHAT_DECLINE_MESSAGE}'. "
+        "(4) Keep answers concise and numeric when possible."
+    )
+
+    contents = []
+    for turn in history[-6:]:
+        role = turn.get("role", "user")
+        text = str(turn.get("content", "")).strip()
+        if not text:
+            continue
+        contents.append({
+            "role": "model" if role == "assistant" else "user",
+            "parts": [{"text": text[:900]}],
+        })
+
+    prompt = (
+        f"DATA_CONTEXT:\n{context_block}\n\n"
+        f"USER_QUESTION:\n{message}\n\n"
+        f"If the answer is not in DATA_CONTEXT, respond exactly with: {CHAT_DECLINE_MESSAGE}"
+    )
+    contents.append({"role": "user", "parts": [{"text": prompt}]})
+
+    payload = {
+        "system_instruction": {"parts": [{"text": system_prompt}]},
+        "contents": contents,
+        "generationConfig": {
+            "temperature": 0.1,
+            "topK": 32,
+            "topP": 0.9,
+            "maxOutputTokens": 320,
+        },
+    }
+
+    try:
+        req = Request(
+            endpoint,
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        with urlopen(req, timeout=35) as response:
+            response_payload = json.loads(response.read().decode("utf-8"))
+    except HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace") if hasattr(exc, "read") else ""
+        logger.warning("Gemini HTTP error %s: %s", exc.code, body[:500])
+        return "The assistant is temporarily unavailable. Please try again."
+    except URLError as exc:
+        logger.warning("Gemini URL error: %s", exc)
+        return "The assistant is temporarily unavailable. Please try again."
+    except Exception as exc:
+        logger.exception("Gemini call failed: %s", exc)
+        return "The assistant is temporarily unavailable. Please try again."
+
+    candidates = response_payload.get("candidates") or []
+    if not candidates:
+        return CHAT_DECLINE_MESSAGE
+
+    parts = candidates[0].get("content", {}).get("parts", [])
+    reply = " ".join(part.get("text", "").strip() for part in parts if part.get("text")).strip()
+    return reply or CHAT_DECLINE_MESSAGE
+
+
 # ─── Transform Functions ───
 
 def transform_overview():
@@ -100,7 +510,10 @@ def transform_overview():
     max_wins = top_winners[0][1] if top_winners else 1
 
     # Runs progression over tournament (total runs per match sorted by date)
-    matches_sorted = sorted(matches, key=lambda x: x["date"])
+    matches_sorted = sorted(
+        matches,
+        key=lambda x: (parse_match_date(x.get("date")), x.get("match_id", "")),
+    )
     runs_per_match = []
     for m in matches_sorted:
         match_runs = sum(int(b["runs"]) for b in batting if b["match_id"] == m["match_id"] and b.get("runs"))
@@ -216,7 +629,11 @@ def transform_matches(city_filter=None, team_filter=None):
         filtered = [m for m in filtered if m["team1"] == team_filter or m["team2"] == team_filter]
 
     # Sort by date descending
-    filtered_sorted = sorted(filtered, key=lambda x: x["date"], reverse=True)
+    filtered_sorted = sorted(
+        filtered,
+        key=lambda x: (parse_match_date(x.get("date")), x.get("match_id", "")),
+        reverse=True,
+    )
 
     # Match history with computed match IDs
     match_history = []
@@ -542,6 +959,97 @@ def api_batters():
 @app.route("/api/teams")
 def api_teams():
     return jsonify(transform_teams())
+
+
+@app.route("/api/chat", methods=["POST"])
+def api_chat():
+    payload = request.get_json(silent=True) or {}
+    message = str(payload.get("message", "")).strip()
+    history = payload.get("history", [])
+    if not isinstance(history, list):
+        history = []
+
+    if not message:
+        return jsonify({"error": "Message is required."}), 400
+
+    if len(message) > 1200:
+        message = message[:1200]
+
+    if not is_cricket_query(message):
+        return jsonify({"reply": CHAT_DECLINE_MESSAGE})
+
+    api_key = os.getenv("GEMINI_API_KEY", "").strip()
+    if not api_key:
+        return jsonify(
+            {
+                "reply": (
+                    "Gemini API key is not configured yet. "
+                    "Set GEMINI_API_KEY in your environment, then ask a cricket question again."
+                )
+            }
+        )
+
+    context_block = build_chat_query_context(message)
+    reply = call_gemini_chat(message=message, history=history, context_block=context_block, api_key=api_key)
+
+    if not reply:
+        reply = CHAT_DECLINE_MESSAGE
+
+    return jsonify({"reply": reply})
+
+
+@app.route("/api/logs")
+def api_logs():
+    level = request.args.get("level", "").strip().upper()
+    if level and level not in VALID_LOG_LEVELS:
+        return jsonify({"error": f"Invalid level. Use one of: {', '.join(sorted(VALID_LOG_LEVELS))}"}), 400
+
+    try:
+        limit = int(request.args.get("limit", "200"))
+    except ValueError:
+        return jsonify({"error": "Invalid limit. Provide an integer between 1 and 2000."}), 400
+
+    limit = max(1, min(limit, 2000))
+    query = request.args.get("q", "").strip()
+    since_raw = request.args.get("since", "").strip()
+    until_raw = request.args.get("until", "").strip()
+    include_archived = request.args.get("include_archived", "false").strip().lower() in {"1", "true", "yes"}
+
+    since = parse_log_filter_datetime(since_raw)
+    until = parse_log_filter_datetime(until_raw, end_of_day=True)
+
+    if since_raw and since is None:
+        return jsonify({"error": "Invalid since value. Use YYYY-MM-DD, YYYY-MM-DD HH:MM:SS, or ISO datetime."}), 400
+    if until_raw and until is None:
+        return jsonify({"error": "Invalid until value. Use YYYY-MM-DD, YYYY-MM-DD HH:MM:SS, or ISO datetime."}), 400
+    if since and until and since > until:
+        return jsonify({"error": "Invalid range. 'since' must be earlier than or equal to 'until'."}), 400
+
+    entries, source_files = query_log_entries(
+        limit=limit,
+        level=level,
+        query=query,
+        since=since,
+        until=until,
+        include_archived=include_archived,
+    )
+
+    return jsonify(
+        {
+            "log_file": LOG_FILE_PATH,
+            "source_files": source_files,
+            "filters": {
+                "level": level or None,
+                "q": query or None,
+                "since": since_raw or None,
+                "until": until_raw or None,
+                "limit": limit,
+                "include_archived": include_archived,
+            },
+            "returned": len(entries),
+            "entries": entries,
+        }
+    )
 
 
 if __name__ == "__main__":

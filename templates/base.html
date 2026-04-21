@@ -1,118 +1,140 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>{% block title %}The Kinetic Analyst{% endblock %}</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{% block title %}{{ APP_NAME }}{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "surface": "#0b1326",
-              "surface-bright": "#31394d",
-              "secondary-container": "#00cfbf",
-              "on-surface": "#dae2fd",
-              "surface-container-highest": "#2d3449",
-              "on-surface-variant": "#c5c6cd",
-              "tertiary": "#ffb2ba",
-              "outline-variant": "#44474d",
-              "surface-container-high": "#222a3d",
-              "surface-container-low": "#131b2e",
-              "surface-container-lowest": "#060e20",
-              "secondary": "#43ecdb",
-              "background": "#0b1326"
-            },
-            fontFamily: {
-              "headline": ["Manrope", "sans-serif"],
-              "body": ["Inter", "sans-serif"]
-            }
-          }
-        }
-      };
-    </script>
-    <style>
-      body { font-family: "Inter", sans-serif; }
-      .font-headline { font-family: "Manrope", sans-serif; }
-    </style>
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" />
     {% block head %}{% endblock %}
 </head>
-<body class="bg-surface text-on-surface antialiased min-h-screen flex">
-    <nav class="bg-[#131b2e] h-screen w-72 fixed left-0 top-0 flex flex-col py-8 space-y-2 z-50">
-        <div class="px-6 mb-8">
-            <h1 class="font-headline font-extrabold text-[#43ecdb] tracking-tighter text-xl">The Kinetic Analyst</h1>
-            <p class="font-body text-xs text-on-surface-variant mt-1">Elite Performance Data</p>
-        </div>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="app-sidebar" aria-label="Primary navigation">
+            <button aria-label="Close navigation" class="sidebar-close" data-close-sidebar type="button">
+                <span class="material-symbols-outlined">close</span>
+            </button>
 
-        <div class="flex-1 flex flex-col gap-2">
-            <a class="flex items-center gap-4 px-6 py-4 transition-all duration-300 {% if active_page == 'overview' %}bg-[#222a3d] text-[#43ecdb] border-l-4 border-[#43ecdb]{% else %}text-slate-400 hover:bg-[#2d3449] hover:text-[#43ecdb]{% endif %}" href="{{ url_for('overview') }}">
-                <span class="material-symbols-outlined">dashboard</span>
-                <span class="font-headline font-bold tracking-tight text-sm">Overview</span>
-            </a>
-            <a class="flex items-center gap-4 px-6 py-4 transition-all duration-300 {% if active_page == 'matches' %}bg-[#222a3d] text-[#43ecdb] border-l-4 border-[#43ecdb]{% else %}text-slate-400 hover:bg-[#2d3449] hover:text-[#43ecdb]{% endif %}" href="{{ url_for('matches_page') }}">
-                <span class="material-symbols-outlined">sports_cricket</span>
-                <span class="font-headline font-bold tracking-tight text-sm">Matches</span>
-            </a>
-            <a class="flex items-center gap-4 px-6 py-4 transition-all duration-300 {% if active_page == 'batters' %}bg-[#222a3d] text-[#43ecdb] border-l-4 border-[#43ecdb]{% else %}text-slate-400 hover:bg-[#2d3449] hover:text-[#43ecdb]{% endif %}" href="{{ url_for('batters_page') }}">
-                <span class="material-symbols-outlined">person</span>
-                <span class="font-headline font-bold tracking-tight text-sm">Batters</span>
-            </a>
-            <a class="flex items-center gap-4 px-6 py-4 transition-all duration-300 {% if active_page == 'teams' %}bg-[#222a3d] text-[#43ecdb] border-l-4 border-[#43ecdb]{% else %}text-slate-400 hover:bg-[#2d3449] hover:text-[#43ecdb]{% endif %}" href="{{ url_for('teams_page') }}">
-                <span class="material-symbols-outlined">groups</span>
-                <span class="font-headline font-bold tracking-tight text-sm">Teams</span>
-            </a>
-        </div>
-
-        <div class="px-6 mt-auto">
-            <a href="{{ url_for('live_match_center') }}" class="block w-full py-3 bg-gradient-to-br from-secondary to-secondary-container text-[#003732] rounded-xl font-headline font-bold text-sm text-center hover:opacity-95">
-                Live Match Center
-            </a>
-        </div>
-
-        <div class="mt-6 space-y-1 border-t border-outline-variant/20 pt-4">
-            <a class="flex items-center gap-4 px-6 py-3 transition-all duration-300 {% if active_page == 'settings' %}text-[#43ecdb]{% else %}text-slate-400 hover:bg-[#2d3449] hover:text-[#43ecdb]{% endif %}" href="{{ url_for('settings_page') }}">
-                <span class="material-symbols-outlined">settings</span>
-                <span class="font-headline font-bold tracking-tight text-sm">Settings</span>
-            </a>
-            <a class="flex items-center gap-4 px-6 py-3 transition-all duration-300 {% if active_page == 'support' %}text-[#43ecdb]{% else %}text-slate-400 hover:bg-[#2d3449] hover:text-[#43ecdb]{% endif %}" href="{{ url_for('support_page') }}">
-                <span class="material-symbols-outlined">help</span>
-                <span class="font-headline font-bold tracking-tight text-sm">Support</span>
-            </a>
-        </div>
-    </nav>
-
-    <main class="flex-1 ml-72 min-h-screen">
-        <header class="fixed top-0 right-0 w-[calc(100%-18rem)] z-40 bg-[#0b1326]/85 backdrop-blur-md h-20 flex justify-between items-center px-8">
-            <h1 class="font-headline font-bold text-xl tracking-tight">{% block page_header %}The Kinetic Analyst{% endblock %}</h1>
-            <div class="flex items-center gap-3">
-                {% block topbar_search %}
-                <div class="relative hidden md:block">
-                    <input id="global-search" class="w-72 bg-surface-container-highest rounded-full border-none py-2 pl-10 pr-4 text-sm placeholder:text-slate-400 focus:ring-2 focus:ring-secondary/30" placeholder="Search..." type="text" />
-                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+            <div class="brand">
+                <div class="brand-top">
+                    <div class="brand-mark">TKA</div>
+                    <div>
+                        <h1 class="brand-title">{{ APP_NAME }}</h1>
+                        <p class="brand-subtitle">Women's Cricket Intelligence Suite</p>
+                    </div>
                 </div>
-                {% endblock %}
-                <a href="{{ url_for('matches_page') }}" class="text-slate-300 hover:bg-[#222a3d] rounded-full p-2 transition-colors" title="Calendar">
-                    <span class="material-symbols-outlined">calendar_today</span>
+            </div>
+
+            <p class="sidebar-group-title">Navigation</p>
+            <nav class="sidebar-links">
+                <a class="nav-link {% if active_page == 'overview' %}active{% endif %}" href="{{ url_for('overview') }}">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span>Overview</span>
                 </a>
-                <a href="{{ url_for('overview') }}" class="text-slate-300 hover:bg-[#222a3d] rounded-full p-2 transition-colors relative" title="Notifications">
-                    <span class="material-symbols-outlined">notifications</span>
-                    <span class="absolute top-2 right-2 w-2 h-2 bg-tertiary rounded-full"></span>
+                <a class="nav-link {% if active_page == 'matches' %}active{% endif %}" href="{{ url_for('matches_page') }}">
+                    <span class="material-symbols-outlined">sports_cricket</span>
+                    <span>Match Analysis</span>
                 </a>
-                <a href="{{ url_for('support_page') }}" class="text-slate-300 hover:bg-[#222a3d] rounded-full p-2 transition-colors" title="Account">
-                    <span class="material-symbols-outlined">account_circle</span>
+                <a class="nav-link {% if active_page == 'batters' %}active{% endif %}" href="{{ url_for('batters_page') }}">
+                    <span class="material-symbols-outlined">person</span>
+                    <span>Batter Performance</span>
+                </a>
+                <a class="nav-link {% if active_page == 'teams' %}active{% endif %}" href="{{ url_for('teams_page') }}">
+                    <span class="material-symbols-outlined">groups</span>
+                    <span>Team Insights</span>
+                </a>
+            </nav>
+
+            <p class="sidebar-group-title">Workspace</p>
+            <div class="sidebar-footer">
+                <a class="live-button" href="{{ url_for('live_match_center') }}">
+                    <span class="material-symbols-outlined">radio_button_checked</span>
+                    <span>Live Match Center</span>
+                </a>
+                <a class="nav-link {% if active_page == 'settings' %}active{% endif %}" href="{{ url_for('settings_page') }}">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span>Settings</span>
+                </a>
+                <a class="nav-link {% if active_page == 'support' %}active{% endif %}" href="{{ url_for('support_page') }}">
+                    <span class="material-symbols-outlined">help</span>
+                    <span>Support</span>
                 </a>
             </div>
-        </header>
+        </aside>
 
-        <section class="pt-28 px-8 pb-10">
-            {% block content %}{% endblock %}
+        <div class="scrim" aria-hidden="true"></div>
+
+        <div class="app-main">
+            <header class="topbar">
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <button aria-label="Open navigation" class="mobile-menu-button" data-open-sidebar type="button">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                    <div>
+                        <h1 class="topbar-title">{% block page_header %}Women's World Cup Intelligence{% endblock %}</h1>
+                        <p class="topbar-subtitle">{% block page_subheader %}Performance, match flow, and strategy in one command center.{% endblock %}</p>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    {% block topbar_search %}
+                    <label aria-label="Search dashboard" class="search-wrap">
+                        <span class="material-symbols-outlined">search</span>
+                        <input class="topbar-input" placeholder="Search this page" type="text" />
+                    </label>
+                    {% endblock %}
+
+                    <a class="icon-button" href="{{ url_for('matches_page') }}" title="Calendar">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                    </a>
+                    <a class="icon-button" href="{{ url_for('overview') }}" title="Alerts">
+                        <span class="material-symbols-outlined">notifications</span>
+                    </a>
+                    <a class="icon-button" href="{{ url_for('support_page') }}" title="Help">
+                        <span class="material-symbols-outlined">help</span>
+                    </a>
+                </div>
+            </header>
+
+            <main class="page-content">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+
+    <div class="chatbot-shell" data-chatbot>
+        <button aria-controls="chatbot-panel" aria-expanded="false" aria-label="Open cricket assistant" class="chatbot-toggle" data-chatbot-toggle type="button">
+            <span class="material-symbols-outlined">chat</span>
+        </button>
+
+        <section class="chatbot-panel" data-chatbot-panel hidden id="chatbot-panel">
+            <div class="chatbot-header">
+                <div>
+                    <h3>Cricket Assistant</h3>
+                    <p>Dataset-grounded answers only.</p>
+                </div>
+                <button aria-label="Close chat" class="chatbot-close" data-chatbot-close type="button">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <div class="chatbot-messages" data-chatbot-messages>
+                <div class="chatbot-row bot">
+                    <div class="chatbot-bubble">
+                        Ask anything about matches, teams, batters, and bowling from this dashboard dataset.
+                    </div>
+                </div>
+            </div>
+
+            <form class="chatbot-form" data-chatbot-form>
+                <input autocomplete="off" class="chatbot-input" data-chatbot-input maxlength="1200" placeholder="Ask a cricket question..." type="text" />
+                <button class="chatbot-send" data-chatbot-send type="submit">Send</button>
+            </form>
         </section>
-    </main>
+    </div>
 
+    <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>
