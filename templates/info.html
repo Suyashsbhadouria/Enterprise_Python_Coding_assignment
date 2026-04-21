@@ -1,16 +1,31 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ title }} - The Kinetic Analyst{% endblock %}
+{% block title %}{{ title }} - {{ APP_NAME }}{% endblock %}
 {% block page_header %}{{ title }}{% endblock %}
+{% block page_subheader %}Operational information and quick recovery paths for this workspace.{% endblock %}
 
 {% block content %}
-<div class="max-w-3xl bg-surface-container-high rounded-xl p-8">
-    <h2 class="font-headline text-4xl font-extrabold tracking-tight">{{ title }}</h2>
-    <p class="text-on-surface-variant text-sm mt-2">{{ subtitle }}</p>
-    <p class="text-on-surface mt-6">{{ message }}</p>
-    <div class="mt-8 flex gap-3">
-        <a href="{{ url_for('overview') }}" class="bg-secondary text-[#003732] px-4 py-2 rounded-xl text-sm font-semibold">Back to Dashboard</a>
-        <a href="{{ url_for('support_page') }}" class="bg-surface-container-low px-4 py-2 rounded-xl text-sm">Open Support</a>
+<section class="hero" data-reveal style="--reveal-delay:0s;">
+    <span class="eyebrow">
+        <span class="material-symbols-outlined">info</span>
+        System Notice
+    </span>
+    <h2>{{ title }}</h2>
+    <p>{{ subtitle }}</p>
+</section>
+
+<section class="card" data-reveal style="--reveal-delay:.08s;max-width:760px;">
+    <div class="panel-head">
+        <div>
+            <h3 class="section-title">Details</h3>
+            <p class="section-subtitle">Context and recommended next action.</p>
+        </div>
     </div>
-</div>
+    <p style="margin:0;color:var(--text);">{{ message }}</p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem;">
+        <a class="button" href="{{ url_for('overview') }}">Back to Dashboard</a>
+        <a class="link-button" href="{{ url_for('support_page') }}">Open Support</a>
+    </div>
+</section>
 {% endblock %}

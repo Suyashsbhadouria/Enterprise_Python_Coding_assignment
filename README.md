@@ -62,6 +62,38 @@ Start server:
 .\.venv\Scripts\python.exe app.py
 ```
 
+Optional Gemini chat configuration (for floating in-app chatbot):
+
+```powershell
+$env:GEMINI_API_KEY="your_api_key_here"
+$env:GEMINI_MODEL="gemini-2.5-flash-lite"
+```
+
+Or use a local `.env` file in project root:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+GEMINI_MODEL=gemini-2.5-flash-lite
+APP_NAME=BoundaryLine Intelligence
+```
+
+Notes:
+
+- If `GEMINI_API_KEY` is not set, chatbot replies with a configuration prompt.
+- Chatbot is restricted to cricket questions and instructed to answer from dashboard dataset context only.
+
+Logging configuration (optional):
+
+```env
+LOG_LEVEL=INFO
+LOG_DIR=logs
+LOG_FILE_NAME=app.log
+LOG_MAX_BYTES=1048576
+LOG_BACKUP_COUNT=5
+```
+
+- Logs are written to a rotating file (default: `logs/app.log`) and also printed to console.
+
 Open:
 
 - `http://127.0.0.1:5000/`
@@ -107,6 +139,32 @@ API Routes:
 - `/api/matches`
 - `/api/batters`
 - `/api/teams`
+- `/api/chat` (POST body: `{"message":"...","history":[...]}`)
+- `/api/logs` (GET with filters)
+
+### Query Logs API
+
+Use `/api/logs` to retrieve and filter log lines.
+
+Examples:
+
+```text
+/api/logs
+/api/logs?limit=100
+/api/logs?level=ERROR
+/api/logs?q=matches
+/api/logs?since=2026-04-21&until=2026-04-21
+/api/logs?include_archived=true
+```
+
+Supported query parameters:
+
+- `limit`: max entries returned (`1` to `2000`, default `200`)
+- `level`: one of `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`
+- `q`: text search across logger name, message, and level
+- `since`: `YYYY-MM-DD`, `YYYY-MM-DD HH:MM:SS`, or ISO datetime
+- `until`: `YYYY-MM-DD`, `YYYY-MM-DD HH:MM:SS`, or ISO datetime
+- `include_archived`: `true/false` to include rotated files (`app.log.1`, etc.)
 
 ## Submission Readiness Checklist
 

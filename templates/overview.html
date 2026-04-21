@@ -1,135 +1,224 @@
 {% extends 'base.html' %}
 
-{% block title %}Tournament Overview - The Kinetic Analyst{% endblock %}
+{% block title %}Tournament Overview - {{ APP_NAME }}{% endblock %}
 {% block page_header %}Tournament Overview{% endblock %}
+{% block page_subheader %}A complete pulse check of the tournament: outcomes, scoring rhythm, and dominant teams.{% endblock %}
 
 {% block content %}
-<div class="mb-8">
-    <h2 class="font-headline text-4xl font-extrabold tracking-tight">Tournament Overview</h2>
-    <p class="text-on-surface-variant mt-2 text-sm max-w-2xl">High-level performance metrics and aggregated tournament data across all participating nations and venues.</p>
-</div>
+<section class="hero" data-reveal style="--reveal-delay:0s;">
+    <span class="eyebrow">
+        <span class="material-symbols-outlined">trophy</span>
+        Tournament Snapshot
+    </span>
+    <h2>Track how momentum shifted through the Women's World Cup from first ball to final result.</h2>
+    <p>Every panel below is generated directly from your transformed match and innings data so analysts can move from summary metrics into tactical insights without leaving this dashboard.</p>
+    <div class="hero-meta">
+        <span class="hero-chip">{{ data.team_count }} participating teams</span>
+        <span class="hero-chip">{{ data.venue_count }} venues</span>
+        <span class="hero-chip">{{ data.city_count }} host cities</span>
+    </div>
+</section>
 
-<div class="grid grid-cols-12 gap-6">
-    <div class="col-span-12 md:col-span-3 bg-surface-container-high rounded-xl p-6">
-        <p class="text-sm text-on-surface-variant">Total Matches</p>
-        <h3 class="font-headline text-4xl font-bold mt-1">{{ data.total_matches }}</h3>
-        <p class="text-secondary text-sm mt-4">Tournament Complete</p>
-    </div>
-    <div class="col-span-12 md:col-span-3 bg-surface-container-high rounded-xl p-6">
-        <p class="text-sm text-on-surface-variant">Total Runs Scored</p>
-        <h3 class="font-headline text-4xl font-bold mt-1">{{ '{:,}'.format(data.total_runs) }}</h3>
-        <p class="text-tertiary text-sm mt-4">High Scoring Event</p>
-    </div>
-    <div class="col-span-12 md:col-span-3 bg-surface-container-low rounded-xl p-6">
-        <p class="text-sm text-on-surface-variant">Participating Teams</p>
-        <h3 class="font-headline text-3xl font-bold mt-1">{{ data.team_count }}</h3>
-        <div class="flex -space-x-2 mt-4">
+<section class="grid-4">
+    <article class="card" data-reveal style="--reveal-delay:.05s;">
+        <p class="metric-label">Total Matches</p>
+        <p class="metric-number">{{ data.total_matches }}</p>
+        <p class="metric-note">Completed fixtures across all stages.</p>
+    </article>
+    <article class="card" data-reveal style="--reveal-delay:.1s;">
+        <p class="metric-label">Total Runs</p>
+        <p class="metric-number">{{ '{:,}'.format(data.total_runs) }}</p>
+        <p class="metric-note"><strong>Scoring depth:</strong> strong batting contribution tournament-wide.</p>
+    </article>
+    <article class="card" data-reveal style="--reveal-delay:.15s;">
+        <p class="metric-label">Teams</p>
+        <p class="metric-number">{{ data.team_count }}</p>
+        <p class="metric-note">
             {% for team in data.teams[:4] %}
-            <div class="w-8 h-8 rounded-full bg-surface-bright border-2 border-surface flex items-center justify-center text-[10px] font-bold">{{ team|team_abbr }}</div>
+            <span class="tag">{{ team|team_abbr }}</span>
             {% endfor %}
-        </div>
-    </div>
-    <div class="col-span-12 md:col-span-3 bg-surface-container-low rounded-xl p-6">
-        <p class="text-sm text-on-surface-variant">Venues / Cities</p>
-        <h3 class="font-headline text-3xl font-bold mt-1">{{ data.venue_count }} / {{ data.city_count }}</h3>
-        <p class="text-sm text-on-surface-variant mt-4">Top host city: <span class="text-secondary">{{ data.top_city[0] }}</span></p>
-    </div>
+        </p>
+    </article>
+    <article class="card" data-reveal style="--reveal-delay:.2s;">
+        <p class="metric-label">Host Footprint</p>
+        <p class="metric-number">{{ data.venue_count }} / {{ data.city_count }}</p>
+        <p class="metric-note">Top city: <strong>{{ data.top_city[0] or 'N/A' }}</strong></p>
+    </article>
+</section>
 
-    <div class="col-span-12 xl:col-span-8 bg-surface-container-high rounded-xl p-6">
-        <div class="flex items-center justify-between mb-4">
-            <h3 class="font-headline text-xl font-bold">Winning Momentum</h3>
-            <a class="text-tertiary text-sm" href="{{ url_for('teams_page') }}">View Team Insights</a>
-        </div>
-        <div class="space-y-3">
-            {% for team, wins in data.top_winners %}
+<section class="grid-main">
+    <article class="card" data-reveal style="--reveal-delay:.25s;">
+        <div class="panel-head">
             <div>
-                <div class="flex justify-between text-sm mb-1">
+                <h3 class="section-title">Winning Momentum</h3>
+                <p class="section-subtitle">Most successful teams by number of wins.</p>
+            </div>
+            <a class="panel-link" href="{{ url_for('teams_page') }}">View Team Insights</a>
+        </div>
+        <div class="progress-list">
+            {% for team, wins in data.top_winners %}
+            <div class="progress-item">
+                <div class="row">
                     <span>{{ team }}</span>
                     <span>{{ wins }} wins</span>
                 </div>
-                <div class="h-2 rounded-full bg-surface-container-lowest overflow-hidden">
-                    <div class="h-full bg-gradient-to-r from-secondary to-secondary-container" style="width: {{ (wins / data.max_wins * 100)|round(1) }}%"></div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: {{ (wins / data.max_wins * 100)|round(1) }}%;"></div>
                 </div>
             </div>
             {% endfor %}
         </div>
-    </div>
+    </article>
 
-    <div class="col-span-12 xl:col-span-4 bg-surface-container-high rounded-xl p-6">
-        <h3 class="font-headline text-xl font-bold mb-4">Recent Results</h3>
-        <div class="space-y-3">
+    <article class="card" data-reveal style="--reveal-delay:.3s;">
+        <div class="panel-head">
+            <div>
+                <h3 class="section-title">Recent Results</h3>
+                <p class="section-subtitle">Latest fixtures in reverse chronology.</p>
+            </div>
+        </div>
+        <div class="stack-list">
             {% for m in data.recent_results %}
-            <div class="bg-surface-container-low rounded-lg p-3">
-                <p class="text-xs text-on-surface-variant">{{ m.date }} · {{ m.stage }}</p>
-                <p class="text-sm font-semibold mt-1">{{ m.team1 }} vs {{ m.team2 }}</p>
-                <p class="text-xs text-secondary mt-1">{{ m.result_text }}</p>
-                <p class="text-xs text-on-surface-variant mt-1">{{ m.venue }}, {{ m.city }}</p>
+            <div class="result-item">
+                <p class="result-meta">{{ m.date }} | {{ m.stage }}</p>
+                <p class="result-fixture">{{ m.team1 }} vs {{ m.team2 }}</p>
+                <p class="result-summary">{{ m.result_text }}</p>
+                <p class="result-location">{{ m.venue }}, {{ m.city }}</p>
             </div>
             {% endfor %}
         </div>
-    </div>
+    </article>
+</section>
 
-    <div class="col-span-12 bg-surface-container-high rounded-xl p-6">
-        <h3 class="font-headline text-xl font-bold mb-4">Runs Per Match Timeline</h3>
-        {% set timeline = data.runs_per_match %}
-        {% if timeline %}
-        {% set max_runs = (timeline | map(attribute='total_runs') | max) %}
-        {% set label_step = (timeline|length // 8) if (timeline|length) > 8 else 1 %}
-        {% set y1 = (max_runs * 0.75)|round(0, 'floor')|int %}
-        {% set y2 = (max_runs * 0.50)|round(0, 'floor')|int %}
-        {% set y3 = (max_runs * 0.25)|round(0, 'floor')|int %}
-        <div class="overflow-x-auto pb-3">
-            <div class="inline-block min-w-full">
-                <div class="flex gap-3 min-w-max">
-                    <div class="w-12 h-56 shrink-0 flex flex-col justify-between text-[10px] text-on-surface-variant text-right pr-1">
-                        <span>{{ max_runs }}</span>
-                        <span>{{ y1 }}</span>
-                        <span>{{ y2 }}</span>
-                        <span>{{ y3 }}</span>
-                        <span>0</span>
-                    </div>
-
-                    <div>
-                        <div class="relative h-56 w-max pr-2">
-                            <div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
-                                <div class="border-t border-outline-variant/25"></div>
-                                <div class="border-t border-outline-variant/20"></div>
-                                <div class="border-t border-outline-variant/20"></div>
-                                <div class="border-t border-outline-variant/20"></div>
-                                <div class="border-t border-outline-variant/30"></div>
-                            </div>
-
-                            <div class="relative z-10 flex items-end gap-1 h-full w-max">
-                                {% for r in timeline %}
-                                {% set raw_height = ((r.total_runs / max_runs) * 100) if max_runs else 0 %}
-                                {% set bar_height = raw_height if raw_height > 4 else 4 %}
-                                <div class="group relative w-3 shrink-0 h-full flex items-end">
-                                    <div class="w-full rounded-t bg-secondary/85 hover:bg-secondary transition-all" style="height: {{ bar_height|round(1) }}%" title="{{ r.date }} | {{ r.team1 }} vs {{ r.team2 }} | {{ r.total_runs }} runs"></div>
-                                    <div class="hidden group-hover:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-surface-container-lowest text-xs px-2 py-1 rounded border border-outline-variant/30 z-10">
-                                        {{ r.team1 }} vs {{ r.team2 }}: {{ r.total_runs }}
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-
-                        <div class="mt-4 border-t border-outline-variant/20 pt-2">
-                            <div class="flex justify-between gap-2 text-[10px] text-on-surface-variant">
-                                {% for i in range(0, timeline|length, label_step) %}
-                                <span class="whitespace-nowrap">{{ timeline[i].date }}</span>
-                                {% endfor %}
-                                {% if ((timeline|length) - 1) % label_step != 0 %}
-                                <span class="whitespace-nowrap">{{ timeline[(timeline|length) - 1].date }}</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section class="card timeline-shell" data-reveal style="--reveal-delay:.35s;">
+    <div class="panel-head">
+        <div>
+            <h3 class="section-title">Runs Per Match Timeline</h3>
+            <p class="section-subtitle">Scoring trajectory across the tournament calendar.</p>
         </div>
-        {% else %}
-        <p class="text-sm text-on-surface-variant">No match timeline data available.</p>
-        {% endif %}
     </div>
-</div>
+
+    {% set timeline = data.runs_per_match %}
+    {% if timeline %}
+    <div class="timeline-wrap">
+                <div class="timeline-chart-shell">
+                        <canvas aria-label="Runs per match timeline chart" id="runsTimelineChart"></canvas>
+                </div>
+                <div class="timeline-meta">
+                        <span class="timeline-chip">{{ timeline|length }} matches plotted</span>
+                        <span class="timeline-chip">Hover points for fixture details</span>
+        </div>
+    </div>
+    {% else %}
+    <p class="empty-note">No match timeline data is available in the current dataset.</p>
+    {% endif %}
+</section>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script>
+    (function () {
+        const points = {{ data.runs_per_match|tojson }};
+        const canvas = document.getElementById("runsTimelineChart");
+        if (!canvas || !Array.isArray(points) || !points.length || typeof Chart === "undefined") {
+            return;
+        }
+
+        function parseDate(value) {
+            const dt = new Date(value);
+            return Number.isNaN(dt.getTime()) ? new Date(0) : dt;
+        }
+
+        const sorted = points
+            .slice()
+            .sort((a, b) => parseDate(a.date) - parseDate(b.date))
+            .map((row) => ({
+                ...row,
+                label: row.date,
+                value: Number(row.total_runs || 0)
+            }));
+
+        const chart = new Chart(canvas, {
+            type: "line",
+            data: {
+                labels: sorted.map((row) => row.label),
+                datasets: [
+                    {
+                        label: "Runs per Match",
+                        data: sorted.map((row) => row.value),
+                        borderColor: "#0f766e",
+                        backgroundColor: "rgba(15, 118, 110, 0.2)",
+                        borderWidth: 2,
+                        pointRadius: 2,
+                        pointHoverRadius: 4,
+                        pointBackgroundColor: "#0a4e49",
+                        pointBorderWidth: 0,
+                        fill: true,
+                        tension: 0.28
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: "nearest",
+                    intersect: false
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: "#102438",
+                        titleColor: "#eef6fb",
+                        bodyColor: "#d7e6f2",
+                        callbacks: {
+                            title: function (items) {
+                                const row = sorted[items[0].dataIndex];
+                                return row.date;
+                            },
+                            label: function (context) {
+                                const row = sorted[context.dataIndex];
+                                return `${row.team1} vs ${row.team2} | ${row.value} runs`;
+                            },
+                            afterLabel: function (context) {
+                                const row = sorted[context.dataIndex];
+                                return row.event_stage ? `Stage: ${row.event_stage}` : "";
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: "#5c6c78",
+                            maxRotation: 0,
+                            autoSkip: true,
+                            maxTicksLimit: 8
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: "rgba(92, 108, 120, 0.14)"
+                        },
+                        ticks: {
+                            color: "#5c6c78"
+                        }
+                    }
+                }
+            }
+        });
+
+        window.addEventListener("resize", function () {
+            chart.resize();
+        });
+    })();
+</script>
 {% endblock %}
