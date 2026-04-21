@@ -1,0 +1,1762 @@
+match_id,innings,batter,team,runs,balls_faced,fours,sixes,strike_rate,is_out,dismissal_kind
+1085945,1,MDN Hansika,Sri Lanka,31,45,4,0,68.89,1,caught
+1085945,1,PRCS Kumarihami,Sri Lanka,49,113,3,0,43.36,1,caught
+1085945,1,AC Jayangani,Sri Lanka,53,66,7,0,80.3,1,caught
+1085945,1,LE Kaushalya,Sri Lanka,5,14,0,0,35.71,1,bowled
+1085945,1,MADD Surangika,Sri Lanka,0,1,0,0,0.0,1,run out
+1085945,1,HASD Siriwardene,Sri Lanka,16,26,2,0,61.54,1,caught
+1085945,1,PM Weerakkody,Sri Lanka,5,5,1,0,100.0,1,caught
+1085945,1,SS Weerakkody,Sri Lanka,6,10,1,0,60.0,1,caught
+1085945,1,KDU Prabodhani,Sri Lanka,4,12,0,0,33.33,1,bowled
+1085945,1,I Ranaweera,Sri Lanka,6,7,1,0,85.71,0,
+1085945,1,HHC Gunaratne,Sri Lanka,1,1,0,0,100.0,0,
+1085945,2,SW Bates,New Zealand,106,109,11,1,97.25,0,
+1085945,2,RH Priest,New Zealand,2,14,0,0,14.29,1,lbw
+1085945,2,AE Satterthwaite,New Zealand,78,103,7,0,75.73,0,
+1085946,1,PG Raut,India,86,134,7,1,64.18,1,caught
+1085946,1,S Mandhana,India,90,72,11,2,125.0,1,caught
+1085946,1,M Raj,India,71,73,8,0,97.26,1,caught
+1085946,1,H Kaur,India,24,22,1,1,109.09,0,
+1085946,2,TT Beaumont,England,14,24,2,0,58.33,1,caught
+1085946,2,SJ Taylor,England,22,31,3,0,70.97,1,caught
+1085946,2,HC Knight,England,46,69,1,2,66.67,1,run out
+1085946,2,NR Sciver,England,18,22,2,0,81.82,1,caught
+1085946,2,FC Wilson,England,81,75,6,0,108.0,1,run out
+1085946,2,DN Wyatt,England,9,9,1,0,100.0,1,caught and bowled
+1085946,2,KH Brunt,England,24,24,2,0,100.0,1,run out
+1085946,2,JL Gunn,England,9,10,1,0,90.0,1,run out
+1085946,2,A Shrubsole,England,11,11,0,1,100.0,1,caught
+1085946,2,D Hazell,England,4,8,0,0,50.0,1,bowled
+1085946,2,A Hartley,England,1,2,0,0,50.0,0,
+1085947,1,Ayesha Zafar,Pakistan,9,7,2,0,128.57,1,bowled
+1085947,1,Nahida Khan,Pakistan,79,101,9,1,78.22,1,run out
+1085947,1,Javeria Khan,Pakistan,17,29,3,0,58.62,1,bowled
+1085947,1,Bismah Maroof,Pakistan,10,28,1,0,35.71,1,stumped
+1085947,1,Nain Abidi,Pakistan,22,54,1,0,40.74,1,stumped
+1085947,1,Kainat Imtiaz,Pakistan,13,22,1,0,59.09,1,caught
+1085947,1,Asmavia Iqbal,Pakistan,27,38,2,0,71.05,1,caught
+1085947,1,Sana Mir,Pakistan,15,20,1,0,75.0,1,caught
+1085947,1,Sidra Nawaz,Pakistan,1,2,0,0,50.0,0,
+1085947,2,L Wolvaardt,South Africa,52,87,5,0,59.77,1,run out
+1085947,2,L Lee,South Africa,60,79,8,3,75.95,1,lbw
+1085947,2,T Chetty,South Africa,11,24,0,0,45.83,1,caught
+1085947,2,M du Preez,South Africa,30,40,2,0,75.0,1,caught
+1085947,2,M Kapp,South Africa,1,7,0,0,14.29,1,run out
+1085947,2,CL Tryon,South Africa,3,8,0,0,37.5,1,bowled
+1085947,2,D van Niekerk,South Africa,5,15,0,0,33.33,1,run out
+1085947,2,S Luus,South Africa,15,18,1,0,83.33,0,
+1085947,2,S Ismail,South Africa,22,16,3,0,137.5,0,
+1085948,1,HK Matthews,West Indies,46,63,7,0,73.02,1,bowled
+1085948,1,F Walters,West Indies,7,30,0,0,23.33,1,caught
+1085948,1,CN Nation,West Indies,39,73,2,1,53.42,1,caught
+1085948,1,SR Taylor,West Indies,45,57,1,1,78.95,1,caught
+1085948,1,DJS Dottin,West Indies,29,20,6,0,145.0,1,bowled
+1085948,1,MR Aguilleira,West Indies,1,5,0,0,20.0,1,caught
+1085948,1,SF Daley,West Indies,6,8,1,0,75.0,1,caught
+1085948,1,A Mohammed,West Indies,9,19,1,0,47.37,1,run out
+1085948,1,ASS Fletcher,West Indies,3,4,0,0,75.0,1,bowled
+1085948,1,SC Selman,West Indies,3,6,0,0,50.0,0,
+1085948,1,SS Connell,West Indies,1,2,0,0,50.0,1,run out
+1085948,2,BL Mooney,Australia,70,85,7,1,82.35,1,bowled
+1085948,2,NE Bolton,Australia,107,116,14,0,92.24,0,
+1085948,2,MM Lanning,Australia,12,15,2,0,80.0,1,caught
+1085948,2,EA Perry,Australia,5,13,0,0,38.46,0,
+1085949,1,TT Beaumont,England,14,27,2,0,51.85,1,caught
+1085949,1,SJ Taylor,England,11,14,2,0,78.57,1,lbw
+1085949,1,HC Knight,England,106,109,12,2,97.25,1,caught
+1085949,1,NR Sciver,England,137,92,14,4,148.91,1,caught
+1085949,1,DN Wyatt,England,42,27,5,1,155.56,0,
+1085949,1,KH Brunt,England,9,5,2,0,180.0,1,bowled
+1085949,1,FC Wilson,England,33,19,6,0,173.68,1,bowled
+1085949,1,JL Gunn,England,0,1,0,0,0.0,1,caught
+1085949,1,A Shrubsole,England,12,6,1,0,200.0,0,
+1085949,2,Ayesha Zafar,Pakistan,56,77,8,0,72.73,0,
+1085949,2,Nahida Khan,Pakistan,3,6,0,0,50.0,1,caught
+1085949,2,Javeria Khan,Pakistan,11,30,1,0,36.67,1,bowled
+1085949,2,Asmavia Iqbal,Pakistan,5,20,0,0,25.0,1,lbw
+1085949,2,Nain Abidi,Pakistan,23,43,2,0,53.49,0,
+1085951,1,HK Matthews,West Indies,43,57,7,0,75.44,1,caught and bowled
+1085951,1,F Walters,West Indies,9,18,1,0,50.0,1,caught
+1085951,1,SR Taylor,West Indies,16,42,0,0,38.1,1,run out
+1085951,1,DJS Dottin,West Indies,7,48,0,0,14.58,1,caught
+1085951,1,MR Aguilleira,West Indies,6,18,0,0,33.33,1,stumped
+1085951,1,Kyshona A Knight,West Indies,5,20,0,0,25.0,1,caught
+1085951,1,CN Nation,West Indies,12,21,2,0,57.14,1,stumped
+1085951,1,SF Daley,West Indies,33,37,5,0,89.19,1,stumped
+1085951,1,ASS Fletcher,West Indies,36,23,4,0,156.52,0,
+1085951,1,A Mohammed,West Indies,11,16,1,0,68.75,0,
+1085951,2,PG Raut,India,0,5,0,0,0.0,1,caught
+1085951,2,DB Sharma,India,6,23,1,0,26.09,1,bowled
+1085951,2,S Mandhana,India,106,108,13,2,98.15,0,
+1085951,2,M Raj,India,46,88,3,0,52.27,1,caught
+1085951,2,MR Meshram,India,18,32,2,0,56.25,0,
+1085952,1,MDN Hansika,Sri Lanka,0,3,0,0,0.0,1,lbw
+1085952,1,AC Jayangani,Sri Lanka,178,143,22,6,124.48,0,
+1085952,1,PRCS Kumarihami,Sri Lanka,6,33,0,0,18.18,1,lbw
+1085952,1,MADD Surangika,Sri Lanka,8,30,0,0,26.67,1,lbw
+1085952,1,PM Weerakkody,Sri Lanka,1,5,0,0,20.0,1,caught
+1085952,1,HASD Siriwardene,Sri Lanka,24,36,3,0,66.67,1,lbw
+1085952,1,GWHM Perera,Sri Lanka,0,3,0,0,0.0,1,bowled
+1085952,1,LE Kaushalya,Sri Lanka,13,21,1,0,61.9,1,bowled
+1085952,1,SS Weerakkody,Sri Lanka,8,15,1,0,53.33,1,bowled
+1085952,1,KDU Prabodhani,Sri Lanka,0,7,0,0,0.0,1,caught
+1085952,1,I Ranaweera,Sri Lanka,0,4,0,0,0.0,0,
+1085952,2,NE Bolton,Australia,60,71,8,0,84.51,1,caught
+1085952,2,BL Mooney,Australia,0,6,0,0,0.0,1,caught
+1085952,2,MM Lanning,Australia,152,135,19,1,112.59,0,
+1085952,2,EA Perry,Australia,39,53,3,0,73.58,0,
+1085953,1,MDN Hansika,Sri Lanka,17,40,3,0,42.5,1,caught
+1085953,1,GWHM Perera,Sri Lanka,46,63,6,0,73.02,1,caught
+1085953,1,AC Jayangani,Sri Lanka,1,3,0,0,33.33,1,caught
+1085953,1,HASD Siriwardene,Sri Lanka,33,47,5,0,70.21,1,bowled
+1085953,1,MADD Surangika,Sri Lanka,28,40,3,0,70.0,1,caught
+1085953,1,H Madavi,Sri Lanka,1,5,0,0,20.0,1,caught
+1085953,1,OU Ranasinghe,Sri Lanka,26,49,2,0,53.06,1,caught
+1085953,1,LE Kaushalya,Sri Lanka,3,11,0,0,27.27,1,caught
+1085953,1,KADA Kanchana,Sri Lanka,34,39,2,1,87.18,0,
+1085953,1,SS Weerakkody,Sri Lanka,5,3,0,0,166.67,0,
+1085953,2,L Winfield,England,26,24,5,0,108.33,1,caught
+1085953,2,TT Beaumont,England,12,16,2,0,75.0,1,lbw
+1085953,2,SJ Taylor,England,74,67,11,0,110.45,0,
+1085953,2,HC Knight,England,82,76,10,1,107.89,1,caught
+1085954,1,SW Bates,New Zealand,51,72,7,0,70.83,1,lbw
+1085954,1,RH Priest,New Zealand,8,30,1,0,26.67,1,caught
+1085954,1,AE Satterthwaite,New Zealand,21,40,1,0,52.5,1,lbw
+1085954,1,KJ Martin,New Zealand,0,2,0,0,0.0,1,caught
+1085954,1,SFM Devine,New Zealand,14,30,0,0,46.67,1,lbw
+1085954,1,KT Perkins,New Zealand,52,59,5,0,88.14,1,run out
+1085954,1,AM Peterson,New Zealand,7,14,0,0,50.0,1,caught
+1085954,1,EM Bermingham,New Zealand,35,42,3,0,83.33,1,stumped
+1085954,1,LMM Tahuhu,New Zealand,4,8,0,0,50.0,0,
+1085954,1,AC Kerr,New Zealand,1,2,0,0,50.0,1,caught
+1085954,1,HR Huddleston,New Zealand,1,1,0,0,100.0,0,
+1085954,2,BL Mooney,Australia,32,48,4,0,66.67,1,bowled
+1085954,2,NE Bolton,Australia,26,43,5,0,60.47,1,caught
+1085954,2,MM Lanning,Australia,48,64,5,1,75.0,1,caught
+1085954,2,EA Perry,Australia,71,91,4,0,78.02,1,caught
+1085954,2,EJ Villani,Australia,0,1,0,0,0.0,1,bowled
+1085954,2,AJ Blackwell,Australia,36,45,3,0,80.0,0,
+1085955,1,PG Raut,India,47,72,5,0,65.28,1,caught and bowled
+1085955,1,S Mandhana,India,2,9,0,0,22.22,1,lbw
+1085955,1,DB Sharma,India,28,63,2,0,44.44,1,caught
+1085955,1,M Raj,India,8,14,1,0,57.14,1,lbw
+1085955,1,H Kaur,India,10,23,0,0,43.48,1,caught
+1085955,1,MR Meshram,India,6,35,0,0,17.14,1,bowled
+1085955,1,S Verma,India,33,35,3,1,94.29,1,caught
+1085955,1,J Goswami,India,14,36,0,0,38.89,1,bowled
+1085955,1,M Joshi,India,4,8,0,0,50.0,0,
+1085955,1,E Bisht,India,1,1,0,0,100.0,1,run out
+1085955,1,Poonam Yadav,India,6,4,0,0,150.0,0,
+1085955,2,Ayesha Zafar,Pakistan,1,7,0,0,14.29,1,lbw
+1085955,2,Nahida Khan,Pakistan,23,62,3,0,37.1,1,caught
+1085955,2,Javeria Khan,Pakistan,6,13,1,0,46.15,1,lbw
+1085955,2,Sidra Nawaz,Pakistan,0,4,0,0,0.0,1,lbw
+1085955,2,Iram Javed,Pakistan,0,3,0,0,0.0,1,lbw
+1085955,2,Nain Abidi,Pakistan,5,19,0,0,26.32,1,bowled
+1085955,2,Asmavia Iqbal,Pakistan,0,9,0,0,0.0,1,caught
+1085955,2,Sana Mir,Pakistan,29,73,3,0,39.73,1,bowled
+1085955,2,Nashra Sandhu,Pakistan,1,12,0,0,8.33,1,caught
+1085955,2,Diana Baig,Pakistan,0,1,0,0,0.0,1,bowled
+1085955,2,Sadia Yousuf,Pakistan,3,26,0,0,11.54,0,
+1085956,1,HK Matthews,West Indies,4,9,1,0,44.44,1,lbw
+1085956,1,R Boyce,West Indies,4,18,0,0,22.22,1,caught and bowled
+1085956,1,SR Taylor,West Indies,4,10,1,0,40.0,1,bowled
+1085956,1,CN Nation,West Indies,26,53,5,0,49.06,1,caught
+1085956,1,Kyshona A Knight,West Indies,0,1,0,0,0.0,1,lbw
+1085956,1,DJS Dottin,West Indies,0,3,0,0,0.0,1,bowled
+1085956,1,MR Aguilleira,West Indies,3,38,0,0,7.89,1,bowled
+1085956,1,SF Daley,West Indies,0,3,0,0,0.0,1,caught
+1085956,1,ASS Fletcher,West Indies,0,5,0,0,0.0,1,bowled
+1085956,1,A Mohammed,West Indies,4,10,1,0,40.0,0,
+1085956,1,Q Joseph,West Indies,0,3,0,0,0.0,1,lbw
+1085956,2,L Wolvaardt,South Africa,19,22,3,0,86.36,0,
+1085956,2,L Lee,South Africa,29,16,6,0,181.25,0,
+1085957,1,L Winfield,England,24,32,4,0,75.0,1,caught
+1085957,1,TT Beaumont,England,148,145,22,1,102.07,1,caught
+1085957,1,SJ Taylor,England,147,104,24,0,141.35,1,caught
+1085957,1,NR Sciver,England,2,3,0,0,66.67,1,caught
+1085957,1,KH Brunt,England,4,2,1,0,200.0,1,caught and bowled
+1085957,1,HC Knight,England,22,10,4,0,220.0,0,
+1085957,1,DN Wyatt,England,3,4,0,0,75.0,0,
+1085957,2,L Wolvaardt,South Africa,67,103,9,0,65.05,1,caught
+1085957,2,L Lee,South Africa,72,77,7,2,93.51,1,bowled
+1085957,2,T Chetty,South Africa,6,7,0,0,85.71,1,run out
+1085957,2,M du Preez,South Africa,43,39,4,0,110.26,1,caught
+1085957,2,D van Niekerk,South Africa,9,15,1,0,60.0,1,caught
+1085957,2,CL Tryon,South Africa,54,26,5,4,207.69,1,caught
+1085957,2,M Kapp,South Africa,3,4,0,0,75.0,1,lbw
+1085957,2,S Luus,South Africa,22,14,2,1,157.14,1,caught
+1085957,2,S Ismail,South Africa,0,3,0,0,0.0,1,caught
+1085957,2,A Khaka,South Africa,4,9,0,0,44.44,0,
+1085957,2,M Daniels,South Africa,0,3,0,0,0.0,0,
+1085958,1,PG Raut,India,16,29,3,0,55.17,1,caught
+1085958,1,S Mandhana,India,8,11,1,0,72.73,1,caught
+1085958,1,DB Sharma,India,78,110,10,0,70.91,1,caught
+1085958,1,M Raj,India,53,78,4,0,67.95,1,lbw
+1085958,1,J Goswami,India,9,9,1,0,100.0,1,caught
+1085958,1,V Krishnamurthy,India,29,33,4,0,87.88,1,caught
+1085958,1,H Kaur,India,20,22,1,0,90.91,1,caught
+1085958,1,M Joshi,India,2,2,0,0,100.0,1,run out
+1085958,1,S Verma,India,11,7,1,0,157.14,0,
+1085958,2,MDN Hansika,Sri Lanka,29,66,3,0,43.94,1,stumped
+1085958,2,GWHM Perera,Sri Lanka,10,15,2,0,66.67,1,caught
+1085958,2,AC Jayangani,Sri Lanka,25,42,4,0,59.52,1,bowled
+1085958,2,HASD Siriwardene,Sri Lanka,37,63,5,0,58.73,1,caught
+1085958,2,MADD Surangika,Sri Lanka,61,75,6,0,81.33,1,stumped
+1085958,2,KADA Kanchana,Sri Lanka,7,6,1,0,116.67,1,run out
+1085958,2,SS Weerakkody,Sri Lanka,12,9,2,0,133.33,1,caught
+1085958,2,PM Weerakkody,Sri Lanka,21,17,2,0,123.53,0,
+1085958,2,OU Ranasinghe,Sri Lanka,9,7,1,0,128.57,0,
+1085959,1,NE Bolton,Australia,3,20,0,0,15.0,1,lbw
+1085959,1,BL Mooney,Australia,0,2,0,0,0.0,1,caught
+1085959,1,EA Perry,Australia,66,97,5,0,68.04,1,caught
+1085959,1,RL Haynes,Australia,28,47,4,0,59.57,1,caught
+1085959,1,EJ Villani,Australia,59,40,5,4,147.5,1,bowled
+1085959,1,AJ Blackwell,Australia,23,27,3,0,85.19,1,bowled
+1085959,1,AJ Healy,Australia,63,40,9,1,157.5,0,
+1085959,1,JL Jonassen,Australia,2,6,0,0,33.33,1,caught
+1085959,1,A Gardner,Australia,22,13,3,1,169.23,1,caught
+1085959,1,SE Aley,Australia,15,8,2,0,187.5,0,
+1085959,2,Ayesha Zafar,Pakistan,8,19,1,0,42.11,1,caught
+1085959,2,Nahida Khan,Pakistan,0,5,0,0,0.0,1,bowled
+1085959,2,Marina Iqbal,Pakistan,9,33,2,0,27.27,1,caught
+1085959,2,Nain Abidi,Pakistan,7,29,1,0,24.14,1,caught
+1085959,2,Iram Javed,Pakistan,21,37,4,0,56.76,1,caught
+1085959,2,Asmavia Iqbal,Pakistan,10,31,1,0,32.26,1,bowled
+1085959,2,Sana Mir,Pakistan,45,85,7,0,52.94,1,bowled
+1085959,2,Sidra Nawaz,Pakistan,4,17,0,0,23.53,1,caught
+1085959,2,Nashra Sandhu,Pakistan,6,42,1,0,14.29,1,lbw
+1085959,2,Sadia Yousuf,Pakistan,0,1,0,0,0.0,0,
+1085959,2,Diana Baig,Pakistan,0,1,0,0,0.0,1,run out
+1085960,1,HK Matthews,West Indies,9,16,2,0,56.25,1,caught and bowled
+1085960,1,Kycia A Knight,West Indies,0,8,0,0,0.0,1,caught
+1085960,1,SR Taylor,West Indies,20,32,4,0,62.5,1,lbw
+1085960,1,CN Nation,West Indies,17,43,3,0,39.53,1,caught
+1085960,1,DJS Dottin,West Indies,0,1,0,0,0.0,1,caught and bowled
+1085960,1,MR Aguilleira,West Indies,20,30,2,1,66.67,1,stumped
+1085960,1,Kyshona A Knight,West Indies,41,60,7,0,68.33,1,bowled
+1085960,1,SF Daley,West Indies,0,18,0,0,0.0,1,bowled
+1085960,1,ASS Fletcher,West Indies,23,37,4,0,62.16,0,
+1085960,1,A Mohammed,West Indies,5,10,1,0,50.0,1,caught
+1085960,1,AK Peters,West Indies,0,3,0,0,0.0,1,lbw
+1085960,2,SW Bates,New Zealand,40,43,5,0,93.02,0,
+1085960,2,RH Priest,New Zealand,90,55,17,2,163.64,1,caught
+1085960,2,SFM Devine,New Zealand,4,2,1,0,200.0,1,bowled
+1085960,2,KJ Martin,New Zealand,11,10,1,0,110.0,0,
+1085961,1,Ayesha Zafar,Pakistan,17,28,3,0,60.71,1,caught
+1085961,1,Nahida Khan,Pakistan,18,36,2,0,50.0,1,bowled
+1085961,1,Marina Iqbal,Pakistan,0,7,0,0,0.0,1,bowled
+1085961,1,Javeria Khan,Pakistan,11,14,1,0,78.57,1,lbw
+1085961,1,Nain Abidi,Pakistan,0,1,0,0,0.0,1,lbw
+1085961,1,Sana Mir,Pakistan,50,86,4,0,58.14,1,caught and bowled
+1085961,1,Iram Javed,Pakistan,14,34,3,0,41.18,1,bowled
+1085961,1,Kainat Imtiaz,Pakistan,7,17,1,0,41.18,1,caught
+1085961,1,Sidra Nawaz,Pakistan,8,21,1,0,38.1,1,bowled
+1085961,1,Nashra Sandhu,Pakistan,5,21,0,0,23.81,0,
+1085961,1,Diana Baig,Pakistan,1,17,0,0,5.88,1,caught
+1085961,2,AE Satterthwaite,New Zealand,38,42,6,0,90.48,0,
+1085961,2,RH Priest,New Zealand,8,7,2,0,114.29,1,caught
+1085961,2,SFM Devine,New Zealand,93,41,7,9,226.83,1,caught and bowled
+1085962,1,L Wolvaardt,South Africa,1,3,0,0,33.33,1,bowled
+1085962,1,L Lee,South Africa,92,65,10,7,141.54,1,lbw
+1085962,1,T Chetty,South Africa,24,45,3,0,53.33,1,caught
+1085962,1,M du Preez,South Africa,22,29,2,0,75.86,1,stumped
+1085962,1,M Kapp,South Africa,19,30,1,0,63.33,1,bowled
+1085962,1,D van Niekerk,South Africa,57,66,7,1,86.36,1,caught
+1085962,1,S Luus,South Africa,16,31,1,0,51.61,1,caught
+1085962,1,CL Tryon,South Africa,24,18,1,2,133.33,1,caught
+1085962,1,S Ismail,South Africa,5,8,0,0,62.5,1,stumped
+1085962,1,A Khaka,South Africa,7,4,1,0,175.0,0,
+1085962,1,M Daniels,South Africa,1,2,0,0,50.0,0,
+1085962,2,PG Raut,India,22,37,3,1,59.46,1,bowled
+1085962,2,S Mandhana,India,4,2,1,0,200.0,1,caught
+1085962,2,DB Sharma,India,60,111,5,0,54.05,1,caught
+1085962,2,M Raj,India,0,1,0,0,0.0,1,bowled
+1085962,2,H Kaur,India,0,2,0,0,0.0,1,lbw
+1085962,2,V Krishnamurthy,India,3,14,0,0,21.43,1,bowled
+1085962,2,S Pandey,India,0,3,0,0,0.0,1,stumped
+1085962,2,S Verma,India,1,8,0,0,12.5,1,run out
+1085962,2,J Goswami,India,43,79,6,0,54.43,0,
+1085962,2,E Bisht,India,13,15,1,0,86.67,1,caught
+1085962,2,Poonam Yadav,India,0,7,0,0,0.0,1,caught
+1085963,1,L Winfield,England,1,12,0,0,8.33,1,caught
+1085963,1,TT Beaumont,England,49,88,3,1,55.68,1,caught and bowled
+1085963,1,SJ Taylor,England,35,33,6,0,106.06,1,bowled
+1085963,1,HC Knight,England,2,10,0,0,20.0,1,caught
+1085963,1,NR Sciver,England,29,38,3,0,76.32,1,caught
+1085963,1,DN Wyatt,England,27,32,1,2,84.38,1,bowled
+1085963,1,KH Brunt,England,45,43,4,1,104.65,0,
+1085963,1,JL Gunn,England,39,42,1,2,92.86,1,stumped
+1085963,1,A Shrubsole,England,0,2,0,0,0.0,1,caught
+1085963,2,BL Mooney,Australia,31,56,5,0,55.36,1,caught
+1085963,2,NE Bolton,Australia,26,44,1,0,59.09,1,caught
+1085963,2,EA Perry,Australia,70,86,4,2,81.4,1,caught
+1085963,2,MM Lanning,Australia,40,46,5,0,86.96,1,bowled
+1085963,2,EJ Villani,Australia,14,31,1,0,45.16,1,caught
+1085963,2,AJ Blackwell,Australia,21,17,3,0,123.53,1,bowled
+1085963,2,AJ Healy,Australia,14,6,3,0,233.33,1,lbw
+1085963,2,A Gardner,Australia,11,7,0,1,157.14,1,caught
+1085963,2,JL Jonassen,Australia,14,8,2,0,175.0,0,
+1085964,1,HK Matthews,West Indies,26,35,3,0,74.29,1,lbw
+1085964,1,Kycia A Knight,West Indies,19,53,2,0,35.85,1,lbw
+1085964,1,SR Taylor,West Indies,4,4,1,0,100.0,1,caught
+1085964,1,CN Nation,West Indies,20,38,2,0,52.63,1,caught
+1085964,1,DJS Dottin,West Indies,38,25,7,0,152.0,1,lbw
+1085964,1,MR Aguilleira,West Indies,46,59,2,0,77.97,0,
+1085964,1,Kyshona A Knight,West Indies,26,49,3,0,53.06,1,bowled
+1085964,1,SF Daley,West Indies,21,22,1,1,95.45,1,caught
+1085964,1,ASS Fletcher,West Indies,3,3,0,0,100.0,1,caught
+1085964,1,AK Peters,West Indies,4,7,0,0,57.14,1,run out
+1085964,1,A Mohammed,West Indies,7,6,1,0,116.67,0,
+1085964,2,MDN Hansika,Sri Lanka,9,24,1,0,37.5,1,bowled
+1085964,2,GWHM Perera,Sri Lanka,4,10,1,0,40.0,1,caught
+1085964,2,HASD Siriwardene,Sri Lanka,33,67,5,0,49.25,1,bowled
+1085964,2,AC Jayangani,Sri Lanka,26,50,2,0,52.0,1,stumped
+1085964,2,MADD Surangika,Sri Lanka,0,1,0,0,0.0,1,lbw
+1085964,2,PM Weerakkody,Sri Lanka,30,34,3,0,88.24,1,run out
+1085964,2,OU Ranasinghe,Sri Lanka,20,46,2,0,43.48,1,bowled
+1085964,2,KADA Kanchana,Sri Lanka,17,19,2,0,89.47,1,caught
+1085964,2,SS Weerakkody,Sri Lanka,13,21,0,0,61.9,0,
+1085964,2,KDU Prabodhani,Sri Lanka,10,14,1,0,71.43,1,stumped
+1085964,2,I Ranaweera,Sri Lanka,1,3,0,0,33.33,1,bowled
+1085965,1,HK Matthews,West Indies,1,5,0,0,20.0,1,caught and bowled
+1085965,1,Kycia A Knight,West Indies,17,13,4,0,130.77,1,caught
+1085965,1,SR Taylor,West Indies,90,107,11,1,84.11,1,caught and bowled
+1085965,1,CN Nation,West Indies,35,68,5,0,51.47,1,bowled
+1085965,1,DJS Dottin,West Indies,104,76,12,3,136.84,0,
+1085965,1,MR Aguilleira,West Indies,24,31,2,0,77.42,0,
+1085965,2,Ayesha Zafar,Pakistan,9,17,1,0,52.94,1,caught
+1085965,2,Nahida Khan,Pakistan,40,46,4,0,86.96,1,bowled
+1085965,2,Javeria Khan,Pakistan,58,72,7,0,80.56,0,
+1085965,2,Iram Javed,Pakistan,5,9,1,0,55.56,1,caught
+1085966,1,AC Jayangani,Sri Lanka,1,3,0,0,33.33,1,lbw
+1085966,1,PRCS Kumarihami,Sri Lanka,25,61,3,0,40.98,1,caught
+1085966,1,GWHM Perera,Sri Lanka,1,7,0,0,14.29,1,caught
+1085966,1,PM Weerakkody,Sri Lanka,18,48,1,0,37.5,1,caught
+1085966,1,HASD Siriwardene,Sri Lanka,9,21,1,0,42.86,1,caught
+1085966,1,MADD Surangika,Sri Lanka,25,49,2,0,51.02,1,lbw
+1085966,1,H Madavi,Sri Lanka,2,15,0,0,13.33,1,caught
+1085966,1,SS Weerakkody,Sri Lanka,0,4,0,0,0.0,1,caught and bowled
+1085966,1,LE Kaushalya,Sri Lanka,5,19,1,0,26.32,1,caught
+1085966,1,KADA Kanchana,Sri Lanka,5,12,1,0,41.67,1,caught
+1085966,1,I Ranaweera,Sri Lanka,3,6,0,0,50.0,0,
+1085966,2,L Wolvaardt,South Africa,48,66,7,0,72.73,0,
+1085966,2,L Lee,South Africa,0,2,0,0,0.0,1,caught
+1085966,2,T Chetty,South Africa,13,18,2,0,72.22,1,bowled
+1085966,2,M du Preez,South Africa,38,53,2,0,71.7,0,
+1085967,1,PG Raut,India,106,136,11,0,77.94,1,caught
+1085967,1,S Mandhana,India,3,10,0,0,30.0,1,caught
+1085967,1,M Raj,India,69,114,4,1,60.53,1,caught and bowled
+1085967,1,H Kaur,India,23,22,1,1,104.55,1,stumped
+1085967,1,V Krishnamurthy,India,0,0,0,0,0.0,1,run out
+1085967,1,S Verma,India,6,8,0,0,75.0,1,bowled
+1085967,1,J Goswami,India,2,3,0,0,66.67,1,bowled
+1085967,1,S Pandey,India,7,5,1,0,140.0,0,
+1085967,1,DB Sharma,India,5,2,1,0,250.0,0,
+1085967,2,NE Bolton,Australia,36,48,6,0,75.0,1,caught
+1085967,2,BL Mooney,Australia,45,68,5,0,66.18,1,run out
+1085967,2,MM Lanning,Australia,76,88,7,1,86.36,0,
+1085967,2,EA Perry,Australia,60,67,8,0,89.55,0,
+1085968,1,L Winfield,England,11,17,2,0,64.71,1,caught
+1085968,1,TT Beaumont,England,93,102,10,1,91.18,1,caught
+1085968,1,SJ Taylor,England,8,12,1,0,66.67,1,caught and bowled
+1085968,1,HC Knight,England,8,27,0,0,29.63,1,lbw
+1085968,1,NR Sciver,England,129,111,11,0,116.22,1,caught
+1085968,1,FC Wilson,England,10,10,0,0,100.0,1,caught
+1085968,1,KH Brunt,England,9,8,1,0,112.5,1,caught
+1085968,1,JL Gunn,England,1,3,0,0,33.33,1,stumped
+1085968,1,LA Marsh,England,5,4,0,0,125.0,0,
+1085968,1,A Shrubsole,England,0,1,0,0,0.0,1,bowled
+1085968,1,A Hartley,England,1,5,0,0,20.0,0,
+1085968,2,SW Bates,New Zealand,44,68,6,0,64.71,1,stumped
+1085968,2,RH Priest,New Zealand,12,5,3,0,240.0,1,bowled
+1085968,2,AE Satterthwaite,New Zealand,35,50,5,0,70.0,1,caught and bowled
+1085968,2,KJ Martin,New Zealand,21,30,2,0,70.0,1,bowled
+1085968,2,SFM Devine,New Zealand,8,10,1,0,80.0,1,caught
+1085968,2,KT Perkins,New Zealand,43,53,2,0,81.13,0,
+1085968,2,EM Bermingham,New Zealand,19,24,2,1,79.17,1,caught
+1085968,2,LM Kasperek,New Zealand,3,6,0,0,50.0,1,bowled
+1085968,2,AC Kerr,New Zealand,0,0,0,0,0.0,1,run out
+1085968,2,LMM Tahuhu,New Zealand,11,22,1,0,50.0,1,bowled
+1085968,2,HR Huddleston,New Zealand,0,13,0,0,0.0,1,lbw
+1085969,1,BL Mooney,Australia,53,58,8,0,91.38,1,bowled
+1085969,1,NE Bolton,Australia,79,87,10,0,90.8,1,caught
+1085969,1,RL Haynes,Australia,0,6,0,0,0.0,1,caught and bowled
+1085969,1,EA Perry,Australia,55,58,7,1,94.83,1,caught
+1085969,1,EJ Villani,Australia,0,1,0,0,0.0,1,bowled
+1085969,1,AJ Blackwell,Australia,33,40,4,0,82.5,1,caught
+1085969,1,AJ Healy,Australia,16,10,3,0,160.0,1,caught
+1085969,1,A Gardner,Australia,4,7,0,0,57.14,1,caught
+1085969,1,JL Jonassen,Australia,5,11,0,0,45.45,0,
+1085969,1,ML Schutt,Australia,11,15,2,0,73.33,1,bowled
+1085969,1,KM Beams,Australia,0,1,0,0,0.0,1,lbw
+1085969,2,L Wolvaardt,South Africa,71,94,7,0,75.53,1,caught
+1085969,2,L Lee,South Africa,9,8,2,0,112.5,1,caught
+1085969,2,T Chetty,South Africa,37,54,2,0,68.52,1,run out
+1085969,2,M du Preez,South Africa,20,33,2,0,60.61,1,caught
+1085969,2,M Kapp,South Africa,19,16,3,0,118.75,1,run out
+1085969,2,S Luus,South Africa,6,16,0,0,37.5,1,caught
+1085969,2,D van Niekerk,South Africa,1,5,0,0,20.0,1,bowled
+1085969,2,S Ismail,South Africa,26,41,3,0,63.41,1,caught
+1085969,2,A Khaka,South Africa,0,1,0,0,0.0,1,lbw
+1085969,2,M Klaas,South Africa,9,20,0,0,45.0,1,bowled
+1085969,2,M Daniels,South Africa,7,12,1,0,58.33,0,
+1085970,1,L Winfield,England,11,24,0,0,45.83,1,caught
+1085970,1,TT Beaumont,England,42,71,6,0,59.15,1,caught
+1085970,1,SJ Taylor,England,0,1,0,0,0.0,1,caught
+1085970,1,HC Knight,England,67,88,5,0,76.14,1,bowled
+1085970,1,NR Sciver,England,0,2,0,0,0.0,1,bowled
+1085970,1,FC Wilson,England,5,12,0,0,41.67,1,caught
+1085970,1,KH Brunt,England,14,36,0,0,38.89,1,stumped
+1085970,1,JL Gunn,England,24,47,0,1,51.06,0,
+1085970,1,LA Marsh,England,31,19,4,0,163.16,0,
+1085970,2,HK Matthews,West Indies,29,64,1,1,45.31,1,lbw
+1085970,2,Kycia A Knight,West Indies,17,32,2,0,53.12,1,run out
+1085970,2,SR Taylor,West Indies,0,12,0,0,0.0,1,lbw
+1085970,2,CN Nation,West Indies,23,57,1,0,40.35,1,caught
+1085970,2,DJS Dottin,West Indies,7,13,1,0,53.85,1,lbw
+1085970,2,MR Aguilleira,West Indies,8,12,1,0,66.67,1,lbw
+1085970,2,ASS Fletcher,West Indies,3,14,0,0,21.43,1,lbw
+1085970,2,Kyshona A Knight,West Indies,12,43,1,0,27.91,0,
+1085970,2,AK Peters,West Indies,0,7,0,0,0.0,1,lbw
+1085970,2,A Mohammed,West Indies,14,47,3,0,29.79,1,lbw
+1085971,1,S Mandhana,India,13,24,2,0,54.17,1,bowled
+1085971,1,PG Raut,India,4,11,0,0,36.36,1,caught
+1085971,1,M Raj,India,109,123,11,0,88.62,1,caught
+1085971,1,H Kaur,India,60,90,7,0,66.67,1,caught and bowled
+1085971,1,DB Sharma,India,0,7,0,0,0.0,1,caught
+1085971,1,V Krishnamurthy,India,70,45,7,2,155.56,1,run out
+1085971,1,S Pandey,India,0,1,0,0,0.0,1,caught
+1085971,2,SW Bates,New Zealand,1,2,0,0,50.0,1,caught
+1085971,2,RH Priest,New Zealand,5,12,1,0,41.67,1,caught and bowled
+1085971,2,AE Satterthwaite,New Zealand,26,47,4,0,55.32,1,stumped
+1085971,2,KJ Martin,New Zealand,12,22,2,0,54.55,1,caught
+1085971,2,SFM Devine,New Zealand,7,24,0,0,29.17,1,caught
+1085971,2,KT Perkins,New Zealand,1,7,0,0,14.29,1,bowled
+1085971,2,ML Green,New Zealand,5,13,1,0,38.46,1,caught
+1085971,2,HM Rowe,New Zealand,4,8,1,0,50.0,1,bowled
+1085971,2,AC Kerr,New Zealand,12,10,2,0,120.0,0,
+1085971,2,LMM Tahuhu,New Zealand,5,7,1,0,71.43,1,caught
+1085971,2,LM Kasperek,New Zealand,0,2,0,0,0.0,1,bowled
+1085972,1,MDN Hansika,Sri Lanka,1,5,0,0,20.0,1,bowled
+1085972,1,GWHM Perera,Sri Lanka,13,15,3,0,86.67,1,caught
+1085972,1,AC Jayangani,Sri Lanka,27,43,5,0,62.79,1,caught
+1085972,1,HASD Siriwardene,Sri Lanka,17,40,1,0,42.5,1,caught
+1085972,1,MADD Surangika,Sri Lanka,84,111,9,0,75.68,1,caught
+1085972,1,PM Weerakkody,Sri Lanka,5,17,1,0,29.41,1,caught
+1085972,1,LE Kaushalya,Sri Lanka,28,45,3,0,62.22,1,caught
+1085972,1,KADA Kanchana,Sri Lanka,21,18,1,0,116.67,0,
+1085972,1,SS Weerakkody,Sri Lanka,4,6,0,0,66.67,0,
+1085972,2,Ayesha Zafar,Pakistan,8,30,0,0,26.67,1,caught
+1085972,2,Nahida Khan,Pakistan,10,16,1,0,62.5,1,bowled
+1085972,2,Javeria Khan,Pakistan,24,35,5,0,68.57,1,run out
+1085972,2,Nain Abidi,Pakistan,57,68,9,0,83.82,1,run out
+1085972,2,Iram Javed,Pakistan,15,23,1,1,65.22,1,caught
+1085972,2,Sana Mir,Pakistan,14,21,2,0,66.67,1,lbw
+1085972,2,Kainat Imtiaz,Pakistan,11,16,2,0,68.75,1,caught
+1085972,2,Asmavia Iqbal,Pakistan,38,45,5,0,84.44,0,
+1085972,2,Sidra Nawaz,Pakistan,5,5,1,0,100.0,1,caught and bowled
+1085972,2,Diana Baig,Pakistan,12,20,0,0,60.0,1,caught
+1085972,2,Sadia Yousuf,Pakistan,0,1,0,0,0.0,1,bowled
+1085973,1,L Wolvaardt,South Africa,66,100,8,0,66.0,1,bowled
+1085973,1,L Lee,South Africa,7,13,1,0,53.85,1,bowled
+1085973,1,T Chetty,South Africa,15,23,2,0,65.22,1,stumped
+1085973,1,M du Preez,South Africa,76,95,5,0,80.0,0,
+1085973,1,M Kapp,South Africa,1,2,0,0,50.0,1,run out
+1085973,1,D van Niekerk,South Africa,27,39,3,1,69.23,1,run out
+1085973,1,CL Tryon,South Africa,1,3,0,0,33.33,1,caught and bowled
+1085973,1,S Luus,South Africa,21,25,1,0,84.0,0,
+1085973,2,L Winfield,England,20,43,3,0,46.51,1,caught
+1085973,2,TT Beaumont,England,15,23,2,0,65.22,1,bowled
+1085973,2,SJ Taylor,England,54,76,7,0,71.05,1,run out
+1085973,2,HC Knight,England,30,56,2,0,53.57,1,caught
+1085973,2,NR Sciver,England,3,7,0,0,42.86,1,bowled
+1085973,2,FC Wilson,England,30,38,3,0,78.95,1,caught
+1085973,2,KH Brunt,England,12,27,0,0,44.44,1,bowled
+1085973,2,JL Gunn,England,27,27,3,0,100.0,0,
+1085973,2,LA Marsh,England,1,3,0,0,33.33,1,bowled
+1085973,2,A Shrubsole,England,4,1,1,0,400.0,0,
+1085974,1,S Mandhana,India,6,6,1,0,100.0,1,caught
+1085974,1,PG Raut,India,14,26,2,0,53.85,1,caught
+1085974,1,M Raj,India,36,61,2,0,59.02,1,bowled
+1085974,1,H Kaur,India,171,115,20,7,148.7,0,
+1085974,1,DB Sharma,India,25,35,1,0,71.43,1,bowled
+1085974,1,V Krishnamurthy,India,16,10,2,0,160.0,0,
+1085974,2,NE Bolton,Australia,14,22,1,0,63.64,1,caught and bowled
+1085974,2,BL Mooney,Australia,1,5,0,0,20.0,1,bowled
+1085974,2,MM Lanning,Australia,0,8,0,0,0.0,1,bowled
+1085974,2,EA Perry,Australia,38,56,3,0,67.86,1,caught
+1085974,2,EJ Villani,Australia,75,58,13,0,129.31,1,caught
+1085974,2,AJ Blackwell,Australia,90,56,10,3,160.71,1,bowled
+1085974,2,AJ Healy,Australia,5,10,1,0,50.0,1,caught
+1085974,2,A Gardner,Australia,1,3,0,0,33.33,1,caught
+1085974,2,JL Jonassen,Australia,1,1,0,0,100.0,1,run out
+1085974,2,ML Schutt,Australia,2,4,0,0,50.0,1,caught
+1085974,2,KM Beams,Australia,11,18,0,0,61.11,0,
+1085975,1,L Winfield,England,24,35,4,0,68.57,1,bowled
+1085975,1,TT Beaumont,England,23,37,5,0,62.16,1,caught
+1085975,1,SJ Taylor,England,45,62,0,0,72.58,1,caught
+1085975,1,HC Knight,England,1,7,0,0,14.29,1,lbw
+1085975,1,NR Sciver,England,51,68,5,0,75.0,1,lbw
+1085975,1,FC Wilson,England,0,1,0,0,0.0,1,lbw
+1085975,1,KH Brunt,England,34,42,2,0,80.95,1,run out
+1085975,1,JL Gunn,England,25,38,1,0,65.79,0,
+1085975,1,LA Marsh,England,14,11,1,0,127.27,0,
+1085975,2,PG Raut,India,86,115,4,1,74.78,1,lbw
+1085975,2,S Mandhana,India,0,4,0,0,0.0,1,bowled
+1085975,2,M Raj,India,17,31,3,0,54.84,1,run out
+1085975,2,H Kaur,India,51,80,3,2,63.75,1,caught
+1085975,2,V Krishnamurthy,India,35,34,5,0,102.94,1,caught
+1085975,2,S Verma,India,0,2,0,0,0.0,1,bowled
+1085975,2,DB Sharma,India,14,12,1,0,116.67,1,caught
+1085975,2,J Goswami,India,0,1,0,0,0.0,1,bowled
+1085975,2,S Pandey,India,4,8,0,0,50.0,1,run out
+1085975,2,Poonam Yadav,India,1,5,0,0,20.0,0,
+1085975,2,RS Gayakwad,India,0,1,0,0,0.0,1,bowled
+1243908,1,DJS Dottin,West Indies,12,7,3,0,171.43,1,caught
+1243908,1,HK Matthews,West Indies,119,128,16,1,92.97,1,caught
+1243908,1,Kycia A Knight,West Indies,5,9,1,0,55.56,1,caught
+1243908,1,SR Taylor,West Indies,30,47,3,0,63.83,1,caught
+1243908,1,SA Campbelle,West Indies,20,38,2,0,52.63,1,lbw
+1243908,1,CN Nation,West Indies,36,46,4,0,78.26,1,caught
+1243908,1,CA Henry,West Indies,8,10,1,0,80.0,1,caught
+1243908,1,AA Alleyne,West Indies,2,3,0,0,66.67,1,run out
+1243908,1,SS Connell,West Indies,4,6,0,0,66.67,0,
+1243908,1,A Mohammed,West Indies,11,6,2,0,183.33,1,run out
+1243908,2,SW Bates,New Zealand,3,6,0,0,50.0,1,run out
+1243908,2,SFM Devine,New Zealand,108,127,10,0,85.04,1,caught and bowled
+1243908,2,AC Kerr,New Zealand,13,19,2,0,68.42,1,lbw
+1243908,2,AE Satterthwaite,New Zealand,31,56,1,0,55.36,1,lbw
+1243908,2,LMM Tahuhu,New Zealand,6,5,1,0,120.0,1,bowled
+1243908,2,ML Green,New Zealand,9,11,1,0,81.82,1,caught
+1243908,2,BM Halliday,New Zealand,3,7,0,0,42.86,1,caught
+1243908,2,KJ Martin,New Zealand,44,47,4,0,93.62,1,lbw
+1243908,2,JM Kerr,New Zealand,25,21,3,0,119.05,1,caught
+1243908,2,HM Rowe,New Zealand,1,2,0,0,50.0,0,
+1243908,2,FC Jonas,New Zealand,0,0,0,0,0.0,1,run out
+1243909,1,L Wolvaardt,South Africa,41,52,5,0,78.85,1,bowled
+1243909,1,T Brits,South Africa,8,24,1,0,33.33,1,caught
+1243909,1,L Goodall,South Africa,12,43,0,0,27.91,1,caught
+1243909,1,S Luus,South Africa,25,46,2,0,54.35,1,run out
+1243909,1,M du Preez,South Africa,18,26,1,0,69.23,1,caught and bowled
+1243909,1,M Kapp,South Africa,42,45,3,0,93.33,1,caught
+1243909,1,CL Tryon,South Africa,39,40,1,2,97.5,1,caught
+1243909,1,T Chetty,South Africa,1,3,0,0,33.33,1,lbw
+1243909,1,S Ismail,South Africa,3,9,0,0,33.33,1,caught
+1243909,1,M Klaas,South Africa,4,7,0,0,57.14,0,
+1243909,1,A Khaka,South Africa,2,4,0,0,50.0,1,stumped
+1243909,2,Shamima Sultana,Bangladesh,27,50,2,0,54.0,1,bowled
+1243909,2,Sharmin Akhter,Bangladesh,34,77,4,0,44.16,1,caught
+1243909,2,Fargana Hoque,Bangladesh,8,16,0,0,50.0,1,run out
+1243909,2,Murshida Khatun,Bangladesh,0,2,0,0,0.0,1,caught
+1243909,2,Rumana Ahmed,Bangladesh,21,32,3,0,65.62,1,caught
+1243909,2,Nigar Sultana,Bangladesh,29,59,0,0,49.15,1,run out
+1243909,2,Salma Khatun,Bangladesh,2,6,0,0,33.33,1,caught
+1243909,2,Ritu Moni,Bangladesh,27,38,3,0,71.05,1,bowled
+1243909,2,Jahanara Alam,Bangladesh,5,9,0,0,55.56,0,
+1243909,2,Nahida Akter,Bangladesh,0,5,0,0,0.0,1,caught
+1243909,2,Fariha Trisna,Bangladesh,0,5,0,0,0.0,1,bowled
+1243910,1,RL Haynes,Australia,130,131,14,1,99.24,1,caught
+1243910,1,AJ Healy,Australia,28,35,4,0,80.0,1,caught
+1243910,1,MM Lanning,Australia,86,110,7,1,78.18,1,caught
+1243910,1,BL Mooney,Australia,27,19,3,0,142.11,0,
+1243910,1,EA Perry,Australia,14,5,3,0,280.0,0,
+1243910,2,L Winfield-Hill,England,0,4,0,0,0.0,1,caught
+1243910,2,HC Knight,England,40,51,3,1,78.43,1,caught
+1243910,2,TT Beaumont,England,74,82,7,0,90.24,1,stumped
+1243910,2,NR Sciver,England,109,85,13,0,128.24,0,
+1243910,2,AE Jones,England,4,11,0,0,36.36,1,caught
+1243910,2,DN Wyatt,England,7,11,1,0,63.64,1,bowled
+1243910,2,SIR Dunkley,England,28,32,2,0,87.5,1,bowled
+1243910,2,KH Brunt,England,25,21,1,1,119.05,1,caught and bowled
+1243910,2,S Ecclestone,England,1,3,0,0,33.33,1,caught
+1243911,1,S Mandhana,India,52,75,3,1,69.33,1,caught and bowled
+1243911,1,Shafali Verma,India,0,6,0,0,0.0,1,bowled
+1243911,1,DB Sharma,India,40,57,2,0,70.18,1,bowled
+1243911,1,M Raj,India,9,36,0,0,25.0,1,caught
+1243911,1,H Kaur,India,5,14,0,0,35.71,1,lbw
+1243911,1,RM Ghosh,India,1,5,0,0,20.0,1,bowled
+1243911,1,S Rana,India,53,48,4,0,110.42,0,
+1243911,1,P Vastrakar,India,67,59,8,0,113.56,1,bowled
+1243911,1,J Goswami,India,6,3,1,0,200.0,0,
+1243911,2,Sidra Ameen,Pakistan,30,64,3,0,46.88,1,caught
+1243911,2,Javeria Khan,Pakistan,11,28,1,0,39.29,1,caught
+1243911,2,Bismah Maroof,Pakistan,15,25,2,0,60.0,1,caught
+1243911,2,Umaima Sohail,Pakistan,5,4,0,0,125.0,1,caught
+1243911,2,Nida Dar,Pakistan,4,10,0,0,40.0,1,caught
+1243911,2,Aliya Riaz,Pakistan,11,23,0,0,47.83,1,stumped
+1243911,2,Fatima Sana,Pakistan,17,35,1,0,48.57,1,lbw
+1243911,2,Sidra Nawaz,Pakistan,12,19,1,0,63.16,1,lbw
+1243911,2,Diana Baig,Pakistan,24,35,2,0,68.57,1,caught
+1243911,2,Nashra Sandhu,Pakistan,0,5,0,0,0.0,1,caught
+1243911,2,Anam Amin,Pakistan,5,10,0,0,50.0,0,
+1243912,1,Shamima Sultana,Bangladesh,33,36,4,0,91.67,1,caught
+1243912,1,Fargana Hoque,Bangladesh,52,63,1,0,82.54,1,run out
+1243912,1,Nigar Sultana,Bangladesh,11,13,1,0,84.62,1,caught
+1243912,1,Rumana Ahmed,Bangladesh,1,4,0,0,25.0,1,bowled
+1243912,1,S Mostary,Bangladesh,13,21,1,0,61.9,1,caught
+1243912,1,Ritu Moni,Bangladesh,4,2,1,0,200.0,1,caught
+1243912,1,Lata Mondal,Bangladesh,9,10,0,0,90.0,0,
+1243912,1,Salma Khatun,Bangladesh,9,10,0,0,90.0,1,run out
+1243912,1,Jahanara Alam,Bangladesh,2,3,0,0,66.67,1,run out
+1243912,2,SFM Devine,New Zealand,14,16,1,0,87.5,1,bowled
+1243912,2,SW Bates,New Zealand,79,68,8,0,116.18,0,
+1243912,2,AC Kerr,New Zealand,47,37,5,0,127.03,0,
+1243913,1,Sidra Ameen,Pakistan,2,9,0,0,22.22,1,caught
+1243913,1,Nahida Khan,Pakistan,9,10,2,0,90.0,1,caught
+1243913,1,Umaima Sohail,Pakistan,12,25,2,0,48.0,1,bowled
+1243913,1,Bismah Maroof,Pakistan,78,122,8,0,63.93,0,
+1243913,1,Nida Dar,Pakistan,5,8,1,0,62.5,1,caught
+1243913,1,Aliya Riaz,Pakistan,53,109,4,0,48.62,1,lbw
+1243913,1,Fatima Sana,Pakistan,14,15,1,0,93.33,1,caught
+1243913,1,Diana Baig,Pakistan,7,4,1,0,175.0,0,
+1243913,2,AJ Healy,Australia,72,79,7,0,91.14,1,caught
+1243913,2,RL Haynes,Australia,34,34,7,0,100.0,1,caught
+1243913,2,MM Lanning,Australia,35,37,6,0,94.59,1,bowled
+1243913,2,EA Perry,Australia,26,33,2,0,78.79,0,
+1243913,2,BL Mooney,Australia,23,26,2,0,88.46,0,
+1243914,1,DJS Dottin,West Indies,31,64,2,1,48.44,1,run out
+1243914,1,HK Matthews,West Indies,45,58,4,2,77.59,1,caught
+1243914,1,Kycia A Knight,West Indies,6,22,0,0,27.27,1,caught
+1243914,1,SR Taylor,West Indies,0,1,0,0,0.0,1,caught
+1243914,1,SA Campbelle,West Indies,66,80,4,0,82.5,1,bowled
+1243914,1,CN Nation,West Indies,49,74,3,0,66.22,0,
+1243914,1,CA Henry,West Indies,0,2,0,0,0.0,1,run out
+1243914,1,AA Alleyne,West Indies,0,1,0,0,0.0,0,
+1243914,2,L Winfield-Hill,England,12,27,0,0,44.44,1,caught
+1243914,2,TT Beaumont,England,46,76,4,0,60.53,1,lbw
+1243914,2,HC Knight,England,5,14,0,0,35.71,1,caught
+1243914,2,NR Sciver,England,2,10,0,0,20.0,1,caught
+1243914,2,AE Jones,England,1,15,0,0,6.67,1,caught
+1243914,2,DN Wyatt,England,33,31,3,0,106.45,1,caught
+1243914,2,SIR Dunkley,England,38,35,4,0,108.57,1,caught
+1243914,2,KH Brunt,England,1,2,0,0,50.0,1,caught
+1243914,2,S Ecclestone,England,33,41,2,0,80.49,0,
+1243914,2,KL Cross,England,27,35,2,0,77.14,1,run out
+1243914,2,A Shrubsole,England,0,2,0,0,0.0,1,bowled
+1243915,1,SW Bates,New Zealand,5,10,1,0,50.0,1,run out
+1243915,1,SFM Devine,New Zealand,35,30,7,0,116.67,1,caught
+1243915,1,AC Kerr,New Zealand,50,64,5,0,78.12,1,lbw
+1243915,1,AE Satterthwaite,New Zealand,75,84,9,0,89.29,1,caught
+1243915,1,ML Green,New Zealand,27,36,3,0,75.0,1,caught
+1243915,1,KJ Martin,New Zealand,41,51,3,0,80.39,1,bowled
+1243915,1,HNK Jensen,New Zealand,1,7,0,0,14.29,1,bowled
+1243915,1,LMM Tahuhu,New Zealand,1,4,0,0,25.0,1,bowled
+1243915,1,JM Kerr,New Zealand,0,1,0,0,0.0,1,bowled
+1243915,1,FL Mackay,New Zealand,13,11,1,0,118.18,0,
+1243915,1,HM Rowe,New Zealand,2,3,0,0,66.67,0,
+1243915,2,YH Bhatia,India,28,59,2,0,47.46,1,caught
+1243915,2,S Mandhana,India,6,21,0,0,28.57,1,caught
+1243915,2,DB Sharma,India,5,13,1,0,38.46,1,lbw
+1243915,2,M Raj,India,31,56,1,0,55.36,1,stumped
+1243915,2,H Kaur,India,71,63,6,2,112.7,1,caught
+1243915,2,RM Ghosh,India,0,1,0,0,0.0,1,bowled
+1243915,2,S Rana,India,18,28,2,0,64.29,1,caught
+1243915,2,P Vastrakar,India,6,16,0,0,37.5,1,caught
+1243915,2,J Goswami,India,15,13,1,1,115.38,1,bowled
+1243915,2,Meghna Singh,India,12,9,2,0,133.33,0,
+1243915,2,RS Gayakwad,India,0,1,0,0,0.0,1,caught
+1243916,1,L Lee,South Africa,2,7,0,0,28.57,1,caught
+1243916,1,L Wolvaardt,South Africa,75,91,10,0,82.42,1,caught and bowled
+1243916,1,T Brits,South Africa,2,18,0,0,11.11,1,caught
+1243916,1,S Luus,South Africa,62,102,2,1,60.78,1,lbw
+1243916,1,M du Preez,South Africa,0,3,0,0,0.0,1,caught
+1243916,1,M Kapp,South Africa,7,11,1,0,63.64,1,caught
+1243916,1,CL Tryon,South Africa,31,38,1,1,81.58,1,caught and bowled
+1243916,1,T Chetty,South Africa,31,26,3,0,119.23,1,bowled
+1243916,1,S Ismail,South Africa,3,6,0,0,50.0,1,run out
+1243916,1,M Klaas,South Africa,1,1,0,0,100.0,0,
+1243916,2,Nahida Khan,Pakistan,40,71,5,0,56.34,1,lbw
+1243916,2,Sidra Ameen,Pakistan,12,14,1,0,85.71,1,caught
+1243916,2,Bismah Maroof,Pakistan,0,1,0,0,0.0,1,caught
+1243916,2,Umaima Sohail,Pakistan,65,104,7,0,62.5,1,caught
+1243916,2,Nida Dar,Pakistan,55,72,2,1,76.39,1,run out
+1243916,2,Aliya Riaz,Pakistan,0,2,0,0,0.0,1,caught
+1243916,2,Fatima Sana,Pakistan,9,8,1,0,112.5,1,lbw
+1243916,2,Sidra Nawaz,Pakistan,11,15,1,0,73.33,1,caught
+1243916,2,Diana Baig,Pakistan,13,9,2,0,144.44,1,caught and bowled
+1243916,2,Nashra Sandhu,Pakistan,1,1,0,0,100.0,0,
+1243916,2,Ghulam Fatima,Pakistan,0,2,0,0,0.0,1,run out
+1243917,1,S Mandhana,India,123,119,13,2,103.36,1,caught
+1243917,1,YH Bhatia,India,31,21,6,0,147.62,1,caught and bowled
+1243917,1,M Raj,India,5,11,1,0,45.45,1,caught
+1243917,1,DB Sharma,India,15,21,2,0,71.43,1,caught
+1243917,1,H Kaur,India,109,107,10,2,101.87,1,caught
+1243917,1,RM Ghosh,India,5,10,0,0,50.0,1,run out
+1243917,1,P Vastrakar,India,10,5,2,0,200.0,1,caught
+1243917,1,J Goswami,India,2,5,0,0,40.0,1,caught
+1243917,1,S Rana,India,2,2,0,0,100.0,0,
+1243917,1,Meghna Singh,India,1,3,0,0,33.33,0,
+1243917,2,DJS Dottin,West Indies,62,46,10,1,134.78,1,caught
+1243917,2,HK Matthews,West Indies,43,36,6,0,119.44,1,caught
+1243917,2,Kycia A Knight,West Indies,5,15,1,0,33.33,1,caught
+1243917,2,SR Taylor,West Indies,1,10,0,0,10.0,1,caught
+1243917,2,SA Campbelle,West Indies,11,17,1,0,64.71,1,caught
+1243917,2,CN Nation,West Indies,19,48,1,0,39.58,1,run out
+1243917,2,CA Henry,West Indies,7,6,1,0,116.67,1,lbw
+1243917,2,AA Alleyne,West Indies,4,10,1,0,40.0,1,run out
+1243917,2,A Mohammed,West Indies,2,27,0,0,7.41,1,caught
+1243917,2,SC Selman,West Indies,7,21,0,0,33.33,0,
+1243917,2,SS Connell,West Indies,0,7,0,0,0.0,1,caught and bowled
+1243918,1,RL Haynes,Australia,30,44,4,0,68.18,1,bowled
+1243918,1,AJ Healy,Australia,15,31,2,0,48.39,1,caught
+1243918,1,MM Lanning,Australia,5,15,0,0,33.33,1,caught
+1243918,1,EA Perry,Australia,68,86,6,1,79.07,1,caught
+1243918,1,BL Mooney,Australia,30,44,2,0,68.18,1,bowled
+1243918,1,TM McGrath,Australia,57,56,8,0,101.79,1,caught
+1243918,1,A Gardner,Australia,48,18,4,4,266.67,0,
+1243918,1,A King,Australia,2,5,0,0,40.0,1,caught
+1243918,1,A Wellington,Australia,1,3,0,0,33.33,1,run out
+1243918,2,SW Bates,New Zealand,16,28,1,0,57.14,1,caught
+1243918,2,SFM Devine,New Zealand,6,6,1,0,100.0,1,bowled
+1243918,2,AC Kerr,New Zealand,1,3,0,0,33.33,1,caught
+1243918,2,AE Satterthwaite,New Zealand,44,67,5,0,65.67,1,caught
+1243918,2,ML Green,New Zealand,3,10,0,0,30.0,1,caught
+1243918,2,FL Mackay,New Zealand,1,2,0,0,50.0,1,lbw
+1243918,2,KJ Martin,New Zealand,19,27,2,0,70.37,1,lbw
+1243918,2,HNK Jensen,New Zealand,0,1,0,0,0.0,1,caught
+1243918,2,HM Rowe,New Zealand,6,8,1,0,75.0,1,caught
+1243918,2,LMM Tahuhu,New Zealand,23,25,2,1,92.0,1,caught
+1243918,2,JM Kerr,New Zealand,6,5,1,0,120.0,0,
+1243919,1,TT Beaumont,England,62,97,6,0,63.92,1,lbw
+1243919,1,DN Wyatt,England,3,8,0,0,37.5,1,caught
+1243919,1,HC Knight,England,9,11,1,0,81.82,1,bowled
+1243919,1,NR Sciver,England,16,24,3,0,66.67,1,caught
+1243919,1,AE Jones,England,53,74,5,0,71.62,1,run out
+1243919,1,SIR Dunkley,England,26,38,0,0,68.42,1,caught
+1243919,1,KH Brunt,England,17,23,1,0,73.91,1,caught
+1243919,1,KL Cross,England,6,6,1,0,100.0,1,caught
+1243919,1,S Ecclestone,England,15,13,0,0,115.38,0,
+1243919,1,CE Dean,England,6,6,1,0,100.0,1,bowled
+1243919,1,A Shrubsole,England,2,2,0,0,100.0,0,
+1243919,2,L Lee,South Africa,9,15,1,0,60.0,1,bowled
+1243919,2,L Wolvaardt,South Africa,77,101,8,0,76.24,1,caught
+1243919,2,T Brits,South Africa,23,46,4,0,50.0,1,caught
+1243919,2,S Luus,South Africa,36,49,4,0,73.47,1,stumped
+1243919,2,M du Preez,South Africa,8,14,1,0,57.14,1,caught
+1243919,2,M Kapp,South Africa,32,42,3,1,76.19,1,lbw
+1243919,2,CL Tryon,South Africa,15,13,2,0,115.38,1,run out
+1243919,2,T Chetty,South Africa,11,13,0,0,84.62,0,
+1243919,2,S Ismail,South Africa,5,3,1,0,166.67,0,
+1243920,1,Shamima Sultana,Bangladesh,17,30,3,0,56.67,1,caught
+1243920,1,Sharmin Akhter,Bangladesh,44,55,6,0,80.0,1,bowled
+1243920,1,Fargana Hoque,Bangladesh,71,115,5,0,61.74,1,caught
+1243920,1,Nigar Sultana,Bangladesh,46,64,1,0,71.88,1,lbw
+1243920,1,Rumana Ahmed,Bangladesh,16,13,2,0,123.08,1,caught
+1243920,1,Ritu Moni,Bangladesh,11,13,0,0,84.62,1,run out
+1243920,1,Fahima Khatun,Bangladesh,0,1,0,0,0.0,1,lbw
+1243920,1,Salma Khatun,Bangladesh,11,10,0,0,110.0,0,
+1243920,1,Nahida Akter,Bangladesh,2,1,0,0,200.0,0,
+1243920,2,Nahida Khan,Pakistan,43,67,3,0,64.18,1,bowled
+1243920,2,Sidra Ameen,Pakistan,104,140,8,0,74.29,1,run out
+1243920,2,Bismah Maroof,Pakistan,31,48,2,0,64.58,1,caught
+1243920,2,Umaima Sohail,Pakistan,10,11,1,0,90.91,1,caught
+1243920,2,Nida Dar,Pakistan,0,1,0,0,0.0,1,caught
+1243920,2,Aliya Riaz,Pakistan,0,1,0,0,0.0,1,lbw
+1243920,2,Fatima Sana,Pakistan,0,1,0,0,0.0,1,lbw
+1243920,2,Sidra Nawaz,Pakistan,1,2,0,0,50.0,1,run out
+1243920,2,Diana Baig,Pakistan,12,12,1,0,100.0,1,lbw
+1243920,2,Nashra Sandhu,Pakistan,9,11,0,0,81.82,0,
+1243920,2,Ghulam Fatima,Pakistan,5,6,0,0,83.33,0,
+1243921,1,DJS Dottin,West Indies,16,36,2,0,44.44,1,caught
+1243921,1,HK Matthews,West Indies,0,4,0,0,0.0,1,bowled
+1243921,1,Kycia A Knight,West Indies,0,1,0,0,0.0,1,caught
+1243921,1,SR Taylor,West Indies,50,91,3,0,54.95,1,lbw
+1243921,1,SA Campbelle,West Indies,20,51,2,0,39.22,1,caught
+1243921,1,CN Nation,West Indies,0,4,0,0,0.0,1,bowled
+1243921,1,CA Henry,West Indies,10,11,2,0,90.91,1,run out
+1243921,1,AA Alleyne,West Indies,10,34,0,0,29.41,1,caught
+1243921,1,SC Selman,West Indies,6,19,0,0,31.58,1,bowled
+1243921,1,K Ramharack,West Indies,4,17,0,0,23.53,1,caught
+1243921,1,SS Connell,West Indies,2,7,0,0,28.57,0,
+1243921,2,AJ Healy,Australia,3,8,0,0,37.5,1,caught and bowled
+1243921,2,RL Haynes,Australia,83,95,9,0,87.37,0,
+1243921,2,MM Lanning,Australia,0,6,0,0,0.0,1,caught
+1243921,2,EA Perry,Australia,10,31,0,0,32.26,1,caught
+1243921,2,BL Mooney,Australia,28,42,3,0,66.67,0,
+1243922,1,S Mandhana,India,35,58,4,0,60.34,1,lbw
+1243922,1,YH Bhatia,India,8,11,1,0,72.73,1,bowled
+1243922,1,M Raj,India,1,5,0,0,20.0,1,caught
+1243922,1,DB Sharma,India,0,10,0,0,0.0,1,run out
+1243922,1,H Kaur,India,14,26,2,0,53.85,1,caught
+1243922,1,S Rana,India,0,2,0,0,0.0,1,caught
+1243922,1,RM Ghosh,India,33,56,5,0,58.93,1,run out
+1243922,1,P Vastrakar,India,6,9,0,0,66.67,1,lbw
+1243922,1,J Goswami,India,20,26,2,1,76.92,1,caught
+1243922,1,RS Gayakwad,India,1,3,0,0,33.33,0,
+1243922,1,Meghna Singh,India,3,12,0,0,25.0,1,bowled
+1243922,2,TT Beaumont,England,1,10,0,0,10.0,1,lbw
+1243922,2,DN Wyatt,England,1,3,0,0,33.33,1,caught
+1243922,2,HC Knight,England,53,72,8,0,73.61,0,
+1243922,2,NR Sciver,England,45,46,8,0,97.83,1,caught
+1243922,2,AE Jones,England,10,28,0,1,35.71,1,caught
+1243922,2,SIR Dunkley,England,17,21,4,0,80.95,1,caught
+1243922,2,KH Brunt,England,0,2,0,0,0.0,1,caught
+1243922,2,S Ecclestone,England,5,6,1,0,83.33,0,
+1243923,1,SW Bates,New Zealand,4,7,0,0,57.14,1,bowled
+1243923,1,SFM Devine,New Zealand,93,101,12,1,92.08,1,bowled
+1243923,1,AC Kerr,New Zealand,42,58,5,0,72.41,1,lbw
+1243923,1,AE Satterthwaite,New Zealand,1,3,0,0,33.33,1,caught
+1243923,1,ML Green,New Zealand,30,58,1,0,51.72,1,run out
+1243923,1,BM Halliday,New Zealand,24,29,1,0,82.76,1,bowled
+1243923,1,KJ Martin,New Zealand,9,8,1,0,112.5,1,bowled
+1243923,1,FL Mackay,New Zealand,7,13,0,0,53.85,0,
+1243923,1,HM Rowe,New Zealand,0,1,0,0,0.0,1,caught
+1243923,1,LMM Tahuhu,New Zealand,0,3,0,0,0.0,1,bowled
+1243923,1,JM Kerr,New Zealand,6,6,1,0,100.0,1,caught
+1243923,2,L Lee,South Africa,17,23,2,0,73.91,1,run out
+1243923,2,L Wolvaardt,South Africa,67,94,6,0,71.28,1,lbw
+1243923,2,T Brits,South Africa,18,38,3,0,47.37,1,stumped
+1243923,2,S Luus,South Africa,51,73,4,0,69.86,1,caught
+1243923,2,M du Preez,South Africa,1,5,0,0,20.0,1,caught
+1243923,2,M Kapp,South Africa,34,35,4,0,97.14,0,
+1243923,2,CL Tryon,South Africa,14,17,1,0,82.35,1,caught
+1243923,2,T Chetty,South Africa,3,4,0,0,75.0,1,caught and bowled
+1243923,2,S Ismail,South Africa,4,5,0,0,80.0,1,bowled
+1243923,2,A Khaka,South Africa,2,3,0,0,66.67,0,
+1243924,1,DJS Dottin,West Indies,17,20,3,0,85.0,1,caught
+1243924,1,HK Matthews,West Indies,18,43,3,0,41.86,1,caught
+1243924,1,RS Williams,West Indies,4,17,0,0,23.53,1,caught
+1243924,1,SR Taylor,West Indies,4,10,1,0,40.0,1,bowled
+1243924,1,SA Campbelle,West Indies,53,107,5,0,49.53,0,
+1243924,1,CN Nation,West Indies,6,37,0,0,16.22,1,run out
+1243924,1,AA Alleyne,West Indies,0,12,0,0,0.0,1,lbw
+1243924,1,CA Henry,West Indies,1,11,0,0,9.09,1,caught and bowled
+1243924,1,ASS Fletcher,West Indies,17,28,0,0,60.71,1,caught
+1243924,1,K Ramharack,West Indies,7,14,0,0,50.0,1,run out
+1243924,1,SS Connell,West Indies,2,1,0,0,200.0,0,
+1243924,2,Shamima Sultana,Bangladesh,0,5,0,0,0.0,1,lbw
+1243924,2,Fargana Hoque,Bangladesh,23,65,2,0,35.38,1,bowled
+1243924,2,Sharmin Akhter,Bangladesh,17,25,3,0,68.0,1,caught
+1243924,2,Nigar Sultana,Bangladesh,25,77,1,0,32.47,1,lbw
+1243924,2,Rumana Ahmed,Bangladesh,0,5,0,0,0.0,1,caught
+1243924,2,Ritu Moni,Bangladesh,0,1,0,0,0.0,1,lbw
+1243924,2,Salma Khatun,Bangladesh,23,40,2,0,57.5,1,caught
+1243924,2,Fahima Khatun,Bangladesh,0,2,0,0,0.0,1,bowled
+1243924,2,Nahida Akter,Bangladesh,25,64,3,0,39.06,0,
+1243924,2,Jahanara Alam,Bangladesh,8,10,1,0,80.0,1,caught
+1243924,2,Fariha Trisna,Bangladesh,0,5,0,0,0.0,1,bowled
+1243925,1,S Mandhana,India,10,11,1,0,90.91,1,caught
+1243925,1,Shafali Verma,India,12,16,1,1,75.0,1,caught
+1243925,1,YH Bhatia,India,59,83,6,0,71.08,1,caught
+1243925,1,M Raj,India,68,96,4,1,70.83,1,caught
+1243925,1,H Kaur,India,57,47,6,0,121.28,0,
+1243925,1,RM Ghosh,India,8,14,0,0,57.14,1,stumped
+1243925,1,S Rana,India,0,5,0,0,0.0,1,bowled
+1243925,1,P Vastrakar,India,34,28,1,2,121.43,1,run out
+1243925,2,RL Haynes,Australia,43,53,5,0,81.13,1,caught
+1243925,2,AJ Healy,Australia,72,65,9,0,110.77,1,caught
+1243925,2,MM Lanning,Australia,97,107,13,0,90.65,1,caught
+1243925,2,EA Perry,Australia,28,51,1,0,54.9,1,caught
+1243925,2,BL Mooney,Australia,30,20,4,0,150.0,0,
+1243925,2,TM McGrath,Australia,0,2,0,0,0.0,0,
+1243926,1,SW Bates,New Zealand,22,36,3,0,61.11,1,caught
+1243926,1,SFM Devine,New Zealand,41,48,5,0,85.42,1,caught
+1243926,1,AC Kerr,New Zealand,24,38,3,0,63.16,1,caught
+1243926,1,AE Satterthwaite,New Zealand,24,42,3,0,57.14,1,lbw
+1243926,1,ML Green,New Zealand,52,75,4,1,69.33,0,
+1243926,1,BM Halliday,New Zealand,2,10,0,0,20.0,1,run out
+1243926,1,KJ Martin,New Zealand,6,15,0,0,40.0,1,lbw
+1243926,1,LMM Tahuhu,New Zealand,0,3,0,0,0.0,1,caught
+1243926,1,FL Mackay,New Zealand,1,2,0,0,50.0,1,lbw
+1243926,1,HM Rowe,New Zealand,5,11,0,0,45.45,1,caught
+1243926,1,JM Kerr,New Zealand,14,13,2,0,107.69,1,run out
+1243926,2,TT Beaumont,England,25,36,4,0,69.44,1,bowled
+1243926,2,DN Wyatt,England,12,7,3,0,171.43,1,caught
+1243926,2,HC Knight,England,42,53,4,0,79.25,1,lbw
+1243926,2,NR Sciver,England,61,108,5,0,56.48,1,bowled
+1243926,2,AE Jones,England,1,5,0,0,20.0,1,caught
+1243926,2,SIR Dunkley,England,33,43,3,1,76.74,1,bowled
+1243926,2,KH Brunt,England,6,11,0,0,54.55,1,run out
+1243926,2,S Ecclestone,England,0,5,0,0,0.0,1,bowled
+1243926,2,KL Cross,England,2,3,0,0,66.67,1,lbw
+1243926,2,CE Dean,England,0,3,0,0,0.0,0,
+1243926,2,A Shrubsole,England,7,10,1,0,70.0,0,
+1243927,1,DJS Dottin,West Indies,27,35,5,0,77.14,1,caught and bowled
+1243927,1,HK Matthews,West Indies,1,7,0,0,14.29,1,caught
+1243927,1,SR Taylor,West Indies,18,31,0,0,58.06,1,caught and bowled
+1243927,1,SA Campbelle,West Indies,7,5,1,0,140.0,1,stumped
+1243927,1,CN Nation,West Indies,0,5,0,0,0.0,1,bowled
+1243927,1,Kycia A Knight,West Indies,8,13,1,0,61.54,1,caught
+1243927,1,CA Henry,West Indies,0,1,0,0,0.0,1,caught
+1243927,1,AA Alleyne,West Indies,9,16,1,0,56.25,0,
+1243927,1,ASS Fletcher,West Indies,12,7,2,0,171.43,0,
+1243927,2,Muneeba Ali,Pakistan,37,43,5,0,86.05,1,caught
+1243927,2,Sidra Ameen,Pakistan,8,15,0,0,53.33,1,bowled
+1243927,2,Bismah Maroof,Pakistan,20,29,0,0,68.97,0,
+1243927,2,Umaima Sohail,Pakistan,22,27,1,0,81.48,0,
+1243928,1,L Lee,South Africa,36,44,3,0,81.82,1,lbw
+1243928,1,L Wolvaardt,South Africa,90,134,6,0,67.16,1,caught
+1243928,1,L Goodall,South Africa,15,29,1,0,51.72,1,caught
+1243928,1,S Luus,South Africa,52,51,6,0,101.96,1,caught
+1243928,1,M du Preez,South Africa,14,13,2,0,107.69,1,caught
+1243928,1,M Kapp,South Africa,30,21,4,0,142.86,0,
+1243928,1,CL Tryon,South Africa,17,9,0,1,188.89,0,
+1243928,2,RL Haynes,Australia,17,29,2,0,58.62,1,caught
+1243928,2,AJ Healy,Australia,5,6,1,0,83.33,1,caught
+1243928,2,MM Lanning,Australia,135,130,15,1,103.85,0,
+1243928,2,BL Mooney,Australia,21,23,3,0,91.3,1,run out
+1243928,2,TM McGrath,Australia,32,35,1,1,91.43,1,caught
+1243928,2,A Gardner,Australia,22,26,4,0,84.62,1,caught
+1243928,2,A Sutherland,Australia,22,23,2,1,95.65,0,
+1243929,1,S Mandhana,India,30,51,3,0,58.82,1,caught
+1243929,1,Shafali Verma,India,42,42,6,1,100.0,1,stumped
+1243929,1,M Raj,India,0,1,0,0,0.0,1,caught
+1243929,1,H Kaur,India,14,33,1,0,42.42,1,run out
+1243929,1,YH Bhatia,India,50,80,2,0,62.5,1,caught
+1243929,1,RM Ghosh,India,26,36,3,0,72.22,1,caught
+1243929,1,P Vastrakar,India,30,33,2,0,90.91,0,
+1243929,1,S Rana,India,27,23,2,0,117.39,1,caught
+1243929,1,J Goswami,India,2,1,0,0,200.0,0,
+1243929,2,Murshida Khatun,Bangladesh,19,54,1,1,35.19,1,caught
+1243929,2,Sharmin Akhter,Bangladesh,5,17,0,0,29.41,1,caught
+1243929,2,Fargana Hoque,Bangladesh,0,11,0,0,0.0,1,lbw
+1243929,2,Nigar Sultana,Bangladesh,3,11,0,0,27.27,1,caught
+1243929,2,Rumana Ahmed,Bangladesh,2,8,0,0,25.0,1,caught
+1243929,2,Lata Mondal,Bangladesh,24,46,2,0,52.17,1,caught
+1243929,2,Salma Khatun,Bangladesh,32,35,4,0,91.43,1,caught
+1243929,2,Ritu Moni,Bangladesh,16,36,1,0,44.44,1,bowled
+1243929,2,Fahima Khatun,Bangladesh,1,5,0,0,20.0,1,lbw
+1243929,2,Nahida Akter,Bangladesh,0,9,0,0,0.0,1,caught and bowled
+1243929,2,Jahanara Alam,Bangladesh,11,11,2,0,100.0,0,
+1243930,1,L Lee,South Africa,9,11,2,0,81.82,1,caught
+1243930,1,L Wolvaardt,South Africa,3,4,0,0,75.0,1,caught
+1243930,1,T Brits,South Africa,1,8,0,0,12.5,1,caught
+1243930,1,S Luus,South Africa,1,3,0,0,33.33,1,caught
+1243930,1,M du Preez,South Africa,38,31,6,0,122.58,0,
+1243930,1,M Kapp,South Africa,5,8,1,0,62.5,0,
+1243931,1,Nahida Khan,Pakistan,0,1,0,0,0.0,1,caught
+1243931,1,Bismah Maroof,Pakistan,9,14,0,0,64.29,1,run out
+1243931,1,Sidra Ameen,Pakistan,32,77,4,0,41.56,1,bowled
+1243931,1,Umaima Sohail,Pakistan,11,30,1,0,36.67,1,run out
+1243931,1,Nida Dar,Pakistan,4,22,0,0,18.18,1,lbw
+1243931,1,Aliya Riaz,Pakistan,9,24,1,0,37.5,1,caught
+1243931,1,Sidra Nawaz,Pakistan,23,44,1,0,52.27,1,bowled
+1243931,1,Fatima Sana,Pakistan,4,16,0,0,25.0,1,caught
+1243931,1,Diana Baig,Pakistan,6,16,0,0,37.5,1,bowled
+1243931,1,Aiman Anwer,Pakistan,0,2,0,0,0.0,1,caught
+1243931,1,Nashra Sandhu,Pakistan,1,3,0,0,33.33,0,
+1243931,2,TT Beaumont,England,2,12,0,0,16.67,1,lbw
+1243931,2,DN Wyatt,England,76,68,11,0,111.76,0,
+1243931,2,HC Knight,England,24,36,0,0,66.67,0,
+1243932,1,Murshida Khatun,Bangladesh,12,17,1,0,70.59,1,caught
+1243932,1,Sharmin Akhter,Bangladesh,24,56,2,0,42.86,1,lbw
+1243932,1,Fargana Hoque,Bangladesh,8,22,0,0,36.36,1,caught
+1243932,1,Nigar Sultana,Bangladesh,7,30,0,0,23.33,1,caught
+1243932,1,Rumana Ahmed,Bangladesh,15,45,2,0,33.33,1,caught
+1243932,1,Lata Mondal,Bangladesh,33,63,2,0,52.38,1,stumped
+1243932,1,Salma Khatun,Bangladesh,15,23,1,0,65.22,0,
+1243932,1,Nahida Akter,Bangladesh,3,3,0,0,100.0,0,
+1243932,2,AJ Healy,Australia,15,22,3,0,68.18,1,caught
+1243932,2,RL Haynes,Australia,7,23,0,0,30.43,1,caught
+1243932,2,MM Lanning,Australia,0,8,0,0,0.0,1,bowled
+1243932,2,BL Mooney,Australia,66,75,5,0,88.0,0,
+1243932,2,TM McGrath,Australia,3,11,0,0,27.27,1,lbw
+1243932,2,A Gardner,Australia,13,16,2,0,81.25,1,bowled
+1243932,2,A Sutherland,Australia,26,39,1,0,66.67,0,
+1243933,1,SW Bates,New Zealand,126,135,14,0,93.33,1,bowled
+1243933,1,SFM Devine,New Zealand,12,10,1,1,120.0,1,bowled
+1243933,1,AC Kerr,New Zealand,24,31,1,0,77.42,1,caught
+1243933,1,AE Satterthwaite,New Zealand,0,1,0,0,0.0,1,caught
+1243933,1,ML Green,New Zealand,23,48,0,0,47.92,1,bowled
+1243933,1,BM Halliday,New Zealand,29,38,3,0,76.32,1,bowled
+1243933,1,KJ Martin,New Zealand,30,26,4,0,115.38,0,
+1243933,1,JM Kerr,New Zealand,6,4,1,0,150.0,1,run out
+1243933,1,HM Rowe,New Zealand,1,2,0,0,50.0,1,run out
+1243933,1,FL Mackay,New Zealand,9,7,1,0,128.57,0,
+1243933,2,Muneeba Ali,Pakistan,29,45,3,1,64.44,1,caught
+1243933,2,Sidra Ameen,Pakistan,14,21,2,0,66.67,1,caught
+1243933,2,Bismah Maroof,Pakistan,38,66,2,0,57.58,1,caught
+1243933,2,Umaima Sohail,Pakistan,14,26,2,0,53.85,1,caught
+1243933,2,Nida Dar,Pakistan,50,53,5,1,94.34,1,bowled
+1243933,2,Aliya Riaz,Pakistan,1,7,0,0,14.29,1,caught
+1243933,2,Sidra Nawaz,Pakistan,10,12,1,0,83.33,1,bowled
+1243933,2,Fatima Sana,Pakistan,0,7,0,0,0.0,1,caught
+1243933,2,Diana Baig,Pakistan,6,6,1,0,100.0,1,caught
+1243933,2,Nashra Sandhu,Pakistan,10,34,1,0,29.41,0,
+1243933,2,Anam Amin,Pakistan,11,23,1,0,47.83,0,
+1243934,1,TT Beaumont,England,33,69,1,0,47.83,1,caught
+1243934,1,DN Wyatt,England,6,12,1,0,50.0,1,caught
+1243934,1,HC Knight,England,6,10,0,0,60.0,1,caught
+1243934,1,NR Sciver,England,40,57,2,0,70.18,1,lbw
+1243934,1,AE Jones,England,31,47,2,0,65.96,1,caught
+1243934,1,SIR Dunkley,England,67,72,8,0,93.06,1,stumped
+1243934,1,KH Brunt,England,24,22,0,0,109.09,0,
+1243934,1,S Ecclestone,England,17,11,0,1,154.55,0,
+1243934,2,Shamima Sultana,Bangladesh,23,64,2,0,35.94,1,caught
+1243934,2,Sharmin Akhter,Bangladesh,23,50,4,0,46.0,1,bowled
+1243934,2,Fargana Hoque,Bangladesh,11,32,0,0,34.38,1,caught
+1243934,2,Nigar Sultana,Bangladesh,22,37,2,0,59.46,1,caught
+1243934,2,Rumana Ahmed,Bangladesh,6,16,0,0,37.5,1,bowled
+1243934,2,Lata Mondal,Bangladesh,30,45,3,0,66.67,1,caught
+1243934,2,Salma Khatun,Bangladesh,2,4,0,0,50.0,1,caught
+1243934,2,Ritu Moni,Bangladesh,11,31,1,0,35.48,1,caught
+1243934,2,Nahida Akter,Bangladesh,0,4,0,0,0.0,1,bowled
+1243934,2,Fahima Khatun,Bangladesh,0,1,0,0,0.0,1,run out
+1243934,2,Jahanara Alam,Bangladesh,3,4,0,0,75.0,0,
+1243935,1,S Mandhana,India,71,84,6,1,84.52,1,caught
+1243935,1,Shafali Verma,India,53,46,8,0,115.22,1,run out
+1243935,1,YH Bhatia,India,2,3,0,0,66.67,1,bowled
+1243935,1,M Raj,India,68,84,8,0,80.95,1,caught
+1243935,1,H Kaur,India,48,57,4,0,84.21,1,bowled
+1243935,1,P Vastrakar,India,3,8,0,0,37.5,1,caught
+1243935,1,RM Ghosh,India,8,13,0,0,61.54,1,caught
+1243935,1,S Rana,India,1,4,0,0,25.0,0,
+1243935,1,DB Sharma,India,2,2,0,0,100.0,0,
+1243935,2,L Lee,South Africa,6,15,1,0,40.0,1,run out
+1243935,2,L Wolvaardt,South Africa,80,79,11,0,101.27,1,bowled
+1243935,2,L Goodall,South Africa,49,69,4,0,71.01,1,stumped
+1243935,2,S Luus,South Africa,22,27,1,0,81.48,1,lbw
+1243935,2,M du Preez,South Africa,52,63,2,0,82.54,0,
+1243935,2,M Kapp,South Africa,32,30,3,0,106.67,1,run out
+1243935,2,CL Tryon,South Africa,17,9,3,0,188.89,1,caught and bowled
+1243935,2,T Chetty,South Africa,7,7,0,0,100.0,1,run out
+1243935,2,S Ismail,South Africa,2,2,0,0,100.0,0,
+1243936,1,RL Haynes,Australia,85,100,9,0,85.0,1,caught
+1243936,1,AJ Healy,Australia,129,107,17,1,120.56,1,caught
+1243936,1,A Gardner,Australia,12,8,2,0,150.0,1,caught
+1243936,1,MM Lanning,Australia,26,26,1,0,100.0,0,
+1243936,1,BL Mooney,Australia,43,31,3,0,138.71,0,
+1243936,2,DJS Dottin,West Indies,34,35,5,0,97.14,1,caught
+1243936,2,RS Williams,West Indies,0,10,0,0,0.0,1,caught
+1243936,2,HK Matthews,West Indies,34,49,2,0,69.39,1,caught
+1243936,2,SR Taylor,West Indies,48,75,4,0,64.0,1,caught
+1243936,2,SA Campbelle,West Indies,8,23,0,0,34.78,1,caught
+1243936,2,CN Nation,West Indies,7,6,0,1,116.67,1,run out
+1243936,2,Kycia A Knight,West Indies,0,2,0,0,0.0,1,bowled
+1243936,2,K Ramharack,West Indies,7,15,0,0,46.67,1,lbw
+1243936,2,SS Connell,West Indies,1,7,0,0,14.29,0,
+1243937,1,TT Beaumont,England,7,14,1,0,50.0,1,caught
+1243937,1,DN Wyatt,England,129,125,12,0,103.2,1,caught
+1243937,1,HC Knight,England,1,19,0,0,5.26,1,lbw
+1243937,1,NR Sciver,England,15,18,1,0,83.33,1,caught
+1243937,1,AE Jones,England,28,32,3,0,87.5,1,caught
+1243937,1,SIR Dunkley,England,60,72,4,0,83.33,1,caught
+1243937,1,KH Brunt,England,9,9,1,0,100.0,1,bowled
+1243937,1,S Ecclestone,England,24,11,5,0,218.18,1,bowled
+1243937,2,L Lee,South Africa,2,15,0,0,13.33,1,caught
+1243937,2,L Wolvaardt,South Africa,0,2,0,0,0.0,1,caught and bowled
+1243937,2,L Goodall,South Africa,28,49,4,0,57.14,1,bowled
+1243937,2,S Luus,South Africa,21,24,2,0,87.5,1,bowled
+1243937,2,M du Preez,South Africa,30,48,2,0,62.5,1,bowled
+1243937,2,M Kapp,South Africa,21,28,2,0,75.0,1,bowled
+1243937,2,CL Tryon,South Africa,3,10,0,0,30.0,1,caught
+1243937,2,T Chetty,South Africa,21,28,1,0,75.0,1,stumped
+1243937,2,S Ismail,South Africa,12,14,2,0,85.71,1,caught
+1243937,2,M Klaas,South Africa,3,10,0,0,30.0,1,caught
+1243938,1,AJ Healy,Australia,170,138,26,0,123.19,1,stumped
+1243938,1,RL Haynes,Australia,68,93,7,0,73.12,1,caught
+1243938,1,BL Mooney,Australia,62,47,8,0,131.91,1,caught
+1243938,1,A Gardner,Australia,1,2,0,0,50.0,1,run out
+1243938,1,MM Lanning,Australia,10,5,2,0,200.0,1,caught
+1243938,1,TM McGrath,Australia,8,5,1,0,160.0,0,
+1243938,1,EA Perry,Australia,17,10,2,0,170.0,0,
+1243938,2,TT Beaumont,England,27,26,5,0,103.85,1,lbw
+1243938,2,DN Wyatt,England,4,5,1,0,80.0,1,bowled
+1243938,2,HC Knight,England,26,25,4,0,104.0,1,lbw
+1243938,2,NR Sciver,England,148,121,15,1,122.31,0,
+1243938,2,AE Jones,England,20,18,2,0,111.11,1,caught
+1243938,2,SIR Dunkley,England,22,22,1,0,100.0,1,bowled
+1243938,2,KH Brunt,England,1,4,0,0,25.0,1,stumped
+1243938,2,S Ecclestone,England,3,10,0,0,30.0,1,lbw
+1243938,2,KL Cross,England,2,3,0,0,66.67,1,caught and bowled
+1243938,2,CE Dean,England,21,24,1,0,87.5,1,caught
+1243938,2,A Shrubsole,England,1,4,0,0,25.0,1,caught
+1490413,1,Pratika Rawal,India,37,59,3,1,62.71,1,caught
+1490413,1,S Mandhana,India,8,10,2,0,80.0,1,caught
+1490413,1,H Deol,India,48,64,6,0,75.0,1,caught
+1490413,1,H Kaur,India,21,19,2,0,110.53,1,caught
+1490413,1,JI Rodrigues,India,0,1,0,0,0.0,1,bowled
+1490413,1,DB Sharma,India,53,53,3,0,100.0,1,caught
+1490413,1,RM Ghosh,India,2,6,0,0,33.33,1,caught
+1490413,1,AB Kaur,India,57,56,5,1,101.79,1,caught
+1490413,1,S Rana,India,28,15,2,2,186.67,0,
+1490413,2,GWHM Perera,Sri Lanka,14,20,2,0,70.0,1,bowled
+1490413,2,AC Jayangani,Sri Lanka,43,47,4,3,91.49,1,bowled
+1490413,2,H Madavi,Sri Lanka,29,45,3,0,64.44,1,lbw
+1490413,2,RMVD Gunaratne,Sri Lanka,11,28,0,0,39.29,1,lbw
+1490413,2,WK Dilhari,Sri Lanka,15,12,2,0,125.0,1,caught
+1490413,2,NND de Silva,Sri Lanka,35,29,4,1,120.69,1,bowled
+1490413,2,MAA Sanjeewani,Sri Lanka,6,10,1,0,60.0,1,caught
+1490413,2,BMSM Kumari,Sri Lanka,10,19,0,0,52.63,1,bowled
+1490413,2,WGAKK Kulasuriya,Sri Lanka,17,31,3,0,54.84,1,caught
+1490413,2,KDU Prabodhani,Sri Lanka,14,26,2,0,53.85,0,
+1490413,2,I Ranaweera,Sri Lanka,3,8,0,0,37.5,1,lbw
+1490414,1,AJ Healy,Australia,19,17,3,0,111.76,1,caught
+1490414,1,P Litchfield,Australia,45,31,6,2,145.16,1,bowled
+1490414,1,EA Perry,Australia,33,41,5,0,80.49,1,caught
+1490414,1,BL Mooney,Australia,12,21,1,0,57.14,1,caught
+1490414,1,A Sutherland,Australia,5,8,1,0,62.5,1,caught
+1490414,1,A Gardner,Australia,115,83,16,1,138.55,1,caught
+1490414,1,TM McGrath,Australia,26,34,3,0,76.47,1,caught
+1490414,1,S Molineux,Australia,14,19,1,1,73.68,1,caught
+1490414,1,KJ Garth,Australia,38,37,5,0,102.7,1,caught
+1490414,1,A King,Australia,4,7,0,0,57.14,1,caught
+1490414,1,D Brown,Australia,1,1,0,0,100.0,0,
+1490414,2,SW Bates,New Zealand,0,9,0,0,0.0,1,bowled
+1490414,2,GE Plimmer,New Zealand,0,0,0,0,0.0,1,run out
+1490414,2,SFM Devine,New Zealand,112,112,12,3,100.0,1,bowled
+1490414,2,AC Kerr,New Zealand,33,56,5,0,58.93,1,caught
+1490414,2,BM Halliday,New Zealand,28,38,2,1,73.68,1,caught
+1490414,2,ML Green,New Zealand,20,18,3,0,111.11,1,run out
+1490414,2,IC Gaze,New Zealand,28,18,6,0,155.56,1,caught
+1490414,2,JM Kerr,New Zealand,2,3,0,0,66.67,1,bowled
+1490414,2,LMM Tahuhu,New Zealand,1,2,0,0,50.0,0,
+1490414,2,EJ Carson,New Zealand,0,1,0,0,0.0,1,lbw
+1490414,2,BG Illing,New Zealand,0,3,0,0,0.0,1,caught
+1490415,1,Muneeba Ali,Pakistan,17,35,2,0,48.57,1,caught
+1490415,1,Umaima Sohail,Pakistan,0,1,0,0,0.0,1,bowled
+1490415,1,Sidra Ameen,Pakistan,0,1,0,0,0.0,1,bowled
+1490415,1,Rameen Shamim,Pakistan,23,39,2,0,58.97,1,caught and bowled
+1490415,1,Aliya Riaz,Pakistan,13,43,2,0,30.23,1,caught
+1490415,1,Sidra Nawaz,Pakistan,15,20,3,0,75.0,1,lbw
+1490415,1,Fatima Sana,Pakistan,22,33,3,0,66.67,1,lbw
+1490415,1,Natalia Pervaiz,Pakistan,9,14,1,0,64.29,1,caught
+1490415,1,Diana Baig,Pakistan,16,22,2,0,72.73,0,
+1490415,1,Nashra Sandhu,Pakistan,1,7,0,0,14.29,1,hit wicket
+1490415,1,Sadia Iqbal,Pakistan,4,17,0,0,23.53,1,caught
+1490415,2,Fargana Hoque,Bangladesh,2,17,0,0,11.76,1,lbw
+1490415,2,Rubya Haider,Bangladesh,54,77,8,0,70.13,0,
+1490415,2,Sharmin Akhter,Bangladesh,10,30,1,0,33.33,1,lbw
+1490415,2,Nigar Sultana,Bangladesh,23,44,5,0,52.27,1,caught
+1490415,2,S Mostary,Bangladesh,24,19,6,0,126.32,0,
+1490416,1,L Wolvaardt,South Africa,5,5,1,0,100.0,1,caught and bowled
+1490416,1,T Brits,South Africa,5,7,1,0,71.43,1,bowled
+1490416,1,S Luus,South Africa,2,11,0,0,18.18,1,bowled
+1490416,1,M Kapp,South Africa,4,6,1,0,66.67,1,bowled
+1490416,1,A Bosch,South Africa,6,5,1,0,120.0,1,lbw
+1490416,1,S Jafta,South Africa,22,36,3,0,61.11,1,bowled
+1490416,1,CL Tryon,South Africa,2,10,0,0,20.0,1,caught
+1490416,1,N de Klerk,South Africa,3,11,0,0,27.27,1,caught
+1490416,1,M Klaas,South Africa,3,13,0,0,23.08,1,bowled
+1490416,1,A Khaka,South Africa,6,12,1,0,50.0,0,
+1490416,1,N Mlaba,South Africa,3,8,0,0,37.5,1,bowled
+1490416,2,TT Beaumont,England,21,35,3,0,60.0,0,
+1490416,2,AE Jones,England,40,50,6,0,80.0,0,
+1490418,1,Pratika Rawal,India,31,37,5,0,83.78,1,bowled
+1490418,1,S Mandhana,India,23,32,4,0,71.88,1,lbw
+1490418,1,H Deol,India,46,65,4,1,70.77,1,caught
+1490418,1,H Kaur,India,19,34,2,0,55.88,1,caught
+1490418,1,JI Rodrigues,India,32,37,5,0,86.49,1,lbw
+1490418,1,DB Sharma,India,25,33,1,0,75.76,1,caught
+1490418,1,S Rana,India,20,33,2,0,60.61,1,caught
+1490418,1,RM Ghosh,India,35,20,3,2,175.0,0,
+1490418,1,N Shree Charani,India,1,5,0,0,20.0,1,caught
+1490418,1,K Goud,India,8,4,2,0,200.0,1,caught
+1490418,1,Renuka Singh,India,0,1,0,0,0.0,1,caught
+1490418,2,Muneeba Ali,Pakistan,2,12,0,0,16.67,1,run out
+1490418,2,Sadaf Shamas,Pakistan,6,24,0,0,25.0,1,caught and bowled
+1490418,2,Sidra Ameen,Pakistan,81,106,9,1,76.42,1,caught
+1490418,2,Aliya Riaz,Pakistan,2,8,0,0,25.0,1,caught
+1490418,2,Natalia Pervaiz,Pakistan,33,46,4,0,71.74,1,caught
+1490418,2,Fatima Sana,Pakistan,2,15,0,0,13.33,1,caught
+1490418,2,Sidra Nawaz,Pakistan,14,22,1,0,63.64,1,caught and bowled
+1490418,2,Rameen Shamim,Pakistan,0,1,0,0,0.0,1,bowled
+1490418,2,Diana Baig,Pakistan,9,13,1,0,69.23,1,run out
+1490418,2,Nashra Sandhu,Pakistan,2,9,0,0,22.22,0,
+1490418,2,Sadia Iqbal,Pakistan,0,2,0,0,0.0,1,caught
+1490419,1,SW Bates,New Zealand,0,1,0,0,0.0,1,lbw
+1490419,1,AC Kerr,New Zealand,23,42,4,0,54.76,1,caught
+1490419,1,GE Plimmer,New Zealand,31,68,4,0,45.59,1,caught
+1490419,1,SFM Devine,New Zealand,85,98,9,0,86.73,1,bowled
+1490419,1,BM Halliday,New Zealand,45,37,6,0,121.62,1,caught and bowled
+1490419,1,ML Green,New Zealand,4,7,0,0,57.14,1,caught
+1490419,1,IC Gaze,New Zealand,10,9,2,0,111.11,1,run out
+1490419,1,JM Kerr,New Zealand,2,8,0,0,25.0,1,caught
+1490419,1,LMM Tahuhu,New Zealand,5,9,0,0,55.56,1,caught
+1490419,1,EJ Carson,New Zealand,4,4,0,0,100.0,1,run out
+1490419,1,BG Illing,New Zealand,1,4,0,0,25.0,0,
+1490419,2,L Wolvaardt,South Africa,14,10,3,0,140.0,1,lbw
+1490419,2,T Brits,South Africa,101,89,15,1,113.48,1,bowled
+1490419,2,S Luus,South Africa,83,114,10,1,72.81,0,
+1490419,2,M Kapp,South Africa,14,15,2,0,93.33,1,caught
+1490419,2,A Bosch,South Africa,0,4,0,0,0.0,1,caught
+1490419,2,S Jafta,South Africa,6,14,1,0,42.86,0,
+1490420,1,Rubya Haider,Bangladesh,4,9,0,0,44.44,1,caught
+1490420,1,Sharmin Akhter,Bangladesh,30,52,6,0,57.69,1,caught
+1490420,1,Nigar Sultana,Bangladesh,0,2,0,0,0.0,1,caught
+1490420,1,S Mostary,Bangladesh,60,108,8,0,55.56,1,lbw
+1490420,1,Shorna Akter,Bangladesh,10,23,1,0,43.48,1,caught
+1490420,1,Ritu Moni,Bangladesh,5,36,0,0,13.89,1,caught
+1490420,1,Fahima Khatun,Bangladesh,7,25,0,0,28.0,1,bowled
+1490420,1,Nahida Akter,Bangladesh,1,8,0,0,12.5,1,caught
+1490420,1,Rabeya Khan,Bangladesh,43,27,6,1,159.26,0,
+1490420,1,Marufa Akter,Bangladesh,0,1,0,0,0.0,1,caught
+1490420,1,Sanjida Akter Meghla,Bangladesh,1,7,0,0,14.29,1,caught
+1490420,2,TT Beaumont,England,13,17,2,0,76.47,1,lbw
+1490420,2,AE Jones,England,1,3,0,0,33.33,1,lbw
+1490420,2,HC Knight,England,79,111,8,1,71.17,0,
+1490420,2,NR Sciver-Brunt,England,32,41,5,0,78.05,1,caught
+1490420,2,SIR Dunkley,England,0,3,0,0,0.0,1,lbw
+1490420,2,EL Lamb,England,1,12,0,0,8.33,1,caught
+1490420,2,A Capsey,England,20,34,3,0,58.82,1,lbw
+1490420,2,CE Dean,England,27,56,2,0,48.21,0,
+1490421,1,AJ Healy,Australia,20,23,3,0,86.96,1,caught
+1490421,1,P Litchfield,Australia,10,22,1,0,45.45,1,caught and bowled
+1490421,1,BL Mooney,Australia,109,114,11,0,95.61,1,caught
+1490421,1,EA Perry,Australia,5,11,0,0,45.45,1,stumped
+1490421,1,A Sutherland,Australia,1,5,0,0,20.0,1,bowled
+1490421,1,A Gardner,Australia,1,5,0,0,20.0,1,caught
+1490421,1,TM McGrath,Australia,5,20,0,0,25.0,1,caught
+1490421,1,G Wareham,Australia,0,4,0,0,0.0,1,caught and bowled
+1490421,1,KJ Garth,Australia,11,47,0,0,23.4,1,stumped
+1490421,1,A King,Australia,51,49,3,3,104.08,0,
+1490421,2,Sadaf Shamas,Pakistan,5,10,1,0,50.0,1,caught
+1490421,2,Muneeba Ali,Pakistan,3,12,0,0,25.0,1,caught
+1490421,2,Sidra Ameen,Pakistan,35,52,5,0,67.31,1,caught
+1490421,2,Sidra Nawaz,Pakistan,5,5,1,0,100.0,1,caught
+1490421,2,Natalia Pervaiz,Pakistan,1,6,0,0,16.67,1,caught
+1490421,2,Eyman Fatima,Pakistan,0,3,0,0,0.0,1,bowled
+1490421,2,Fatima Sana,Pakistan,11,12,2,0,91.67,1,bowled
+1490421,2,Rameen Shamim,Pakistan,15,64,0,0,23.44,1,bowled
+1490421,2,Diana Baig,Pakistan,7,8,1,0,87.5,1,lbw
+1490421,2,Nashra Sandhu,Pakistan,11,41,1,0,26.83,1,caught
+1490421,2,Sadia Iqbal,Pakistan,2,6,0,0,33.33,0,
+1490422,1,Pratika Rawal,India,37,56,5,0,66.07,1,caught
+1490422,1,S Mandhana,India,23,32,1,1,71.88,1,caught
+1490422,1,H Deol,India,13,23,1,0,56.52,1,bowled
+1490422,1,H Kaur,India,9,24,0,0,37.5,1,caught
+1490422,1,JI Rodrigues,India,0,4,0,0,0.0,1,lbw
+1490422,1,DB Sharma,India,4,14,0,0,28.57,1,caught
+1490422,1,AB Kaur,India,13,44,1,0,29.55,1,caught
+1490422,1,RM Ghosh,India,94,77,11,4,122.08,1,caught
+1490422,1,S Rana,India,33,24,6,0,137.5,1,caught
+1490422,1,K Goud,India,0,1,0,0,0.0,0,
+1490422,1,N Shree Charani,India,0,1,0,0,0.0,1,caught
+1490422,2,L Wolvaardt,South Africa,70,111,8,0,63.06,1,bowled
+1490422,2,T Brits,South Africa,0,3,0,0,0.0,1,caught and bowled
+1490422,2,S Luus,South Africa,5,9,1,0,55.56,1,caught
+1490422,2,M Kapp,South Africa,20,25,2,1,80.0,1,bowled
+1490422,2,A Bosch,South Africa,1,2,0,0,50.0,1,caught and bowled
+1490422,2,S Jafta,South Africa,14,20,2,0,70.0,1,lbw
+1490422,2,CL Tryon,South Africa,49,66,5,0,74.24,1,lbw
+1490422,2,N de Klerk,South Africa,84,54,8,5,155.56,0,
+1490422,2,A Khaka,South Africa,1,3,0,0,33.33,0,
+1490423,1,SW Bates,New Zealand,29,33,6,0,87.88,1,run out
+1490423,1,GE Plimmer,New Zealand,4,18,0,0,22.22,1,stumped
+1490423,1,AC Kerr,New Zealand,1,10,0,0,10.0,1,bowled
+1490423,1,SFM Devine,New Zealand,63,85,2,2,74.12,1,bowled
+1490423,1,BM Halliday,New Zealand,69,104,5,1,66.35,1,caught
+1490423,1,ML Green,New Zealand,25,28,3,0,89.29,1,stumped
+1490423,1,IC Gaze,New Zealand,12,13,1,0,92.31,1,bowled
+1490423,1,JM Kerr,New Zealand,0,1,0,0,0.0,1,run out
+1490423,1,RA Mair,New Zealand,2,4,0,0,50.0,1,stumped
+1490423,1,LMM Tahuhu,New Zealand,12,4,1,1,300.0,0,
+1490423,1,EJ Carson,New Zealand,4,2,1,0,200.0,0,
+1490423,2,Rubya Haider,Bangladesh,4,19,0,0,21.05,1,caught
+1490423,2,Sharmin Akhter,Bangladesh,3,9,0,0,33.33,1,bowled
+1490423,2,Nigar Sultana,Bangladesh,4,28,0,0,14.29,1,caught
+1490423,2,S Mostary,Bangladesh,2,11,0,0,18.18,1,caught
+1490423,2,Sumaiya Akter,Bangladesh,1,9,0,0,11.11,1,caught
+1490423,2,Fahima Khatun,Bangladesh,34,80,2,0,42.5,1,caught
+1490423,2,Shorna Akter,Bangladesh,1,4,0,0,25.0,1,lbw
+1490423,2,Nahida Akter,Bangladesh,17,32,3,0,53.12,1,caught
+1490423,2,Rabeya Khan,Bangladesh,25,39,2,0,64.1,1,caught
+1490423,2,Nishita Akter Nishi,Bangladesh,5,6,1,0,83.33,1,bowled
+1490423,2,Marufa Akter,Bangladesh,1,3,0,0,33.33,0,
+1490424,1,AE Jones,England,11,13,1,0,84.62,1,run out
+1490424,1,TT Beaumont,England,32,29,6,0,110.34,1,caught
+1490424,1,HC Knight,England,29,47,2,0,61.7,1,caught
+1490424,1,NR Sciver-Brunt,England,117,117,9,2,100.0,1,caught
+1490424,1,SIR Dunkley,England,18,30,0,0,60.0,1,caught and bowled
+1490424,1,EL Lamb,England,13,13,2,0,100.0,1,bowled
+1490424,1,A Capsey,England,0,4,0,0,0.0,1,stumped
+1490424,1,CE Dean,England,19,36,1,0,52.78,1,caught
+1490424,1,S Ecclestone,England,3,4,0,0,75.0,1,stumped
+1490424,1,LCN Smith,England,5,6,0,0,83.33,0,
+1490424,1,LK Bell,England,1,1,0,0,100.0,0,
+1490424,2,GWHM Perera,Sri Lanka,35,60,3,0,58.33,1,caught
+1490424,2,AC Jayangani,Sri Lanka,15,39,2,0,38.46,1,bowled
+1490424,2,RMVD Gunaratne,Sri Lanka,10,9,2,0,111.11,1,bowled
+1490424,2,H Madavi,Sri Lanka,33,37,5,0,89.19,1,caught
+1490424,2,WK Dilhari,Sri Lanka,4,15,0,0,26.67,1,bowled
+1490424,2,NND de Silva,Sri Lanka,23,38,2,0,60.53,1,caught
+1490424,2,MAA Sanjeewani,Sri Lanka,10,20,1,0,50.0,1,lbw
+1490424,2,D Vihanga,Sri Lanka,3,15,0,0,20.0,1,caught
+1490424,2,BMSM Kumari,Sri Lanka,4,8,0,0,50.0,1,bowled
+1490424,2,I Ranaweera,Sri Lanka,3,15,0,0,20.0,0,
+1490424,2,KDU Prabodhani,Sri Lanka,0,18,0,0,0.0,1,caught
+1490425,1,Pratika Rawal,India,75,96,10,1,78.12,1,caught
+1490425,1,S Mandhana,India,80,66,9,3,121.21,1,caught
+1490425,1,H Deol,India,38,42,3,1,90.48,1,caught
+1490425,1,H Kaur,India,22,17,3,0,129.41,1,caught
+1490425,1,JI Rodrigues,India,33,21,5,0,157.14,1,caught
+1490425,1,RM Ghosh,India,32,22,3,2,145.45,1,caught
+1490425,1,AB Kaur,India,16,12,2,0,133.33,1,caught
+1490425,1,DB Sharma,India,1,6,0,0,16.67,1,caught
+1490425,1,S Rana,India,8,6,1,0,133.33,0,
+1490425,1,K Goud,India,1,3,0,0,33.33,1,caught
+1490425,1,N Shree Charani,India,0,2,0,0,0.0,1,bowled
+1490425,2,AJ Healy,Australia,142,107,21,3,132.71,1,caught
+1490425,2,P Litchfield,Australia,40,39,6,1,102.56,1,caught
+1490425,2,EA Perry,Australia,47,52,5,1,90.38,0,
+1490425,2,BL Mooney,Australia,4,8,0,0,50.0,1,caught
+1490425,2,A Sutherland,Australia,0,2,0,0,0.0,1,bowled
+1490425,2,A Gardner,Australia,45,46,3,1,97.83,1,bowled
+1490425,2,TM McGrath,Australia,12,8,3,0,150.0,1,lbw
+1490425,2,S Molineux,Australia,18,19,2,0,94.74,1,lbw
+1490425,2,KJ Garth,Australia,14,13,2,0,107.69,0,
+1490426,1,Fargana Hoque,Bangladesh,30,76,3,0,39.47,1,lbw
+1490426,1,Rubya Haider,Bangladesh,25,52,2,0,48.08,1,caught
+1490426,1,Sharmin Akhter,Bangladesh,50,77,6,0,64.94,1,run out
+1490426,1,Nigar Sultana,Bangladesh,32,42,5,0,76.19,1,caught
+1490426,1,Shorna Akter,Bangladesh,51,35,3,3,145.71,0,
+1490426,1,S Mostary,Bangladesh,9,8,1,0,112.5,1,run out
+1490426,1,Rabeya Khan,Bangladesh,0,2,0,0,0.0,1,bowled
+1490426,1,Ritu Moni,Bangladesh,19,8,3,0,237.5,0,
+1490426,2,L Wolvaardt,South Africa,31,56,5,0,55.36,1,run out
+1490426,2,T Brits,South Africa,0,1,0,0,0.0,1,caught and bowled
+1490426,2,A Bosch,South Africa,28,35,6,0,80.0,1,caught
+1490426,2,M Kapp,South Africa,56,71,4,1,78.87,1,caught
+1490426,2,A Dercksen,South Africa,2,11,0,0,18.18,1,bowled
+1490426,2,S Jafta,South Africa,4,13,0,0,30.77,1,bowled
+1490426,2,CL Tryon,South Africa,62,69,6,1,89.86,1,run out
+1490426,2,N de Klerk,South Africa,37,29,4,1,127.59,0,
+1490426,2,M Klaas,South Africa,10,13,1,0,76.92,0,
+1490427,1,RMVD Gunaratne,Sri Lanka,42,83,3,0,50.6,1,bowled
+1490427,1,AC Jayangani,Sri Lanka,53,72,7,0,73.61,1,caught
+1490427,1,GWHM Perera,Sri Lanka,44,61,6,0,72.13,1,caught
+1490427,1,H Madavi,Sri Lanka,26,31,2,0,83.87,1,caught
+1490427,1,WK Dilhari,Sri Lanka,4,4,1,0,100.0,1,caught
+1490427,1,NND de Silva,Sri Lanka,55,28,7,1,196.43,0,
+1490427,1,PWDM Badalge,Sri Lanka,7,15,1,0,46.67,1,caught
+1490427,1,MAA Sanjeewani,Sri Lanka,6,6,0,0,100.0,0,
+1490428,1,AE Jones,England,8,8,2,0,100.0,1,bowled
+1490428,1,TT Beaumont,England,4,4,1,0,100.0,1,bowled
+1490428,1,HC Knight,England,18,17,4,0,105.88,1,lbw
+1490428,1,NR Sciver-Brunt,England,4,10,1,0,40.0,1,bowled
+1490428,1,SIR Dunkley,England,11,21,1,0,52.38,1,lbw
+1490428,1,EL Lamb,England,4,5,0,0,80.0,1,bowled
+1490428,1,A Capsey,England,16,43,2,0,37.21,1,lbw
+1490428,1,CE Dean,England,33,51,3,0,64.71,1,caught
+1490428,1,EL Arlott,England,18,23,2,0,78.26,1,run out
+1490428,1,LCN Smith,England,4,2,0,0,200.0,0,
+1490428,1,S Glenn,England,3,3,0,0,100.0,0,
+1490428,2,Muneeba Ali,Pakistan,9,22,1,0,40.91,0,
+1490428,2,Umaima Sohail,Pakistan,19,18,4,0,105.56,0,
+1490429,1,Fargana Hoque,Bangladesh,8,24,1,0,33.33,1,caught
+1490429,1,Rubya Haider,Bangladesh,44,59,8,0,74.58,1,caught
+1490429,1,Sharmin Akhter,Bangladesh,19,33,3,0,57.58,1,caught
+1490429,1,Nigar Sultana,Bangladesh,12,35,0,0,34.29,1,stumped
+1490429,1,S Mostary,Bangladesh,66,80,9,0,82.5,0,
+1490429,1,Shorna Akter,Bangladesh,7,24,1,0,29.17,1,caught
+1490429,1,Ritu Moni,Bangladesh,2,9,0,0,22.22,1,caught
+1490429,1,Fahima Khatun,Bangladesh,4,14,0,0,28.57,1,caught
+1490429,1,Rabeya Khan,Bangladesh,6,11,1,0,54.55,1,caught
+1490429,1,Nishita Akter Nishi,Bangladesh,1,7,0,0,14.29,1,lbw
+1490429,1,Fariha Trisna,Bangladesh,1,4,0,0,25.0,0,
+1490429,2,AJ Healy,Australia,113,77,20,0,146.75,0,
+1490429,2,P Litchfield,Australia,84,72,12,1,116.67,0,
+1490430,1,RMVD Gunaratne,Sri Lanka,34,33,6,0,103.03,1,caught
+1490430,1,AC Jayangani,Sri Lanka,11,25,2,0,44.0,1,lbw
+1490430,1,GWHM Perera,Sri Lanka,4,7,1,0,57.14,1,bowled
+1490430,1,H Madavi,Sri Lanka,13,24,0,0,54.17,1,caught
+1490430,1,WK Dilhari,Sri Lanka,14,13,1,1,107.69,1,caught
+1490430,1,NND de Silva,Sri Lanka,18,17,2,0,105.88,1,caught
+1490430,1,MAA Sanjeewani,Sri Lanka,1,1,0,0,100.0,1,run out
+1490430,2,L Wolvaardt,South Africa,60,47,8,0,127.66,0,
+1490430,2,T Brits,South Africa,55,42,4,2,130.95,0,
+1490431,1,Muneeba Ali,Pakistan,22,26,4,0,84.62,1,caught
+1490431,1,Umaima Sohail,Pakistan,3,15,0,0,20.0,1,lbw
+1490431,1,Sidra Ameen,Pakistan,9,16,1,0,56.25,1,caught
+1490431,1,Aliya Riaz,Pakistan,28,52,3,0,53.85,0,
+1490431,1,Natalia Pervaiz,Pakistan,10,22,1,0,45.45,1,caught
+1490431,1,Fatima Sana,Pakistan,2,4,0,0,50.0,1,bowled
+1490431,1,Sidra Nawaz,Pakistan,6,15,0,0,40.0,0,
+1490432,1,TT Beaumont,England,22,43,2,0,51.16,1,bowled
+1490432,1,AE Jones,England,56,68,8,0,82.35,1,caught
+1490432,1,HC Knight,England,109,91,15,1,119.78,1,run out
+1490432,1,NR Sciver-Brunt,England,38,49,4,0,77.55,1,caught
+1490432,1,SIR Dunkley,England,15,21,1,0,71.43,1,caught
+1490432,1,EL Lamb,England,11,10,1,0,110.0,1,caught
+1490432,1,A Capsey,England,2,3,0,0,66.67,1,caught
+1490432,1,CE Dean,England,19,13,2,0,146.15,0,
+1490432,1,S Ecclestone,England,3,3,0,0,100.0,1,run out
+1490432,1,LCN Smith,England,0,0,0,0,0.0,0,
+1490432,2,Pratika Rawal,India,6,14,1,0,42.86,1,caught
+1490432,2,S Mandhana,India,88,94,8,0,93.62,1,caught
+1490432,2,H Deol,India,24,31,5,0,77.42,1,lbw
+1490432,2,H Kaur,India,70,70,10,0,100.0,1,caught
+1490432,2,DB Sharma,India,50,57,5,0,87.72,1,caught
+1490432,2,RM Ghosh,India,8,10,0,0,80.0,1,caught
+1490432,2,AB Kaur,India,18,15,2,0,120.0,0,
+1490432,2,S Rana,India,10,9,1,0,111.11,0,
+1490433,1,RMVD Gunaratne,Sri Lanka,0,1,0,0,0.0,1,lbw
+1490433,1,GWHM Perera,Sri Lanka,85,99,13,1,85.86,1,lbw
+1490433,1,AC Jayangani,Sri Lanka,46,43,6,2,106.98,1,lbw
+1490433,1,H Madavi,Sri Lanka,4,11,0,0,36.36,1,run out
+1490433,1,WK Dilhari,Sri Lanka,4,6,1,0,66.67,1,stumped
+1490433,1,NND de Silva,Sri Lanka,37,38,1,2,97.37,1,caught
+1490433,1,MAA Sanjeewani,Sri Lanka,2,7,0,0,28.57,1,caught and bowled
+1490433,1,BMSM Kumari,Sri Lanka,1,4,0,0,25.0,1,lbw
+1490433,1,KDU Prabodhani,Sri Lanka,8,37,1,0,21.62,1,bowled
+1490433,1,M Madara,Sri Lanka,9,42,1,0,21.43,1,run out
+1490433,1,I Ranaweera,Sri Lanka,2,4,0,0,50.0,0,
+1490433,2,Fargana Hoque,Bangladesh,7,35,1,0,20.0,1,run out
+1490433,2,Rubya Haider,Bangladesh,0,5,0,0,0.0,1,caught
+1490433,2,Sharmin Akhter,Bangladesh,64,103,4,1,62.14,0,
+1490433,2,S Mostary,Bangladesh,8,13,0,0,61.54,1,caught
+1490433,2,Nigar Sultana,Bangladesh,77,98,6,0,78.57,1,caught
+1490433,2,Shorna Akter,Bangladesh,19,27,1,0,70.37,1,caught
+1490433,2,Ritu Moni,Bangladesh,7,13,0,0,53.85,1,bowled
+1490433,2,Rabeya Khan,Bangladesh,1,3,0,0,33.33,1,lbw
+1490433,2,Nahida Akter,Bangladesh,0,1,0,0,0.0,1,run out
+1490433,2,Marufa Akter,Bangladesh,0,1,0,0,0.0,1,lbw
+1490433,2,Nishita Akter Nishi,Bangladesh,1,1,0,0,100.0,0,
+1490434,1,L Wolvaardt,South Africa,90,82,10,2,109.76,1,stumped
+1490434,1,T Brits,South Africa,0,4,0,0,0.0,1,caught
+1490434,1,S Luus,South Africa,61,59,8,2,103.39,1,caught
+1490434,1,A Dercksen,South Africa,9,17,1,0,52.94,1,run out
+1490434,1,M Kapp,South Africa,68,43,6,3,158.14,0,
+1490434,1,K Meso,South Africa,0,3,0,0,0.0,1,caught
+1490434,1,CL Tryon,South Africa,21,16,3,0,131.25,1,stumped
+1490434,1,N de Klerk,South Africa,41,16,3,4,256.25,1,caught
+1490434,1,N Shangase,South Africa,0,1,0,0,0.0,1,run out
+1490434,1,N Mlaba,South Africa,0,1,0,0,0.0,1,bowled
+1490434,2,Muneeba Ali,Pakistan,5,5,1,0,100.0,1,caught
+1490434,2,Umaima Sohail,Pakistan,6,12,1,0,50.0,1,lbw
+1490434,2,Sidra Ameen,Pakistan,13,24,2,0,54.17,1,caught
+1490434,2,Aliya Riaz,Pakistan,3,11,0,0,27.27,1,caught
+1490434,2,Natalia Pervaiz,Pakistan,20,24,3,0,83.33,1,caught
+1490434,2,Sidra Nawaz,Pakistan,22,33,2,0,66.67,0,
+1490434,2,Fatima Sana,Pakistan,2,4,0,0,50.0,1,bowled
+1490434,2,Rameen Shamim,Pakistan,3,7,0,0,42.86,1,run out
+1490435,1,AE Jones,England,18,26,3,0,69.23,1,bowled
+1490435,1,TT Beaumont,England,78,105,10,1,74.29,1,caught
+1490435,1,HC Knight,England,20,27,3,0,74.07,1,lbw
+1490435,1,NR Sciver-Brunt,England,7,14,1,0,50.0,1,caught
+1490435,1,SIR Dunkley,England,22,48,0,0,45.83,1,stumped
+1490435,1,EL Lamb,England,7,10,1,0,70.0,1,bowled
+1490435,1,A Capsey,England,38,32,5,0,118.75,1,lbw
+1490435,1,CE Dean,England,26,27,3,0,96.3,1,caught
+1490435,1,S Ecclestone,England,10,7,2,0,142.86,0,
+1490435,1,LCN Smith,England,3,3,0,0,100.0,1,run out
+1490435,1,LK Bell,England,2,2,0,0,100.0,0,
+1490435,2,P Litchfield,Australia,1,2,0,0,50.0,1,bowled
+1490435,2,G Voll,Australia,6,7,1,0,85.71,1,bowled
+1490435,2,EA Perry,Australia,13,19,3,0,68.42,1,caught and bowled
+1490435,2,BL Mooney,Australia,20,30,1,0,66.67,1,caught
+1490435,2,A Sutherland,Australia,98,112,9,1,87.5,0,
+1490435,2,A Gardner,Australia,104,73,16,0,142.47,0,
+1490436,1,Pratika Rawal,India,122,134,13,2,91.04,1,caught
+1490436,1,S Mandhana,India,109,95,10,4,114.74,1,caught
+1490436,1,JI Rodrigues,India,76,55,11,0,138.18,0,
+1490436,1,H Kaur,India,10,11,1,0,90.91,1,caught
+1490436,1,RM Ghosh,India,4,1,1,0,400.0,0,
+1490436,2,SW Bates,New Zealand,1,6,0,0,16.67,1,caught
+1490436,2,GE Plimmer,New Zealand,30,25,5,1,120.0,1,bowled
+1490436,2,AC Kerr,New Zealand,45,53,4,0,84.91,1,caught
+1490436,2,SFM Devine,New Zealand,6,9,1,0,66.67,1,bowled
+1490436,2,BM Halliday,New Zealand,81,84,9,1,96.43,1,caught
+1490436,2,ML Green,New Zealand,18,20,2,0,90.0,1,caught
+1490436,2,IC Gaze,New Zealand,65,51,10,0,127.45,0,
+1490436,2,JM Kerr,New Zealand,18,13,0,2,138.46,1,caught
+1490436,2,RA Mair,New Zealand,1,3,0,0,33.33,1,caught
+1490437,1,Muneeba Ali,Pakistan,7,17,0,0,41.18,0,
+1490437,1,Umaima Sohail,Pakistan,9,9,1,0,100.0,0,
+1490438,1,L Wolvaardt,South Africa,31,26,7,0,119.23,1,caught
+1490438,1,T Brits,South Africa,6,19,1,0,31.58,1,lbw
+1490438,1,S Luus,South Africa,6,15,1,0,40.0,1,caught
+1490438,1,A Dercksen,South Africa,5,19,1,0,26.32,1,bowled
+1490438,1,M Kapp,South Africa,0,4,0,0,0.0,1,caught
+1490438,1,S Jafta,South Africa,29,17,7,0,170.59,1,bowled
+1490438,1,CL Tryon,South Africa,0,1,0,0,0.0,1,caught
+1490438,1,N de Klerk,South Africa,14,23,2,0,60.87,1,bowled
+1490438,1,M Klaas,South Africa,4,11,0,0,36.36,1,bowled
+1490438,1,A Khaka,South Africa,0,5,0,0,0.0,1,bowled
+1490438,1,N Mlaba,South Africa,1,4,0,0,25.0,0,
+1490438,2,P Litchfield,Australia,5,12,1,0,41.67,1,caught
+1490438,2,G Voll,Australia,38,38,7,0,100.0,0,
+1490438,2,EA Perry,Australia,0,6,0,0,0.0,1,caught
+1490438,2,BL Mooney,Australia,42,41,6,0,102.44,1,caught
+1490438,2,A Sutherland,Australia,10,4,2,0,250.0,0,
+1490439,1,SW Bates,New Zealand,10,16,2,0,62.5,1,caught
+1490439,1,GE Plimmer,New Zealand,43,57,7,0,75.44,1,lbw
+1490439,1,AC Kerr,New Zealand,35,43,5,0,81.4,1,caught
+1490439,1,BM Halliday,New Zealand,4,14,0,0,28.57,1,caught
+1490439,1,SFM Devine,New Zealand,23,35,1,0,65.71,1,caught
+1490439,1,ML Green,New Zealand,18,19,2,0,94.74,1,caught and bowled
+1490439,1,IC Gaze,New Zealand,14,24,1,1,58.33,1,bowled
+1490439,1,JM Kerr,New Zealand,10,12,1,0,83.33,1,run out
+1490439,1,RA Mair,New Zealand,0,3,0,0,0.0,1,lbw
+1490439,1,LMM Tahuhu,New Zealand,2,8,0,0,25.0,1,caught
+1490439,1,EJ Carson,New Zealand,1,1,0,0,100.0,0,
+1490439,2,AE Jones,England,86,92,11,1,93.48,0,
+1490439,2,TT Beaumont,England,40,38,7,0,105.26,1,lbw
+1490439,2,HC Knight,England,33,40,2,1,82.5,1,lbw
+1490439,2,DN Wyatt,England,2,7,0,0,28.57,0,
+1490440,1,Sumaiya Akter,Bangladesh,2,6,0,0,33.33,1,caught
+1490440,1,Rubya Haider,Bangladesh,13,32,1,0,40.62,1,caught
+1490440,1,Sharmin Akhter,Bangladesh,36,53,4,0,67.92,1,caught
+1490440,1,Nigar Sultana,Bangladesh,9,24,0,0,37.5,1,run out
+1490440,1,S Mostary,Bangladesh,26,21,4,0,123.81,1,caught
+1490440,1,Shorna Akter,Bangladesh,2,3,0,0,66.67,1,bowled
+1490440,1,Nahida Akter,Bangladesh,3,5,0,0,60.0,1,bowled
+1490440,1,Rabeya Khan,Bangladesh,3,5,0,0,60.0,1,bowled
+1490440,1,Ritu Moni,Bangladesh,11,7,0,1,157.14,1,caught
+1490440,1,Nishita Akter Nishi,Bangladesh,4,5,0,0,80.0,0,
+1490440,1,Marufa Akter,Bangladesh,2,1,0,0,200.0,0,
+1490440,2,S Mandhana,India,34,27,6,0,125.93,0,
+1490440,2,AB Kaur,India,15,25,2,0,60.0,0,
+1490441,1,L Wolvaardt,South Africa,169,143,20,4,118.18,1,caught
+1490441,1,T Brits,South Africa,45,65,6,1,69.23,1,bowled
+1490441,1,A Bosch,South Africa,0,3,0,0,0.0,1,bowled
+1490441,1,S Luus,South Africa,1,6,0,0,16.67,1,bowled
+1490441,1,M Kapp,South Africa,42,33,4,1,127.27,1,caught
+1490441,1,S Jafta,South Africa,1,4,0,0,25.0,1,bowled
+1490441,1,A Dercksen,South Africa,4,14,0,0,28.57,1,bowled
+1490441,1,CL Tryon,South Africa,33,26,3,1,126.92,0,
+1490441,1,N de Klerk,South Africa,11,6,2,0,183.33,0,
+1490441,2,AE Jones,England,0,2,0,0,0.0,1,bowled
+1490441,2,HC Knight,England,0,3,0,0,0.0,1,bowled
+1490441,2,NR Sciver-Brunt,England,64,76,6,1,84.21,1,caught
+1490441,2,TT Beaumont,England,0,1,0,0,0.0,1,caught
+1490441,2,A Capsey,England,50,71,6,0,70.42,1,caught
+1490441,2,DN Wyatt,England,34,31,5,0,109.68,1,caught
+1490441,2,SIR Dunkley,England,2,10,0,0,20.0,1,caught
+1490441,2,CE Dean,England,0,1,0,0,0.0,1,caught
+1490441,2,S Ecclestone,England,2,12,0,0,16.67,1,caught
+1490441,2,LCN Smith,England,27,36,4,0,75.0,1,caught
+1490441,2,LK Bell,England,9,12,2,0,75.0,0,
+1490442,1,AJ Healy,Australia,5,15,0,0,33.33,1,bowled
+1490442,1,P Litchfield,Australia,119,93,18,3,127.96,1,bowled
+1490442,1,EA Perry,Australia,77,88,6,2,87.5,1,bowled
+1490442,1,BL Mooney,Australia,24,22,3,0,109.09,1,caught
+1490442,1,A Sutherland,Australia,3,6,0,0,50.0,1,caught and bowled
+1490442,1,A Gardner,Australia,63,45,4,4,140.0,1,run out
+1490442,1,TM McGrath,Australia,12,7,2,0,171.43,1,run out
+1490442,1,KJ Garth,Australia,17,17,0,0,100.0,1,run out
+1490442,1,A King,Australia,4,4,1,0,100.0,1,caught
+1490442,1,S Molineux,Australia,0,1,0,0,0.0,1,bowled
+1490442,1,ML Schutt,Australia,1,1,0,0,100.0,0,
+1490442,2,Shafali Verma,India,10,5,2,0,200.0,1,lbw
+1490442,2,S Mandhana,India,24,24,2,1,100.0,1,caught
+1490442,2,JI Rodrigues,India,127,134,14,0,94.78,0,
+1490442,2,H Kaur,India,89,88,10,2,101.14,1,caught
+1490442,2,DB Sharma,India,24,17,3,0,141.18,1,run out
+1490442,2,RM Ghosh,India,26,16,2,2,162.5,1,caught
+1490442,2,AB Kaur,India,15,8,2,0,187.5,0,
+1490443,1,S Mandhana,India,45,58,8,0,77.59,1,caught
+1490443,1,Shafali Verma,India,87,78,7,2,111.54,1,caught
+1490443,1,JI Rodrigues,India,24,37,1,0,64.86,1,caught
+1490443,1,H Kaur,India,20,29,2,0,68.97,1,bowled
+1490443,1,DB Sharma,India,58,58,3,1,100.0,1,run out
+1490443,1,AB Kaur,India,12,14,1,0,85.71,1,caught and bowled
+1490443,1,RM Ghosh,India,34,24,3,2,141.67,1,caught
+1490443,1,RP Yadav,India,3,3,0,0,100.0,0,
+1490443,2,L Wolvaardt,South Africa,101,98,11,1,103.06,1,caught
+1490443,2,T Brits,South Africa,23,35,2,1,65.71,1,run out
+1490443,2,A Bosch,South Africa,0,6,0,0,0.0,1,lbw
+1490443,2,S Luus,South Africa,25,31,4,0,80.65,1,caught and bowled
+1490443,2,M Kapp,South Africa,4,5,0,0,80.0,1,caught
+1490443,2,S Jafta,South Africa,16,29,1,0,55.17,1,caught
+1490443,2,A Dercksen,South Africa,35,37,1,2,94.59,1,bowled
+1490443,2,CL Tryon,South Africa,9,8,1,0,112.5,1,lbw
+1490443,2,N de Klerk,South Africa,18,19,3,0,94.74,1,caught
+1490443,2,A Khaka,South Africa,1,7,0,0,14.29,1,run out
+357962,1,AA Deshpande,India,32,68,4,1,47.06,1,caught
+357962,1,A Chopra,India,0,8,0,0,0.0,1,lbw
+357962,1,MDT Kamini,India,3,14,0,0,21.43,1,caught and bowled
+357962,1,M Raj,India,59,90,9,0,65.56,1,caught
+357962,1,R Dhar,India,3,18,0,0,16.67,1,stumped
+357962,1,P Roy,India,4,31,0,0,12.9,1,caught
+357962,1,SK Naidu,India,0,3,0,0,0.0,1,caught
+357962,1,J Goswami,India,0,2,0,0,0.0,1,lbw
+357962,1,H Kaur,India,8,18,1,0,44.44,1,bowled
+357962,1,A Sharma,India,33,24,5,1,137.5,1,bowled
+357962,1,G Sultana,India,10,18,2,0,55.56,0,
+357962,2,SJ Taylor,England,27,43,3,0,62.79,1,caught
+357962,2,CMG Atkins,England,69,124,9,0,55.65,0,
+357962,2,SC Taylor,England,69,65,9,1,106.15,0,
+594891,1,PG Raut,India,72,94,7,0,76.6,1,lbw
+594891,1,MDT Kamini,India,100,146,11,1,68.49,1,run out
+594891,1,J Goswami,India,36,21,6,0,171.43,1,caught
+594891,1,H Kaur,India,36,22,4,2,163.64,1,caught
+594891,1,R Malhotra,India,3,6,0,0,50.0,1,caught
+594891,1,N Niranjana,India,2,5,0,0,40.0,1,run out
+594891,1,A Sharma,India,8,7,1,0,114.29,0,
+594891,1,M Raj,India,1,1,0,0,100.0,0,
+594891,2,Kycia A Knight,West Indies,0,2,0,0,0.0,1,run out
+594891,2,SR Taylor,West Indies,9,19,1,0,47.37,1,caught
+594891,2,SA Campbelle,West Indies,21,35,3,0,60.0,1,bowled
+594891,2,Kyshona A Knight,West Indies,11,43,1,0,25.58,1,bowled
+594891,2,DJS Dottin,West Indies,39,16,3,4,243.75,1,lbw
+594891,2,MR Aguilleira,West Indies,18,26,2,0,69.23,1,caught
+594891,2,SF Daley,West Indies,28,38,3,1,73.68,1,caught
+594891,2,SL Quintyne,West Indies,17,31,2,0,54.84,1,stumped
+594891,2,TD Smartt,West Indies,6,12,0,0,50.0,1,caught and bowled
+594891,2,A Mohammed,West Indies,10,33,0,0,30.3,0,
+594891,2,SC Selman,West Indies,2,12,0,0,16.67,1,caught
+594894,1,CM Edwards,England,9,15,2,0,60.0,1,bowled
+594894,1,DN Wyatt,England,15,18,3,0,83.33,1,lbw
+594894,1,A Brindle,England,31,64,3,0,48.44,1,run out
+594894,1,LS Greenway,England,2,7,0,0,28.57,1,lbw
+594894,1,HC Knight,England,38,62,2,0,61.29,1,bowled
+594894,1,JL Gunn,England,52,71,4,0,73.24,1,caught
+594894,1,AE Jones,England,41,49,4,0,83.67,1,bowled
+594894,1,KH Brunt,England,12,5,1,1,240.0,1,caught
+594894,1,D Hazell,England,19,8,3,0,237.5,0,
+594894,1,HL Colvin,England,4,1,1,0,400.0,0,
+594894,2,AC Jayangani,Sri Lanka,62,72,7,1,86.11,1,caught
+594894,2,BYA Mendis,Sri Lanka,46,90,6,0,51.11,1,caught
+594894,2,HASD Siriwardene,Sri Lanka,34,45,4,0,75.56,1,caught
+594894,2,PM Weerakkody,Sri Lanka,1,5,0,0,20.0,1,bowled
+594894,2,SK Dolawatte,Sri Lanka,4,10,0,0,40.0,1,caught
+594894,2,LE Kaushalya,Sri Lanka,56,41,5,3,136.59,1,run out
+594894,2,CR Seneviratna,Sri Lanka,14,23,1,0,60.87,1,bowled
+594894,2,SS Weerakkody,Sri Lanka,0,1,0,0,0.0,1,caught
+594894,2,HMD Rasangika,Sri Lanka,9,8,1,0,112.5,1,caught
+594894,2,MADD Surangika,Sri Lanka,8,5,0,1,160.0,0,
+594897,1,CM Edwards,England,109,123,16,0,88.62,1,run out
+594897,1,DN Wyatt,England,2,8,0,0,25.0,1,caught
+594897,1,SJ Taylor,England,35,72,3,0,48.61,1,run out
+594897,1,LS Greenway,England,29,27,5,0,107.41,1,caught
+594897,1,KH Brunt,England,21,16,4,0,131.25,1,caught
+594897,1,A Brindle,England,37,32,4,0,115.62,0,
+594897,1,JL Gunn,England,3,5,0,0,60.0,1,caught
+594897,1,HC Knight,England,2,2,0,0,100.0,1,run out
+594897,1,LA Marsh,England,13,11,2,0,118.18,1,caught
+594897,1,HL Colvin,England,6,4,1,0,150.0,0,
+594897,2,PG Raut,India,4,22,0,0,18.18,1,lbw
+594897,2,MDT Kamini,India,10,10,2,0,100.0,1,lbw
+594897,2,M Raj,India,8,12,2,0,66.67,1,caught
+594897,2,H Kaur,India,107,109,8,2,98.17,0,
+594897,2,KV Jain,India,56,92,5,0,60.87,1,caught
+594897,2,J Goswami,India,19,20,3,0,95.0,1,caught
+594897,2,R Malhotra,India,17,21,0,0,80.95,1,caught
+594897,2,A Sharma,India,0,1,0,0,0.0,1,caught
+594897,2,N Niranjana,India,0,1,0,0,0.0,1,caught
+594897,2,E Bisht,India,7,10,1,0,70.0,1,caught
+594897,2,G Sultana,India,2,2,0,0,100.0,0,
+594901,1,AC Jayangani,Sri Lanka,4,5,1,0,80.0,1,caught
+594901,1,HMD Rasangika,Sri Lanka,84,109,11,0,77.06,1,caught
+594901,1,BYA Mendis,Sri Lanka,55,80,8,0,68.75,1,caught
+594901,1,HASD Siriwardene,Sri Lanka,59,67,6,0,88.06,1,run out
+594901,1,LE Kaushalya,Sri Lanka,56,31,6,3,180.65,0,
+594901,1,SS Weerakkody,Sri Lanka,5,5,0,0,100.0,1,bowled
+594901,1,CR Seneviratna,Sri Lanka,3,3,0,0,100.0,0,
+594901,2,PG Raut,India,5,11,1,0,45.45,1,lbw
+594901,2,MDT Kamini,India,22,49,2,0,44.9,1,caught
+594901,2,M Raj,India,20,31,4,0,64.52,1,lbw
+594901,2,H Kaur,India,0,2,0,0,0.0,1,caught
+594901,2,KV Jain,India,8,22,1,0,36.36,1,bowled
+594901,2,R Malhotra,India,38,51,4,0,74.51,1,run out
+594901,2,J Goswami,India,22,32,2,0,68.75,1,caught
+594901,2,A Sharma,India,1,3,0,0,33.33,1,bowled
+594901,2,G Sultana,India,12,37,1,0,32.43,0,
+594901,2,E Bisht,India,1,6,0,0,16.67,1,caught
+594901,2,S Sharma,India,4,10,0,0,40.0,1,caught
+594904,1,MM Lanning,Australia,17,24,3,0,70.83,1,caught
+594904,1,RL Haynes,Australia,2,18,0,0,11.11,1,caught and bowled
+594904,1,JE Cameron,Australia,0,3,0,0,0.0,1,bowled
+594904,1,AJ Blackwell,Australia,4,3,1,0,133.33,1,caught
+594904,1,LC Sthalekar,Australia,41,59,4,0,69.49,1,bowled
+594904,1,JM Fields,Australia,3,14,0,0,21.43,1,caught
+594904,1,SJ Coyte,Australia,44,81,6,0,54.32,1,caught
+594904,1,EA Osborne,Australia,0,9,0,0,0.0,1,caught
+594904,1,JL Hunter,Australia,16,35,1,0,45.71,0,
+594904,1,ML Schutt,Australia,2,15,0,0,13.33,1,caught
+594904,1,HL Ferling,Australia,4,7,1,0,57.14,1,caught
+594904,2,CM Edwards,England,8,9,2,0,88.89,1,lbw
+594904,2,DN Wyatt,England,16,24,3,0,66.67,1,caught
+594904,2,SJ Taylor,England,0,1,0,0,0.0,1,caught
+594904,2,LS Greenway,England,49,113,7,0,43.36,1,caught
+594904,2,A Brindle,England,1,4,0,0,25.0,1,caught
+594904,2,HC Knight,England,0,3,0,0,0.0,1,lbw
+594904,2,JL Gunn,England,0,4,0,0,0.0,1,bowled
+594904,2,LA Marsh,England,22,75,3,0,29.33,1,lbw
+594904,2,KH Brunt,England,2,16,0,0,12.5,1,caught
+594904,2,A Shrubsole,England,13,20,2,0,65.0,0,
+594904,2,HL Colvin,England,16,17,3,0,94.12,1,caught
+594907,1,AC Jayangani,Sri Lanka,10,25,2,0,40.0,1,caught
+594907,1,BYA Mendis,Sri Lanka,0,14,0,0,0.0,1,bowled
+594907,1,HMD Rasangika,Sri Lanka,43,77,7,0,55.84,1,caught
+594907,1,HASD Siriwardene,Sri Lanka,2,19,0,0,10.53,1,caught
+594907,1,SK Dolawatte,Sri Lanka,4,9,1,0,44.44,1,caught
+594907,1,MADD Surangika,Sri Lanka,21,46,4,0,45.65,1,caught
+594907,1,LE Kaushalya,Sri Lanka,0,4,0,0,0.0,1,caught
+594907,1,SS Weerakkody,Sri Lanka,13,11,2,0,118.18,1,bowled
+594907,1,CR Seneviratna,Sri Lanka,17,31,3,0,54.84,1,caught
+594907,1,KDU Prabodhani,Sri Lanka,9,31,2,0,29.03,0,
+594907,1,I Ranaweera,Sri Lanka,1,5,0,0,20.0,1,caught
+594907,2,MM Lanning,Australia,37,36,6,1,102.78,1,caught
+594907,2,RL Haynes,Australia,71,61,9,2,116.39,0,
+594907,2,JE Cameron,Australia,22,37,2,0,59.46,0,
+594909,1,Kycia A Knight,West Indies,15,29,2,0,51.72,1,lbw
+594909,1,NY McLean,West Indies,4,3,1,0,133.33,1,lbw
+594909,1,SR Taylor,West Indies,49,53,7,0,92.45,1,caught
+594909,1,Kyshona A Knight,West Indies,13,32,1,0,40.62,1,caught
+594909,1,MR Aguilleira,West Indies,4,19,1,0,21.05,1,caught
+594909,1,DJS Dottin,West Indies,27,21,4,1,128.57,1,caught
+594909,1,SF Daley,West Indies,37,64,3,0,57.81,1,caught
+594909,1,SA Campbelle,West Indies,11,27,2,0,40.74,1,run out
+594909,1,SC Selman,West Indies,6,20,0,0,30.0,1,bowled
+594909,1,A Mohammed,West Indies,31,32,4,0,96.88,0,
+594909,1,TD Smartt,West Indies,1,1,0,0,100.0,0,
+594909,2,FL Mackay,New Zealand,4,7,1,0,57.14,1,lbw
+594909,2,SW Bates,New Zealand,30,44,3,0,68.18,1,caught and bowled
+594909,2,SJ McGlashan,New Zealand,18,24,4,0,75.0,1,bowled
+594909,2,SFM Devine,New Zealand,9,14,2,0,64.29,1,lbw
+594909,2,KT Perkins,New Zealand,11,31,0,1,35.48,1,run out
+594909,2,NJ Browne,New Zealand,4,12,1,0,33.33,1,lbw
+594909,2,KE Broadmore,New Zealand,8,25,1,0,32.0,1,lbw
+594909,2,RH Priest,New Zealand,36,65,4,0,55.38,1,run out
+594909,2,MJG Nielsen,New Zealand,16,26,2,0,61.54,1,caught
+594909,2,LMM Tahuhu,New Zealand,7,17,0,0,41.18,1,caught and bowled
+594909,2,SEA Ruck,New Zealand,0,5,0,0,0.0,0,
+594912,1,CM Edwards,England,54,83,9,0,65.06,1,caught
+594912,1,DN Wyatt,England,26,51,5,0,50.98,1,caught
+594912,1,SJ Taylor,England,88,79,16,1,111.39,1,caught
+594912,1,LS Greenway,England,22,40,3,0,55.0,1,stumped
+594912,1,LA Marsh,England,11,14,2,0,78.57,1,bowled
+594912,1,A Brindle,England,1,5,0,0,20.0,1,caught
+594912,1,HC Knight,England,28,18,4,0,155.56,0,
+594912,1,JL Gunn,England,23,11,2,1,209.09,0,
+594912,2,LR Doolan,New Zealand,1,6,0,0,16.67,1,stumped
+594912,2,SW Bates,New Zealand,79,94,12,1,84.04,1,bowled
+594912,2,AE Satterthwaite,New Zealand,103,126,16,0,81.75,1,caught
+594912,2,SFM Devine,New Zealand,17,30,2,0,56.67,1,caught
+594912,2,SJ McGlashan,New Zealand,15,15,1,1,100.0,1,caught
+594912,2,NJ Browne,New Zealand,1,4,0,0,25.0,1,bowled
+594912,2,KT Perkins,New Zealand,8,6,0,1,133.33,1,bowled
+594912,2,RH Priest,New Zealand,1,3,0,0,33.33,1,caught
+594912,2,MJG Nielsen,New Zealand,0,2,0,0,0.0,1,bowled
+594912,2,RH Candy,New Zealand,4,7,0,0,57.14,0,
+594912,2,SEA Ruck,New Zealand,6,7,0,0,85.71,0,
+594914,1,FL Mackay,New Zealand,30,62,4,0,48.39,1,bowled
+594914,1,SW Bates,New Zealand,21,41,4,0,51.22,1,caught
+594914,1,AE Satterthwaite,New Zealand,85,95,11,0,89.47,1,bowled
+594914,1,SFM Devine,New Zealand,8,21,0,0,38.1,1,run out
+594914,1,SJ McGlashan,New Zealand,1,9,0,0,11.11,1,caught and bowled
+594914,1,KT Perkins,New Zealand,20,37,0,0,54.05,1,stumped
+594914,1,RH Priest,New Zealand,15,16,0,1,93.75,1,caught
+594914,1,LR Doolan,New Zealand,8,7,1,0,114.29,1,caught
+594914,1,NJ Browne,New Zealand,27,12,4,1,225.0,0,
+594914,2,CM Edwards,England,106,121,15,0,87.6,0,
+594914,2,DN Wyatt,England,5,12,1,0,41.67,1,caught
+594914,2,SJ Taylor,England,28,48,4,0,58.33,1,caught
+594914,2,LS Greenway,England,31,47,5,0,65.96,1,caught
+594914,2,A Brindle,England,27,33,5,0,81.82,1,caught
+594914,2,HC Knight,England,0,3,0,0,0.0,1,caught
+594914,2,JL Gunn,England,1,3,0,0,33.33,1,run out
+594914,2,LA Marsh,England,13,15,3,0,86.67,0,
+594915,1,MM Lanning,Australia,31,41,6,0,75.61,1,caught
+594915,1,RL Haynes,Australia,52,74,6,0,70.27,1,caught
+594915,1,JE Cameron,Australia,75,76,8,2,98.68,1,caught
+594915,1,AJ Blackwell,Australia,3,9,0,0,33.33,1,caught
+594915,1,LC Sthalekar,Australia,12,20,1,0,60.0,1,caught
+594915,1,SJ Coyte,Australia,7,12,1,0,58.33,1,caught
+594915,1,JM Fields,Australia,36,38,4,0,94.74,0,
+594915,1,EA Osborne,Australia,7,12,0,0,58.33,1,caught
+594915,1,EA Perry,Australia,25,22,2,1,113.64,0,
+594915,2,Kycia A Knight,West Indies,17,35,2,0,48.57,1,lbw
+594915,2,NY McLean,West Indies,13,30,2,0,43.33,1,lbw
+594915,2,SR Taylor,West Indies,5,9,1,0,55.56,1,caught and bowled
+594915,2,Kyshona A Knight,West Indies,21,57,3,0,36.84,0,
+594915,2,MR Aguilleira,West Indies,23,36,2,1,63.89,1,bowled
+594915,2,DJS Dottin,West Indies,22,28,1,2,78.57,1,bowled
+594915,2,SA Campbelle,West Indies,11,13,1,0,84.62,1,caught
+594915,2,SF Daley,West Indies,2,17,0,0,11.76,1,caught and bowled
+594915,2,SL Quintyne,West Indies,2,7,0,0,28.57,1,caught
+594915,2,A Mohammed,West Indies,14,26,2,0,53.85,1,caught
+594915,2,TD Smartt,West Indies,0,1,0,0,0.0,1,caught

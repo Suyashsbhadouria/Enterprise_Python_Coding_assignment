@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Match Analysis - The Kinetic Analyst</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#67001f",
+                    "surface": "#0b1326",
+                    "surface-bright": "#31394d",
+                    "on-primary-fixed-variant": "#39475f",
+                    "secondary-container": "#00cfbf",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed-variant": "#910030",
+                    "on-surface": "#dae2fd",
+                    "surface-container-highest": "#2d3449",
+                    "on-error": "#690005",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#400010",
+                    "on-tertiary-container": "#f8275e",
+                    "secondary-fixed-dim": "#2addcd",
+                    "on-primary": "#233148",
+                    "primary-container": "#0a192f",
+                    "on-primary-fixed": "#0d1c32",
+                    "tertiary-fixed": "#ffd9dc",
+                    "surface-container": "#171f33",
+                    "on-surface-variant": "#c5c6cd",
+                    "on-secondary-fixed-variant": "#005049",
+                    "surface-dim": "#0b1326",
+                    "on-secondary": "#003732",
+                    "tertiary": "#ffb2ba",
+                    "surface-variant": "#2d3449",
+                    "on-background": "#dae2fd",
+                    "on-secondary-container": "#00534c",
+                    "outline-variant": "#44474d",
+                    "on-primary-container": "#74829d",
+                    "primary": "#b9c7e4",
+                    "inverse-on-surface": "#283044",
+                    "surface-tint": "#b9c7e4",
+                    "tertiary-fixed-dim": "#ffb2ba",
+                    "outline": "#8f9097",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed": "#00201d",
+                    "surface-container-high": "#222a3d",
+                    "primary-fixed-dim": "#b9c7e4",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-container-low": "#131b2e",
+                    "inverse-primary": "#515f78",
+                    "surface-container-lowest": "#060e20",
+                    "secondary-fixed": "#57fae9",
+                    "background": "#0b1326",
+                    "tertiary-container": "#3b000e",
+                    "secondary": "#43ecdb",
+                    "inverse-surface": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": [
+                            "Manrope"
+                    ],
+                    "body": [
+                            "Inter"
+                    ],
+                    "label": [
+                            "Inter"
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-secondary/30 selection:text-secondary min-h-screen flex">
+<!-- SideNavBar (from JSON) -->
+<nav class="h-screen w-72 fixed left-0 top-0 bg-[#131b2e] z-50 flex flex-col py-8 space-y-2">
+<div class="px-6 mb-8">
+<h1 class="font-manrope font-extrabold text-[#43ecdb] tracking-tighter text-xl">The Kinetic Analyst</h1>
+</div>
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden flex-shrink-0">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="close up professional portrait of female data analyst in dark studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBweSVdc5cfStde_YR7tFvjLmLpyki3F4osVc4WocTmBDKCIPzscUc8jKR7aRllOXec-EFBWZZh8KQtdlDmR-UkyPhc_MFIRYcrH-uH9UiweWP4fV3qD8wL6qitP5UaKMKAAkbnjeen7HePgVsU77SzenLXNSTjkAHKVrNKqZrcPGWhRmqIZpKs8filIdTaPeJBzsxOTNvKPVBKOaIheFjzAg0wsQeoMC7H86HxPrfFIFeftQSQA-GGz9DUXXjrzcbSS93MTA4YSrY"/>
+</div>
+<div>
+<h2 class="font-headline font-bold text-sm tracking-tight text-on-surface">The Kinetic Analyst</h2>
+<p class="font-body text-xs text-on-surface-variant">Elite Performance Data</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col space-y-2">
+<!-- Active State: Matches -->
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-headline font-bold text-sm">Overview</span>
+</a>
+<a class="flex items-center gap-4 bg-[#222a3d] text-[#43ecdb] px-6 py-4 border-l-4 border-[#43ecdb] translate-x-1 scale-100" href="#">
+<span class="material-symbols-outlined icon-fill">sports_cricket</span>
+<span class="font-headline font-bold text-sm">Matches</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-headline font-bold text-sm">Batters</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-headline font-bold text-sm">Teams</span>
+</a>
+</div>
+<div class="px-6 mt-auto space-y-4">
+<button class="w-full bg-secondary text-on-secondary rounded-xl py-3 px-4 font-headline font-bold text-sm hover:bg-secondary-container transition-colors shadow-[0_0_15px_rgba(67,236,219,0.2)]">Live Match Center</button>
+<div class="pt-4 space-y-2">
+<a class="flex items-center gap-4 text-slate-400 px-2 py-3 hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-headline font-bold text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 px-2 py-3 hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-headline font-bold text-sm">Support</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- TopAppBar (from JSON) -->
+<header class="docked fixed top-0 right-0 w-[calc(100%-18rem)] z-40 bg-[#0b1326]/80 backdrop-blur-md h-20 flex justify-between items-center px-12">
+<div class="flex-1">
+<!-- Empty space for left alignment if needed, brand is hidden per JSON -->
+<h1 class="font-manrope font-bold text-2xl text-on-surface tracking-tight">Match Analysis</h1>
+</div>
+<div class="flex items-center gap-6">
+<!-- Search Bar on right -->
+<div class="relative focus-within:ring-2 focus-within:ring-[#43ecdb]/30 rounded-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="bg-surface-container-highest border-none text-sm text-on-surface rounded-full py-2 pl-10 pr-4 focus:ring-0 w-64 placeholder:text-slate-400 font-body" placeholder="Search matches..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-slate-300 hover:bg-[#222a3d] rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<button class="text-slate-300 hover:bg-[#222a3d] rounded-full p-2 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-tertiary rounded-full"></span>
+</button>
+<button class="text-slate-300 hover:bg-[#222a3d] rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-72 mt-20 p-8 w-full">
+<!-- Filters Row -->
+<section class="mb-12 flex items-center justify-between">
+<div class="flex gap-4">
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-body text-sm rounded-xl py-2.5 pl-4 pr-10 border border-outline-variant/15 focus:border-secondary focus:ring-0 outline-none cursor-pointer">
+<option>All Cities</option>
+<option>London</option>
+<option>Melbourne</option>
+<option>Mumbai</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-sm">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-body text-sm rounded-xl py-2.5 pl-4 pr-10 border border-outline-variant/15 focus:border-secondary focus:ring-0 outline-none cursor-pointer">
+<option>All Teams</option>
+<option>Australia</option>
+<option>England</option>
+<option>India</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-sm">expand_more</span>
+</div>
+</div>
+<button class="flex items-center gap-2 text-secondary font-headline font-bold text-sm hover:text-secondary-container transition-colors">
+<span class="material-symbols-outlined text-sm">tune</span>
+                Advanced Filters
+            </button>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Main Data Table (Spans 8 columns) -->
+<section class="col-span-12 xl:col-span-8 bg-surface-container-high rounded-xl p-0 overflow-hidden relative">
+<div class="p-6 pb-0 pl-8">
+<h2 class="font-headline font-bold text-xl text-on-surface tracking-tight mb-1">Match History</h2>
+<p class="font-body text-sm text-on-surface-variant mb-6">Comprehensive record of all tournament fixtures.</p>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-body text-xs uppercase tracking-wider">
+<th class="py-4 px-8 font-medium">Match ID</th>
+<th class="py-4 px-4 font-medium">Date</th>
+<th class="py-4 px-4 font-medium">Teams</th>
+<th class="py-4 px-4 font-medium">Venue &amp; City</th>
+<th class="py-4 px-8 font-medium text-right">Winner</th>
+</tr>
+</thead>
+<tbody class="text-sm font-body divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-5 px-8 text-on-surface-variant font-mono text-xs">#M-1042</td>
+<td class="py-5 px-4 text-on-surface">Oct 12, 2023</td>
+<td class="py-5 px-4">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface font-medium">Australia</span>
+<span class="text-on-surface-variant text-xs">England</span>
+</div>
+</td>
+<td class="py-5 px-4">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface">Lord's</span>
+<span class="text-on-surface-variant text-xs">London</span>
+</div>
+</td>
+<td class="py-5 px-8 text-right">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold font-headline">Australia</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-5 px-8 text-on-surface-variant font-mono text-xs">#M-1041</td>
+<td class="py-5 px-4 text-on-surface">Oct 10, 2023</td>
+<td class="py-5 px-4">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface font-medium">India</span>
+<span class="text-on-surface-variant text-xs">New Zealand</span>
+</div>
+</td>
+<td class="py-5 px-4">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface">Wankhede</span>
+<span class="text-on-surface-variant text-xs">Mumbai</span>
+</div>
+</td>
+<td class="py-5 px-8 text-right">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold font-headline">India</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-5 px-8 text-on-surface-variant font-mono text-xs">#M-1040</td>
+<td class="py-5 px-4 text-on-surface">Oct 08, 2023</td>
+<td class="py-5 px-4">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface font-medium">South Africa</span>
+<span class="text-on-surface-variant text-xs">West Indies</span>
+</div>
+</td>
+<td class="py-5 px-4">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface">Newlands</span>
+<span class="text-on-surface-variant text-xs">Cape Town</span>
+</div>
+</td>
+<td class="py-5 px-8 text-right">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold font-headline">South Africa</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="py-5 px-8 text-on-surface-variant font-mono text-xs">#M-1039</td>
+<td class="py-5 px-4 text-on-surface">Oct 05, 2023</td>
+<td class="py-5 px-4">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface-variant text-xs">Pakistan</span>
+<span class="text-on-surface font-medium">Sri Lanka</span>
+</div>
+</td>
+<td class="py-5 px-4">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface">Gaddafi Stadium</span>
+<span class="text-on-surface-variant text-xs">Lahore</span>
+</div>
+</td>
+<td class="py-5 px-8 text-right">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-tertiary/10 text-tertiary text-xs font-bold font-headline">Sri Lanka</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 bg-surface-container-low/50 flex justify-center border-t border-outline-variant/10">
+<button class="text-secondary font-headline text-xs font-bold tracking-wide uppercase hover:text-secondary-container transition-colors">Load More Matches</button>
+</div>
+</section>
+<!-- Featured Section: Venue Performance (Spans 4 columns) -->
+<section class="col-span-12 xl:col-span-4 space-y-8">
+<!-- City Match Volume Card -->
+<div class="bg-surface-container-high rounded-xl p-6 relative overflow-hidden group">
+<!-- Subtle ambient glow -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-all duration-500"></div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-6 relative z-10">Venue Volume</h3>
+<div class="space-y-5 relative z-10">
+<!-- Stat Row 1 -->
+<div class="flex items-end justify-between">
+<div>
+<p class="font-headline text-2xl font-extrabold text-secondary tracking-tight">24</p>
+<p class="font-body text-xs text-on-surface-variant uppercase tracking-wider mt-1">London</p>
+</div>
+<div class="w-1/2 h-2 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-full rounded-full"></div>
+</div>
+</div>
+<!-- Stat Row 2 -->
+<div class="flex items-end justify-between">
+<div>
+<p class="font-headline text-2xl font-extrabold text-on-surface tracking-tight">18</p>
+<p class="font-body text-xs text-on-surface-variant uppercase tracking-wider mt-1">Mumbai</p>
+</div>
+<div class="w-1/2 h-2 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-surface-bright w-[75%] rounded-full"></div>
+</div>
+</div>
+<!-- Stat Row 3 -->
+<div class="flex items-end justify-between">
+<div>
+<p class="font-headline text-2xl font-extrabold text-on-surface tracking-tight">12</p>
+<p class="font-body text-xs text-on-surface-variant uppercase tracking-wider mt-1">Melbourne</p>
+</div>
+<div class="w-1/2 h-2 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-surface-bright w-[50%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Highest Scores Card (Glassmorphism highlight) -->
+<div class="bg-surface-variant/60 backdrop-blur-xl rounded-xl p-6 border border-outline-variant/15 relative">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-lg text-on-surface">Highest Avg Score</h3>
+<span class="material-symbols-outlined text-tertiary">trending_up</span>
+</div>
+<div class="mt-4">
+<h4 class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter mb-1">284<span class="text-lg text-on-surface-variant font-medium">.5</span></h4>
+<p class="font-body text-sm text-tertiary font-medium">Wankhede Stadium, Mumbai</p>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant/10">
+<p class="font-body text-xs text-on-surface-variant leading-relaxed">
+                             Matches hosted in Mumbai see significantly higher run totals, favoring aggressive top-order batting strategies.
+                         </p>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

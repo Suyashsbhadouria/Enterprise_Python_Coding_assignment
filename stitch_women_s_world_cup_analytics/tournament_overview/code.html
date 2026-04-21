@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Kinetic Analyst - Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#67001f",
+                    "surface": "#0b1326",
+                    "surface-bright": "#31394d",
+                    "on-primary-fixed-variant": "#39475f",
+                    "secondary-container": "#00cfbf",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed-variant": "#910030",
+                    "on-surface": "#dae2fd",
+                    "surface-container-highest": "#2d3449",
+                    "on-error": "#690005",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#400010",
+                    "on-tertiary-container": "#f8275e",
+                    "secondary-fixed-dim": "#2addcd",
+                    "on-primary": "#233148",
+                    "primary-container": "#0a192f",
+                    "on-primary-fixed": "#0d1c32",
+                    "tertiary-fixed": "#ffd9dc",
+                    "surface-container": "#171f33",
+                    "on-surface-variant": "#c5c6cd",
+                    "on-secondary-fixed-variant": "#005049",
+                    "surface-dim": "#0b1326",
+                    "on-secondary": "#003732",
+                    "tertiary": "#ffb2ba",
+                    "surface-variant": "#2d3449",
+                    "on-background": "#dae2fd",
+                    "on-secondary-container": "#00534c",
+                    "outline-variant": "#44474d",
+                    "on-primary-container": "#74829d",
+                    "primary": "#b9c7e4",
+                    "inverse-on-surface": "#283044",
+                    "surface-tint": "#b9c7e4",
+                    "tertiary-fixed-dim": "#ffb2ba",
+                    "outline": "#8f9097",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed": "#00201d",
+                    "surface-container-high": "#222a3d",
+                    "primary-fixed-dim": "#b9c7e4",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-container-low": "#131b2e",
+                    "inverse-primary": "#515f78",
+                    "surface-container-lowest": "#060e20",
+                    "secondary-fixed": "#57fae9",
+                    "background": "#0b1326",
+                    "tertiary-container": "#3b000e",
+                    "secondary": "#43ecdb",
+                    "inverse-surface": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-headline { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(45, 52, 73, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #43ecdb 0%, #00cfbf 100%);
+        }
+        .ghost-border {
+            border: 1px solid rgba(68, 71, 77, 0.15);
+        }
+        .bg-surface-shift {
+            background-color: var(--tw-colors-surface-container-low);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex">
+<!-- SideNavBar -->
+<nav class="h-screen w-72 fixed left-0 top-0 bg-[#131b2e] no borders tonal shift flat no shadows flex flex-col h-full py-8 space-y-2 z-50">
+<div class="px-6 mb-8">
+<h1 class="font-manrope font-extrabold text-[#43ecdb] tracking-tighter text-xl">The Kinetic Analyst</h1>
+</div>
+<div class="flex-1 flex flex-col gap-2 w-full">
+<a class="flex items-center gap-4 bg-[#222a3d] text-[#43ecdb] px-6 py-4 border-l-4 border-[#43ecdb]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-manrope font-bold tracking-tight text-sm">Overview</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">sports_cricket</span>
+<span class="font-manrope font-bold tracking-tight text-sm">Matches</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-manrope font-bold tracking-tight text-sm">Batters</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-manrope font-bold tracking-tight text-sm">Teams</span>
+</a>
+</div>
+<div class="px-6 mb-8 mt-auto w-full">
+<button class="w-full signature-gradient text-on-secondary font-bold py-3 px-4 rounded-xl shadow-[0_24px_48px_rgba(6,14,32,0.4)] hover:opacity-90 transition-opacity">
+                Live Match Center
+            </button>
+</div>
+<div class="flex flex-col gap-2 w-full mt-4 border-t border-outline-variant/15 pt-4">
+<a class="flex items-center gap-4 text-slate-400 px-6 py-3 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-inter text-xs">Settings</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 px-6 py-3 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-inter text-xs">Support</span>
+</a>
+</div>
+<div class="px-6 mt-6 flex items-center gap-3 w-full">
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover ghost-border" data-alt="Close up portrait of a young woman with dark hair, soft natural lighting, professional headshot style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe9VyqK6Q3lNI186o6xCugFtQ6xMqZT85AZW2KLqXUs7MITR7kMpqrhbBkfQlKHSVnTIHIlsu9hH-Pzv2zTWBfcLffk3pe458SSjKZXNgPszgYfqXrP7p3W3h7UYI4ZAlYkrE4qtK06mZ8F0d52h4tdghuozRzKx5iiwaIrBbDBgDssk-50LRXmVfpZjmnLCKfmMqsHxsuX0aqpyutImehs2fCcap2q3sNSPUMPVTZDWA-NlACNtE7LCRyc85xPFgvKA9xbQ4zetQ"/>
+<div>
+<p class="font-manrope font-bold text-sm text-on-surface">The Kinetic Analyst</p>
+<p class="font-inter text-xs text-on-surface-variant">Elite Performance Data</p>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-72 flex-1 min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="docked fixed top-0 right-0 w-[calc(100%-18rem)] z-40 bg-[#0b1326]/80 backdrop-blur-md tonal transition using surface-container-low flat no shadows flex justify-between items-center px-12 h-20">
+<div class="text-[#43ecdb] font-manrope font-bold text-xl tracking-tight hidden">
+                The Kinetic Analyst
+            </div>
+<!-- Search on Right -->
+<div class="flex items-center justify-end w-full gap-6">
+<div class="relative w-64 focus-within:ring-2 focus-within:ring-[#43ecdb]/30 rounded-full transition-all">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-300 text-sm">search</span>
+<input class="w-full bg-surface-container-highest text-on-surface placeholder:text-slate-400 font-inter text-sm rounded-full py-2 pl-10 pr-4 border-none focus:ring-0" placeholder="Search players, matches..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-slate-300 hover:bg-[#222a3d] rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<button class="text-slate-300 hover:bg-[#222a3d] rounded-full p-2 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-tertiary rounded-full"></span>
+</button>
+<button class="text-slate-300 hover:bg-[#222a3d] rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<div class="mt-28 px-12 max-w-7xl mx-auto">
+<!-- Page Title -->
+<div class="mb-10">
+<h2 class="font-headline text-4xl text-on-surface tracking-tight font-extrabold">Tournament Overview</h2>
+<p class="font-body text-on-surface-variant mt-2 text-sm max-w-2xl">High-level performance metrics and aggregated tournament data across all participating nations and venues.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6 auto-rows-[minmax(120px,auto)]">
+<!-- Summary Metric 1: Total Matches -->
+<div class="col-span-12 md:col-span-3 bg-surface-container-high rounded-xl p-6 relative overflow-hidden ghost-border flex flex-col justify-between">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-secondary/10 rounded-full blur-2xl"></div>
+<div>
+<p class="font-body text-on-surface-variant text-sm font-medium mb-1">Total Matches</p>
+<h3 class="font-headline text-4xl font-bold text-on-surface">31</h3>
+</div>
+<div class="flex items-center mt-4 text-secondary text-sm font-medium">
+<span class="material-symbols-outlined text-[18px] mr-1">check_circle</span>
+<span>Tournament Complete</span>
+</div>
+</div>
+<!-- Summary Metric 2: Total Runs -->
+<div class="col-span-12 md:col-span-3 bg-surface-container-high rounded-xl p-6 relative overflow-hidden ghost-border flex flex-col justify-between pl-8">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-tertiary/10 rounded-full blur-2xl"></div>
+<div>
+<p class="font-body text-on-surface-variant text-sm font-medium mb-1">Total Runs Scored</p>
+<h3 class="font-headline text-4xl font-bold text-on-surface">12,458</h3>
+</div>
+<div class="flex items-center mt-4 text-tertiary text-sm font-medium">
+<span class="material-symbols-outlined text-[18px] mr-1">trending_up</span>
+<span>High Scoring Event</span>
+</div>
+</div>
+<!-- Summary Metric 3: Teams -->
+<div class="col-span-12 md:col-span-3 bg-surface-container-low rounded-xl p-6 relative overflow-hidden flex flex-col justify-between">
+<div>
+<p class="font-body text-on-surface-variant text-sm font-medium mb-1">Participating Teams</p>
+<h3 class="font-headline text-3xl font-bold text-on-surface">8</h3>
+</div>
+<div class="flex -space-x-2 mt-4">
+<div class="w-8 h-8 rounded-full bg-surface-bright border-2 border-surface flex items-center justify-center text-[10px] font-bold text-on-surface">AUS</div>
+<div class="w-8 h-8 rounded-full bg-surface-bright border-2 border-surface flex items-center justify-center text-[10px] font-bold text-on-surface">ENG</div>
+<div class="w-8 h-8 rounded-full bg-surface-bright border-2 border-surface flex items-center justify-center text-[10px] font-bold text-on-surface">IND</div>
+<div class="w-8 h-8 rounded-full bg-surface-bright border-2 border-surface flex items-center justify-center text-[10px] font-bold text-on-surface">+5</div>
+</div>
+</div>
+<!-- Summary Metric 4: Venues -->
+<div class="col-span-12 md:col-span-3 bg-surface-container-low rounded-xl p-6 relative overflow-hidden flex flex-col justify-between">
+<div>
+<p class="font-body text-on-surface-variant text-sm font-medium mb-1">Host Venues</p>
+<h3 class="font-headline text-3xl font-bold text-on-surface">6</h3>
+</div>
+<div class="mt-4 text-sm font-body text-on-surface-variant">
+                        Across New Zealand
+                    </div>
+</div>
+<!-- Tournament Progress Chart (Large area) -->
+<div class="col-span-12 md:col-span-8 row-span-3 bg-surface-container-high rounded-xl p-6 pl-8 ghost-border">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline text-xl font-bold text-on-surface">Runs Progression Over Tournament</h3>
+<button class="text-tertiary font-body text-sm font-medium hover:opacity-80 transition-opacity">View Full Data</button>
+</div>
+<!-- Faux Chart Area -->
+<div class="w-full h-[300px] relative mt-8">
+<!-- Y-Axis -->
+<div class="absolute left-0 top-0 bottom-8 w-12 flex flex-col justify-between text-[10px] font-body text-on-surface-variant text-right pr-4">
+<span>600</span>
+<span>450</span>
+<span>300</span>
+<span>150</span>
+<span>0</span>
+</div>
+<!-- Grid Lines -->
+<div class="absolute left-12 right-0 top-0 bottom-8 flex flex-col justify-between">
+<div class="w-full border-t border-outline-variant/10 h-0"></div>
+<div class="w-full border-t border-outline-variant/10 h-0"></div>
+<div class="w-full border-t border-outline-variant/10 h-0"></div>
+<div class="w-full border-t border-outline-variant/10 h-0"></div>
+<div class="w-full border-t border-outline-variant/20 h-0"></div>
+</div>
+<!-- Faux Line (SVG) -->
+<svg class="absolute left-12 right-0 top-0 bottom-8 w-[calc(100%-3rem)] h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Drop Shadow for Line -->
+<filter id="glow">
+<fegaussianblur result="coloredBlur" stddeviation="2"></fegaussianblur>
+<femerge>
+<femergenode in="coloredBlur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+<path d="M0,80 Q10,75 20,60 T40,50 T60,30 T80,40 T100,10" fill="none" filter="url(#glow)" stroke="#43ecdb" stroke-width="2"></path>
+<!-- Gradient Fill under line -->
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#43ecdb" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#43ecdb" stop-opacity="0"></stop>
+</lineargradient>
+<path d="M0,80 Q10,75 20,60 T40,50 T60,30 T80,40 T100,10 L100,100 L0,100 Z" fill="url(#chartGradient)"></path>
+<!-- Data Points -->
+<circle cx="20" cy="60" fill="#0b1326" r="1.5" stroke="#43ecdb" stroke-width="1"></circle>
+<circle cx="40" cy="50" fill="#0b1326" r="1.5" stroke="#43ecdb" stroke-width="1"></circle>
+<circle cx="60" cy="30" fill="#0b1326" r="1.5" stroke="#43ecdb" stroke-width="1"></circle>
+<circle cx="80" cy="40" fill="#0b1326" r="1.5" stroke="#43ecdb" stroke-width="1"></circle>
+<circle cx="100" cy="10" fill="#ffb2ba" r="2" stroke="#0b1326" stroke-width="0.5"></circle>
+</svg>
+<!-- X-Axis -->
+<div class="absolute left-12 right-0 bottom-0 h-8 flex justify-between items-end text-[10px] font-body text-on-surface-variant pb-1">
+<span>Mar 4</span>
+<span>Mar 12</span>
+<span>Mar 20</span>
+<span>Mar 28</span>
+<span>Apr 3</span>
+</div>
+<!-- Tooltip overlay (Glassmorphism) -->
+<div class="absolute right-[10%] top-[10%] glass-panel rounded-lg p-3 w-32 shadow-[0_24px_48px_rgba(6,14,32,0.4)] ghost-border">
+<p class="font-body text-[10px] text-on-surface-variant mb-1">Final Match</p>
+<p class="font-headline text-lg font-bold text-on-surface leading-none">744 Runs</p>
+<p class="font-body text-[9px] text-secondary mt-1">AUS vs ENG</p>
+</div>
+</div>
+</div>
+<!-- Top Winning Teams (Bar Chart) -->
+<div class="col-span-12 md:col-span-4 row-span-3 bg-surface-container-high rounded-xl p-6 ghost-border flex flex-col">
+<h3 class="font-headline text-lg font-bold text-on-surface mb-6">Top Winning Teams</h3>
+<div class="flex-1 flex flex-col justify-end space-y-4">
+<!-- Bar 1 -->
+<div>
+<div class="flex justify-between text-xs font-body mb-1">
+<span class="text-on-surface font-medium">Australia</span>
+<span class="text-secondary font-bold">9 Wins</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Bar 2 -->
+<div>
+<div class="flex justify-between text-xs font-body mb-1">
+<span class="text-on-surface font-medium">England</span>
+<span class="text-surface-tint font-bold">5 Wins</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 55%;"></div>
+</div>
+</div>
+<!-- Bar 3 -->
+<div>
+<div class="flex justify-between text-xs font-body mb-1">
+<span class="text-on-surface font-medium">South Africa</span>
+<span class="text-surface-tint font-bold">5 Wins</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 55%;"></div>
+</div>
+</div>
+<!-- Bar 4 -->
+<div>
+<div class="flex justify-between text-xs font-body mb-1">
+<span class="text-on-surface font-medium">India</span>
+<span class="text-surface-tint font-bold">3 Wins</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full opacity-60" style="width: 33%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Match Results List -->
+<div class="col-span-12 bg-surface-container-low rounded-xl p-6 ghost-border mt-2">
+<div class="flex justify-between items-center mb-6 pl-2">
+<h3 class="font-headline text-lg font-bold text-on-surface">Recent Match Results</h3>
+<a class="text-secondary text-sm font-medium hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col">
+<!-- Match Row 1 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-highest transition-colors rounded-lg group">
+<div class="flex items-center gap-4 w-1/3">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-headline font-bold text-on-surface">Final</span>
+<span class="font-body text-xs text-on-surface-variant">Apr 3, 2022</span>
+</div>
+<div class="flex items-center justify-center gap-6 w-1/3">
+<span class="font-body text-sm font-bold text-on-surface">AUS</span>
+<span class="font-body text-xs text-on-surface-variant bg-surface-container px-2 py-1 rounded">vs</span>
+<span class="font-body text-sm font-medium text-on-surface-variant">ENG</span>
+</div>
+<div class="flex items-center justify-end gap-4 w-1/3 text-right">
+<div class="flex flex-col">
+<span class="font-body text-sm font-bold text-secondary">Australia won by 71 runs</span>
+<span class="font-body text-[10px] text-on-surface-variant">Hagley Oval, Christchurch</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Match Row 2 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-highest transition-colors rounded-lg group">
+<div class="flex items-center gap-4 w-1/3">
+<div class="w-2 h-2 rounded-full bg-surface-bright"></div>
+<span class="font-headline font-bold text-on-surface">Semi-Final 2</span>
+<span class="font-body text-xs text-on-surface-variant">Mar 31, 2022</span>
+</div>
+<div class="flex items-center justify-center gap-6 w-1/3">
+<span class="font-body text-sm font-bold text-on-surface">ENG</span>
+<span class="font-body text-xs text-on-surface-variant bg-surface-container px-2 py-1 rounded">vs</span>
+<span class="font-body text-sm font-medium text-on-surface-variant">SA</span>
+</div>
+<div class="flex items-center justify-end gap-4 w-1/3 text-right">
+<div class="flex flex-col">
+<span class="font-body text-sm font-bold text-on-surface">England won by 137 runs</span>
+<span class="font-body text-[10px] text-on-surface-variant">Hagley Oval, Christchurch</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Match Row 3 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-highest transition-colors rounded-lg group">
+<div class="flex items-center gap-4 w-1/3">
+<div class="w-2 h-2 rounded-full bg-surface-bright"></div>
+<span class="font-headline font-bold text-on-surface">Semi-Final 1</span>
+<span class="font-body text-xs text-on-surface-variant">Mar 30, 2022</span>
+</div>
+<div class="flex items-center justify-center gap-6 w-1/3">
+<span class="font-body text-sm font-bold text-on-surface">AUS</span>
+<span class="font-body text-xs text-on-surface-variant bg-surface-container px-2 py-1 rounded">vs</span>
+<span class="font-body text-sm font-medium text-on-surface-variant">WI</span>
+</div>
+<div class="flex items-center justify-end gap-4 w-1/3 text-right">
+<div class="flex flex-col">
+<span class="font-body text-sm font-bold text-on-surface">Australia won by 157 runs</span>
+<span class="font-body text-[10px] text-on-surface-variant">Basin Reserve, Wellington</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

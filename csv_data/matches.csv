@@ -1,0 +1,103 @@
+match_id,date,city,venue,team1,team2,winner,win_by,win_margin,event_name,event_stage,match_type,gender,toss_winner,toss_decision,player_of_match,season,overs
+1085945,2017-06-24,Bristol,County Ground,New Zealand,Sri Lanka,New Zealand,wickets,9,ICC Women's World Cup,,ODI,female,New Zealand,field,HR Huddleston,2017,50
+1085946,2017-06-24,Derby,County Ground,England,India,India,runs,35,ICC Women's World Cup,,ODI,female,England,field,S Mandhana,2017,50
+1085947,2017-06-25,Leicester,Grace Road,Pakistan,South Africa,South Africa,wickets,3,ICC Women's World Cup,,ODI,female,South Africa,field,S Ismail,2017,50
+1085948,2017-06-26,Taunton,County Ground,Australia,West Indies,Australia,wickets,8,ICC Women's World Cup,,ODI,female,West Indies,bat,NE Bolton,2017,50
+1085949,2017-06-27,Leicester,Grace Road,England,Pakistan,England,runs,107,ICC Women's World Cup,,ODI,female,Pakistan,field,NR Sciver,2017,50
+1085951,2017-06-29,Taunton,County Ground,India,West Indies,India,wickets,7,ICC Women's World Cup,,ODI,female,India,field,S Mandhana,2017,50
+1085952,2017-06-29,Bristol,County Ground,Australia,Sri Lanka,Australia,wickets,8,ICC Women's World Cup,,ODI,female,Australia,field,AC Jayangani,2017,50
+1085953,2017-07-02,Taunton,County Ground,England,Sri Lanka,England,wickets,7,ICC Women's World Cup,,ODI,female,Sri Lanka,bat,LA Marsh,2017,50
+1085954,2017-07-02,Bristol,County Ground,Australia,New Zealand,Australia,wickets,5,ICC Women's World Cup,,ODI,female,New Zealand,bat,EA Perry,2017,50
+1085955,2017-07-02,Derby,County Ground,India,Pakistan,India,runs,95,ICC Women's World Cup,,ODI,female,India,bat,E Bisht,2017,50
+1085956,2017-07-02,Leicester,Grace Road,South Africa,West Indies,South Africa,wickets,10,ICC Women's World Cup,,ODI,female,South Africa,field,M Kapp,2017,50
+1085957,2017-07-05,Bristol,County Ground,England,South Africa,England,runs,68,ICC Women's World Cup,,ODI,female,England,bat,SJ Taylor,2017,50
+1085958,2017-07-05,Derby,County Ground,India,Sri Lanka,India,runs,16,ICC Women's World Cup,,ODI,female,India,bat,DB Sharma,2017,50
+1085959,2017-07-05,Leicester,Grace Road,Australia,Pakistan,Australia,runs,159,ICC Women's World Cup,,ODI,female,Australia,bat,EJ Villani,2017,50
+1085960,2017-07-06,Taunton,County Ground,New Zealand,West Indies,New Zealand,wickets,8,ICC Women's World Cup,,ODI,female,New Zealand,field,LM Kasperek,2017,50
+1085961,2017-07-08,Taunton,County Ground,New Zealand,Pakistan,New Zealand,wickets,8,ICC Women's World Cup,,ODI,female,Pakistan,bat,HM Rowe,2017,50
+1085962,2017-07-08,Leicester,Grace Road,India,South Africa,South Africa,runs,115,ICC Women's World Cup,,ODI,female,India,field,D van Niekerk,2017,50
+1085963,2017-07-09,Bristol,County Ground,England,Australia,England,runs,3,ICC Women's World Cup,,ODI,female,England,bat,KH Brunt,2017,50
+1085964,2017-07-09,Derby,County Ground,Sri Lanka,West Indies,West Indies,runs,47,ICC Women's World Cup,,ODI,female,Sri Lanka,field,A Mohammed,2017,50
+1085965,2017-07-11,Leicester,Grace Road,Pakistan,West Indies,West Indies,runs,19,ICC Women's World Cup,,ODI,female,Pakistan,field,DJS Dottin,2017,50
+1085966,2017-07-12,Taunton,County Ground,South Africa,Sri Lanka,South Africa,wickets,8,ICC Women's World Cup,,ODI,female,Sri Lanka,bat,D van Niekerk,2017,50
+1085967,2017-07-12,Bristol,County Ground,Australia,India,Australia,wickets,8,ICC Women's World Cup,,ODI,female,Australia,field,MM Lanning,2017,50
+1085968,2017-07-12,Derby,County Ground,England,New Zealand,England,runs,75,ICC Women's World Cup,,ODI,female,England,bat,NR Sciver,2017,50
+1085969,2017-07-15,Taunton,County Ground,Australia,South Africa,Australia,runs,59,ICC Women's World Cup,,ODI,female,Australia,bat,EA Perry,2017,50
+1085970,2017-07-15,Bristol,County Ground,England,West Indies,England,runs,92,ICC Women's World Cup,,ODI,female,West Indies,field,HC Knight,2017,50
+1085971,2017-07-15,Derby,County Ground,India,New Zealand,India,runs,186,ICC Women's World Cup,,ODI,female,New Zealand,field,M Raj,2017,50
+1085972,2017-07-15,Leicester,Grace Road,Pakistan,Sri Lanka,Sri Lanka,runs,15,ICC Women's World Cup,,ODI,female,Sri Lanka,bat,HHC Gunaratne,2017,50
+1085973,2017-07-18,Bristol,County Ground,South Africa,England,England,wickets,2,ICC Women's World Cup,Semi Final,ODI,female,South Africa,bat,SJ Taylor,2017,50
+1085974,2017-07-20,Derby,County Ground,India,Australia,India,runs,36,ICC Women's World Cup,Semi Final,ODI,female,India,bat,H Kaur,2017,50
+1085975,2017-07-23,London,Lord's,England,India,England,runs,9,ICC Women's World Cup,Final,ODI,female,England,bat,A Shrubsole,2017,50
+1243908,2022-03-04,Mount Maunganui,"Bay Oval, Mount Maunganui",West Indies,New Zealand,West Indies,runs,3,ICC Women's World Cup,,ODI,female,New Zealand,field,HK Matthews,2021/22,50
+1243909,2022-03-05,Dunedin,"University Oval, Dunedin",South Africa,Bangladesh,South Africa,runs,32,ICC Women's World Cup,,ODI,female,Bangladesh,field,A Khaka,2021/22,50
+1243910,2022-03-05,Hamilton,"Seddon Park, Hamilton",Australia,England,Australia,runs,12,ICC Women's World Cup,,ODI,female,England,field,RL Haynes,2021/22,50
+1243911,2022-03-06,Mount Maunganui,"Bay Oval, Mount Maunganui",India,Pakistan,India,runs,107,ICC Women's World Cup,,ODI,female,India,bat,P Vastrakar,2021/22,50
+1243912,2022-03-07,Dunedin,"University Oval, Dunedin",Bangladesh,New Zealand,New Zealand,wickets,9,ICC Women's World Cup,,ODI,female,New Zealand,field,SW Bates,2021/22,50
+1243913,2022-03-08,Mount Maunganui,"Bay Oval, Mount Maunganui",Pakistan,Australia,Australia,wickets,7,ICC Women's World Cup,,ODI,female,Australia,field,AJ Healy,2021/22,50
+1243914,2022-03-09,Dunedin,"University Oval, Dunedin",West Indies,England,West Indies,runs,7,ICC Women's World Cup,,ODI,female,West Indies,bat,SA Campbelle,2021/22,50
+1243915,2022-03-10,Hamilton,"Seddon Park, Hamilton",New Zealand,India,New Zealand,runs,62,ICC Women's World Cup,,ODI,female,India,field,AE Satterthwaite,2021/22,50
+1243916,2022-03-11,Mount Maunganui,"Bay Oval, Mount Maunganui",South Africa,Pakistan,South Africa,runs,6,ICC Women's World Cup,,ODI,female,Pakistan,field,S Ismail,2021/22,50
+1243917,2022-03-12,Hamilton,"Seddon Park, Hamilton",India,West Indies,India,runs,155,ICC Women's World Cup,,ODI,female,India,bat,S Mandhana,2021/22,50
+1243918,2022-03-13,Wellington,"Basin Reserve, Wellington",Australia,New Zealand,Australia,runs,141,ICC Women's World Cup,,ODI,female,New Zealand,field,EA Perry,2021/22,50
+1243919,2022-03-14,Mount Maunganui,"Bay Oval, Mount Maunganui",England,South Africa,South Africa,wickets,3,ICC Women's World Cup,,ODI,female,South Africa,field,M Kapp,2021/22,50
+1243920,2022-03-14,Hamilton,"Seddon Park, Hamilton",Bangladesh,Pakistan,Bangladesh,runs,9,ICC Women's World Cup,,ODI,female,Pakistan,field,Fahima Khatun,2021/22,50
+1243921,2022-03-15,Wellington,"Basin Reserve, Wellington",West Indies,Australia,Australia,wickets,7,ICC Women's World Cup,,ODI,female,West Indies,bat,EA Perry,2021/22,50
+1243922,2022-03-16,Mount Maunganui,"Bay Oval, Mount Maunganui",India,England,England,wickets,4,ICC Women's World Cup,,ODI,female,England,field,CE Dean,2021/22,50
+1243923,2022-03-17,Hamilton,"Seddon Park, Hamilton",New Zealand,South Africa,South Africa,wickets,2,ICC Women's World Cup,,ODI,female,New Zealand,bat,M Kapp,2021/22,50
+1243924,2022-03-18,Mount Maunganui,"Bay Oval, Mount Maunganui",West Indies,Bangladesh,West Indies,runs,4,ICC Women's World Cup,,ODI,female,Bangladesh,field,HK Matthews,2021/22,50
+1243925,2022-03-19,Auckland,"Eden Park, Auckland",India,Australia,Australia,wickets,6,ICC Women's World Cup,,ODI,female,Australia,field,MM Lanning,2021/22,50
+1243926,2022-03-20,Auckland,"Eden Park, Auckland",New Zealand,England,England,wickets,1,ICC Women's World Cup,,ODI,female,England,field,NR Sciver,2021/22,50
+1243927,2022-03-21,Hamilton,"Seddon Park, Hamilton",West Indies,Pakistan,Pakistan,wickets,8,ICC Women's World Cup,,ODI,female,Pakistan,field,Nida Dar,2021/22,50
+1243928,2022-03-22,Wellington,"Basin Reserve, Wellington",South Africa,Australia,Australia,wickets,5,ICC Women's World Cup,,ODI,female,Australia,field,MM Lanning,2021/22,50
+1243929,2022-03-22,Hamilton,"Seddon Park, Hamilton",India,Bangladesh,India,runs,110,ICC Women's World Cup,,ODI,female,India,bat,YH Bhatia,2021/22,50
+1243930,2022-03-24,Wellington,"Basin Reserve, Wellington",South Africa,West Indies,no result,,,ICC Women's World Cup,,ODI,female,West Indies,field,,2021/22,50
+1243931,2022-03-24,Christchurch,"Hagley Oval, Christchurch",Pakistan,England,England,wickets,9,ICC Women's World Cup,,ODI,female,England,field,DN Wyatt,2021/22,50
+1243932,2022-03-25,Wellington,"Basin Reserve, Wellington",Bangladesh,Australia,Australia,wickets,5,ICC Women's World Cup,,ODI,female,Australia,field,BL Mooney,2021/22,50
+1243933,2022-03-26,Christchurch,"Hagley Oval, Christchurch",New Zealand,Pakistan,New Zealand,runs,71,ICC Women's World Cup,,ODI,female,Pakistan,field,SW Bates,2021/22,50
+1243934,2022-03-27,Wellington,"Basin Reserve, Wellington",England,Bangladesh,England,runs,100,ICC Women's World Cup,,ODI,female,England,bat,SIR Dunkley,2021/22,50
+1243935,2022-03-27,Christchurch,"Hagley Oval, Christchurch",India,South Africa,South Africa,wickets,3,ICC Women's World Cup,,ODI,female,India,bat,M du Preez,2021/22,50
+1243936,2022-03-30,Wellington,"Basin Reserve, Wellington",Australia,West Indies,Australia,runs,157,ICC Women's World Cup,Semi Final,ODI,female,West Indies,field,AJ Healy,2021/22,50
+1243937,2022-03-31,Christchurch,"Hagley Oval, Christchurch",England,South Africa,England,runs,137,ICC Women's World Cup,Semi Final,ODI,female,South Africa,field,DN Wyatt,2021/22,50
+1243938,2022-04-03,Christchurch,"Hagley Oval, Christchurch",Australia,England,Australia,runs,71,ICC Women's World Cup,Final,ODI,female,England,field,AJ Healy,2021/22,50
+1490413,2025-09-30,Guwahati,"Barsapara Cricket Stadium, Guwahati",India,Sri Lanka,India,runs,59,ICC Women's World Cup,,ODI,female,Sri Lanka,field,DB Sharma,2025/26,50
+1490414,2025-10-01,Indore,"Holkar Cricket Stadium, Indore",Australia,New Zealand,Australia,runs,89,ICC Women's World Cup,,ODI,female,Australia,bat,A Gardner,2025/26,50
+1490415,2025-10-02,Colombo,"R Premadasa Stadium, Colombo",Pakistan,Bangladesh,Bangladesh,wickets,7,ICC Women's World Cup,,ODI,female,Pakistan,bat,Marufa Akter,2025/26,50
+1490416,2025-10-03,Guwahati,"Barsapara Cricket Stadium, Guwahati",South Africa,England,England,wickets,10,ICC Women's World Cup,,ODI,female,England,field,LCN Smith,2025/26,50
+1490418,2025-10-05,Colombo,"R Premadasa Stadium, Colombo",India,Pakistan,India,runs,88,ICC Women's World Cup,,ODI,female,Pakistan,field,K Goud,2025/26,50
+1490419,2025-10-06,Indore,"Holkar Cricket Stadium, Indore",New Zealand,South Africa,South Africa,wickets,6,ICC Women's World Cup,,ODI,female,New Zealand,bat,T Brits,2025/26,50
+1490420,2025-10-07,Guwahati,"Barsapara Cricket Stadium, Guwahati",Bangladesh,England,England,wickets,4,ICC Women's World Cup,,ODI,female,England,field,HC Knight,2025/26,50
+1490421,2025-10-08,Colombo,"R Premadasa Stadium, Colombo",Australia,Pakistan,Australia,runs,107,ICC Women's World Cup,,ODI,female,Pakistan,field,BL Mooney,2025/26,50
+1490422,2025-10-09,Visakhapatnam,"Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam",India,South Africa,South Africa,wickets,3,ICC Women's World Cup,,ODI,female,South Africa,field,N de Klerk,2025/26,50
+1490423,2025-10-10,Guwahati,"Barsapara Cricket Stadium, Guwahati",New Zealand,Bangladesh,New Zealand,runs,100,ICC Women's World Cup,,ODI,female,New Zealand,bat,BM Halliday,2025/26,50
+1490424,2025-10-11,Colombo,"R Premadasa Stadium, Colombo",England,Sri Lanka,England,runs,89,ICC Women's World Cup,,ODI,female,Sri Lanka,field,NR Sciver-Brunt,2025/26,50
+1490425,2025-10-12,Visakhapatnam,"Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam",India,Australia,Australia,wickets,3,ICC Women's World Cup,,ODI,female,Australia,field,AJ Healy,2025/26,50
+1490426,2025-10-13,Visakhapatnam,"Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam",Bangladesh,South Africa,South Africa,wickets,3,ICC Women's World Cup,,ODI,female,Bangladesh,bat,CL Tryon,2025/26,50
+1490427,2025-10-14,Colombo,"R Premadasa Stadium, Colombo",Sri Lanka,New Zealand,no result,,,ICC Women's World Cup,,ODI,female,Sri Lanka,bat,,2025/26,50
+1490428,2025-10-15,Colombo,"R Premadasa Stadium, Colombo",England,Pakistan,no result,,,ICC Women's World Cup,,ODI,female,Pakistan,field,,2025/26,50
+1490429,2025-10-16,Visakhapatnam,"Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam",Bangladesh,Australia,Australia,wickets,10,ICC Women's World Cup,,ODI,female,Bangladesh,bat,A King,2025/26,50
+1490430,2025-10-17,Colombo,"R Premadasa Stadium, Colombo",Sri Lanka,South Africa,South Africa,wickets,10,ICC Women's World Cup,,ODI,female,Sri Lanka,bat,L Wolvaardt,2025/26,50
+1490431,2025-10-18,Colombo,"R Premadasa Stadium, Colombo",Pakistan,New Zealand,no result,,,ICC Women's World Cup,,ODI,female,New Zealand,field,,2025/26,50
+1490432,2025-10-19,Indore,"Holkar Cricket Stadium, Indore",England,India,England,runs,4,ICC Women's World Cup,,ODI,female,England,bat,HC Knight,2025/26,50
+1490433,2025-10-20,Navi Mumbai,"Dr DY Patil Sports Academy, Navi Mumbai",Sri Lanka,Bangladesh,Sri Lanka,runs,7,ICC Women's World Cup,,ODI,female,Sri Lanka,bat,GWHM Perera,2025/26,50
+1490434,2025-10-21,Colombo,"R Premadasa Stadium, Colombo",South Africa,Pakistan,South Africa,runs,150,ICC Women's World Cup,,ODI,female,Pakistan,field,M Kapp,2025/26,50
+1490435,2025-10-22,Indore,"Holkar Cricket Stadium, Indore",England,Australia,Australia,wickets,6,ICC Women's World Cup,,ODI,female,Australia,field,A Sutherland,2025/26,50
+1490436,2025-10-23,Navi Mumbai,"Dr DY Patil Sports Academy, Navi Mumbai",India,New Zealand,India,runs,53,ICC Women's World Cup,,ODI,female,New Zealand,field,S Mandhana,2025/26,50
+1490437,2025-10-24,Colombo,"R Premadasa Stadium, Colombo",Pakistan,Sri Lanka,no result,,,ICC Women's World Cup,,ODI,female,Sri Lanka,field,,2025/26,50
+1490438,2025-10-25,Indore,"Holkar Cricket Stadium, Indore",South Africa,Australia,Australia,wickets,7,ICC Women's World Cup,,ODI,female,Australia,field,A King,2025/26,50
+1490439,2025-10-26,Visakhapatnam,"Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium, Visakhapatnam",New Zealand,England,England,wickets,8,ICC Women's World Cup,,ODI,female,New Zealand,bat,AE Jones,2025/26,50
+1490440,2025-10-26,Navi Mumbai,"Dr DY Patil Sports Academy, Navi Mumbai",Bangladesh,India,no result,,,ICC Women's World Cup,,ODI,female,India,field,,2025/26,50
+1490441,2025-10-29,Guwahati,"Barsapara Cricket Stadium, Guwahati",South Africa,England,South Africa,runs,125,ICC Women's World Cup,Semi Final,ODI,female,England,field,L Wolvaardt,2025/26,50
+1490442,2025-10-30,Navi Mumbai,"Dr DY Patil Sports Academy, Navi Mumbai",Australia,India,India,wickets,5,ICC Women's World Cup,Semi Final,ODI,female,Australia,bat,JI Rodrigues,2025/26,50
+1490443,2025-11-02,Navi Mumbai,"Dr DY Patil Sports Academy, Navi Mumbai",India,South Africa,India,runs,52,ICC Women's World Cup,Final,ODI,female,South Africa,field,Shafali Verma,2025/26,50
+357962,2009-03-10,Sydney,North Sydney Oval,England,India,England,wickets,9,ICC Women's World Cup,,ODI,female,England,field,CMG Atkins,2008/09,50
+594891,2013-01-31,Mumbai,Brabourne Stadium,India,West Indies,India,runs,105,ICC Women's World Cup,,ODI,female,West Indies,field,MDT Kamini,2012/13,50
+594894,2013-02-01,Mumbai,Brabourne Stadium,England,Sri Lanka,Sri Lanka,wickets,1,ICC Women's World Cup,,ODI,female,Sri Lanka,field,LE Kaushalya,2012/13,50
+594897,2013-02-03,Mumbai,Brabourne Stadium,India,England,England,runs,32,ICC Women's World Cup,,ODI,female,India,field,CM Edwards,2012/13,50
+594901,2013-02-05,Mumbai,Brabourne Stadium,India,Sri Lanka,Sri Lanka,runs,138,ICC Women's World Cup,,ODI,female,Sri Lanka,bat,HMD Rasangika,2012/13,50
+594904,2013-02-08,Mumbai,Brabourne Stadium,Australia,England,Australia,runs,2,ICC Women's World Cup,,ODI,female,England,field,LC Sthalekar,2012/13,50
+594907,2013-02-10,Mumbai,Brabourne Stadium,Australia,Sri Lanka,Australia,wickets,9,ICC Women's World Cup,,ODI,female,Australia,field,EA Osborne,2012/13,50
+594909,2013-02-11,Mumbai,Brabourne Stadium,New Zealand,West Indies,West Indies,runs,48,ICC Women's World Cup,,ODI,female,New Zealand,field,A Mohammed,2012/13,50
+594912,2013-02-13,Mumbai,Brabourne Stadium,England,New Zealand,England,runs,15,ICC Women's World Cup,,ODI,female,England,bat,SJ Taylor,2012/13,50
+594914,2013-02-15,Mumbai,Brabourne Stadium,England,New Zealand,England,wickets,4,ICC Women's World Cup,3rd Place Play-Off,ODI,female,England,field,CM Edwards,2012/13,50
+594915,2013-02-17,Mumbai,Brabourne Stadium,Australia,West Indies,Australia,runs,114,ICC Women's World Cup,Final,ODI,female,Australia,bat,JE Cameron,2012/13,50

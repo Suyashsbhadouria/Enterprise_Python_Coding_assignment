@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Kinetic Analyst - Batter Performance</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary": "#67001f",
+                        "surface": "#0b1326",
+                        "surface-bright": "#31394d",
+                        "on-primary-fixed-variant": "#39475f",
+                        "secondary-container": "#00cfbf",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#910030",
+                        "on-surface": "#dae2fd",
+                        "surface-container-highest": "#2d3449",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#400010",
+                        "on-tertiary-container": "#f8275e",
+                        "secondary-fixed-dim": "#2addcd",
+                        "on-primary": "#233148",
+                        "primary-container": "#0a192f",
+                        "on-primary-fixed": "#0d1c32",
+                        "tertiary-fixed": "#ffd9dc",
+                        "surface-container": "#171f33",
+                        "on-surface-variant": "#c5c6cd",
+                        "on-secondary-fixed-variant": "#005049",
+                        "surface-dim": "#0b1326",
+                        "on-secondary": "#003732",
+                        "tertiary": "#ffb2ba",
+                        "surface-variant": "#2d3449",
+                        "on-background": "#dae2fd",
+                        "on-secondary-container": "#00534c",
+                        "outline-variant": "#44474d",
+                        "on-primary-container": "#74829d",
+                        "primary": "#b9c7e4",
+                        "inverse-on-surface": "#283044",
+                        "surface-tint": "#b9c7e4",
+                        "tertiary-fixed-dim": "#ffb2ba",
+                        "outline": "#8f9097",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#00201d",
+                        "surface-container-high": "#222a3d",
+                        "primary-fixed-dim": "#b9c7e4",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-container-low": "#131b2e",
+                        "inverse-primary": "#515f78",
+                        "surface-container-lowest": "#060e20",
+                        "secondary-fixed": "#57fae9",
+                        "background": "#0b1326",
+                        "tertiary-container": "#3b000e",
+                        "secondary": "#43ecdb",
+                        "inverse-surface": "#dae2fd"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-hidden selection:bg-secondary/30 selection:text-secondary">
+<div class="flex h-screen w-full">
+<!-- SideNavBar Component -->
+<nav class="bg-[#131b2e] h-screen w-72 fixed left-0 top-0 flex flex-col py-8 space-y-2 z-50 shadow-none font-manrope tracking-tight text-sm">
+<!-- Brand Header -->
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden flex-shrink-0 relative">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="close up abstract vibrant blue and teal textured surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyYKGVwha94tfAtENe53yaTwkADbkj87uhiNPHZsaeUG3fBBjV_zofU3tKvz-gdsH3BXSFRSswi73pW4iS3kMsf-rkAbA4byRJAVG-DLdGaSkZS9waempkE5YXoNJcnF6tYqjBBxE3yebpiYuSLleCd4Is7RQNRqClVBBNhtaWjxaTzD6NSdke_CNMlhjtyyKN9EYQ7aGTg7E54Up-_1LqZoyJDOMosUiBoM01lYzBZpqwHnmoe2EGmq26_kEzjmh1BwK09JCrx2Y"/>
+</div>
+<div>
+<h1 class="font-manrope font-extrabold text-[#43ecdb] tracking-tighter text-xl leading-none">The Kinetic Analyst</h1>
+<p class="font-inter text-xs text-slate-400 mt-1">Elite Performance Data</p>
+</div>
+</div>
+<!-- Primary Navigation -->
+<div class="flex-1 flex flex-col gap-2">
+<!-- Overview -->
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-bold">Overview</span>
+</a>
+<!-- Matches -->
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">sports_cricket</span>
+<span class="font-bold">Matches</span>
+</a>
+<!-- Batters (Active) -->
+<a class="flex items-center gap-4 bg-[#222a3d] text-[#43ecdb] px-6 py-4 border-l-4 border-[#43ecdb] translate-x-1 scale-100 transition-all duration-300" href="#">
+<span class="material-symbols-outlined fill">person</span>
+<span class="font-bold">Batters</span>
+</a>
+<!-- Teams -->
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-bold">Teams</span>
+</a>
+</div>
+<!-- CTA -->
+<div class="px-6 py-4">
+<button class="w-full bg-secondary text-on-secondary font-headline font-bold py-3 px-4 rounded-xl shadow-lg shadow-secondary/20 hover:bg-secondary-container transition-colors flex items-center justify-center gap-2">
+<span>Live Match Center</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Footer Navigation -->
+<div class="mt-auto flex flex-col gap-1 border-t border-outline-variant/15 pt-4">
+<a class="flex items-center gap-4 text-slate-400 px-6 py-3 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-bold text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 px-6 py-3 hover:bg-[#2d3449] hover:text-[#43ecdb] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-bold text-sm">Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col relative w-[calc(100%-18rem)] ml-72">
+<!-- TopAppBar Component -->
+<header class="bg-[#0b1326]/80 backdrop-blur-md fixed top-0 right-0 w-[calc(100%-18rem)] z-40 flex justify-between items-center px-12 h-20 shadow-none border-none">
+<!-- Search -->
+<div class="flex-1 max-w-md">
+<div class="relative flex items-center bg-surface-container-high rounded-full px-4 py-2 focus-within:ring-2 focus-within:ring-[#43ecdb]/30 transition-all">
+<span class="material-symbols-outlined text-slate-400 mr-2">search</span>
+<input class="bg-transparent border-none text-sm font-inter text-slate-300 placeholder-slate-500 focus:outline-none focus:ring-0 w-full" placeholder="Search players, matches..." type="text"/>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-4 ml-auto text-[#43ecdb]">
+<button class="hover:bg-[#222a3d] rounded-full p-2 transition-colors flex items-center justify-center text-slate-300 hover:text-[#43ecdb]">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<button class="hover:bg-[#222a3d] rounded-full p-2 transition-colors flex items-center justify-center text-slate-300 hover:text-[#43ecdb] relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-tertiary rounded-full"></span>
+</button>
+<button class="hover:bg-[#222a3d] rounded-full p-2 transition-colors flex items-center justify-center text-slate-300 hover:text-[#43ecdb]">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 overflow-y-auto pt-28 pb-16 px-12 scroll-smooth">
+<!-- Page Header -->
+<div class="mb-10">
+<h2 class="font-headline text-4xl font-extrabold tracking-tight text-on-surface mb-2">Batter Performance</h2>
+<p class="font-body text-on-surface-variant max-w-2xl text-sm">Comprehensive leaderboard and scoring intensity analytics for the tournament's elite strikers.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+<!-- Main Leaderboard Card (Spans 8 cols) -->
+<div class="xl:col-span-8 bg-surface-container-high rounded-2xl p-6 relative overflow-hidden flex flex-col">
+<!-- Subtle Background Glow -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex justify-between items-end mb-6">
+<div>
+<h3 class="font-headline text-xl font-bold text-on-surface">Tournament Leaderboard</h3>
+<p class="text-xs text-on-surface-variant mt-1">Ranked by total runs accumulated</p>
+</div>
+<button class="text-tertiary text-sm font-semibold hover:text-tertiary-fixed transition-colors flex items-center gap-1">
+                                View Full Table <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+<!-- Header Row -->
+<div class="grid grid-cols-12 gap-4 pb-3 border-b border-outline-variant/15 text-xs font-semibold text-on-primary-container tracking-wide uppercase">
+<div class="col-span-5 pl-2">Batter</div>
+<div class="col-span-2 text-right">Inns</div>
+<div class="col-span-2 text-right text-secondary">Runs</div>
+<div class="col-span-3 text-right">Strike Rate</div>
+</div>
+<!-- Data Rows -->
+<div class="flex flex-col gap-1 mt-2">
+<!-- Rank 1 -->
+<div class="grid grid-cols-12 gap-4 items-center py-3 px-2 rounded-lg bg-surface-container-highest/50 hover:bg-surface-container-highest transition-colors group relative border border-secondary/20">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary rounded-l-lg"></div>
+<div class="col-span-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-bright overflow-hidden">
+<img alt="Batter portrait" class="w-full h-full object-cover" data-alt="portrait of female athlete looking focused with dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyn0CaFmo06BBGjtjiT8xZcFrnCw-p3VwuErphuTz-sDxitd-XrS0TMLvvmorp6hU5Ro5JBQehOIIdHhR7gO8MdXB7aA8ZjkhxIpxVjZXvl7rQAATVEB1VbBtytsd24A-OMkDWY14ms3Xu3huj3d6RqXLb1WivMNkAij0EbcwotIF_HZaGvXuIy6RhqVu2ZcI_BDvUHxAZFZM9MONJwcNXR8ydCdBWmLcNVRtpPZ1S-TyYUgl_exVv1SBvjTr7wHnGYxTAKC3_LVI"/>
+</div>
+<div>
+<div class="font-headline font-bold text-on-surface text-sm">L. Wolvaardt</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-wider">South Africa</div>
+</div>
+</div>
+<div class="col-span-2 text-right font-body text-sm text-on-surface-variant">8</div>
+<div class="col-span-2 text-right font-headline font-bold text-secondary text-lg">432</div>
+<div class="col-span-3 flex items-center justify-end gap-2">
+<span class="font-body text-sm font-medium">134.5</span>
+<div class="w-12 h-1 bg-surface-bright rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[80%]"></div>
+</div>
+</div>
+</div>
+<!-- Rank 2 -->
+<div class="grid grid-cols-12 gap-4 items-center py-3 px-2 rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="col-span-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-bright overflow-hidden">
+<img alt="Batter portrait" class="w-full h-full object-cover" data-alt="portrait of confident female athlete in sports jersey dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMZB4peHzkbmzj8etH-82U5zEfS68Yt-9ytGZAT3CPrJtRlH8eLHrUxwlxPWGOLozLvcevjsmKFgo0Ml8Rsn4IQ141HAaKCaMEwIINcFiHdMVFeS8blMoCqusEsRKDhAXzJ1UNl3Ahwe3sV-Y9fvAs5tTHxMdiO2gUDnwVlvRyPQcdWi9fqxgdgdEBBmTU_o6wziEfipxlCRZEbkN_GV6Q_3sSB6izB9TOagtMHpQkMC9ut53pM075Uv6kUv0YUvq9VJg8hWUe70o"/>
+</div>
+<div>
+<div class="font-headline font-bold text-on-surface text-sm">M. Lanning</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-wider">Australia</div>
+</div>
+</div>
+<div class="col-span-2 text-right font-body text-sm text-on-surface-variant">7</div>
+<div class="col-span-2 text-right font-headline font-bold text-on-surface text-base">398</div>
+<div class="col-span-3 flex items-center justify-end gap-2">
+<span class="font-body text-sm font-medium">128.2</span>
+<div class="w-12 h-1 bg-surface-bright rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%]"></div>
+</div>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="grid grid-cols-12 gap-4 items-center py-3 px-2 rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="col-span-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-bright overflow-hidden">
+<img alt="Batter portrait" class="w-full h-full object-cover" data-alt="portrait of female athlete smiling slightly dark cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArTdhgYH2TC6WqAu5zL3yZMhgLhhF-AF__XEmYQw5sleuf0StZFAu6iO4BJDyvkGC60kj0H4mKoo_Oip9kcJXsbnnfwoX24DWcRJbxjbWytznZcgIbljvCxBJJsjZcG97TDW7SJnd6-k4Vc8st8Gc-PVIU33W1quVBkok_CS7T8G67y4dwzWG2qNu1QkuqzJeAv-0Yt8tpRAJ3oygPeR9qlHHPpPYb7toioNP9p-j1iMhU7lpOqDUDZ0NeVTP0okqyUiUbU-HJSwM"/>
+</div>
+<div>
+<div class="font-headline font-bold text-on-surface text-sm">S. Devine</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-wider">New Zealand</div>
+</div>
+</div>
+<div class="col-span-2 text-right font-body text-sm text-on-surface-variant">8</div>
+<div class="col-span-2 text-right font-headline font-bold text-on-surface text-base">350</div>
+<div class="col-span-3 flex items-center justify-end gap-2">
+<span class="font-body text-sm font-medium text-tertiary">152.4</span>
+<div class="w-12 h-1 bg-surface-bright rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[95%]"></div>
+</div>
+</div>
+</div>
+<!-- Rank 4 -->
+<div class="grid grid-cols-12 gap-4 items-center py-3 px-2 rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="col-span-5 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-bright overflow-hidden flex items-center justify-center text-xs font-bold text-on-surface-variant">
+                                        SM
+                                    </div>
+<div>
+<div class="font-headline font-bold text-on-surface text-sm">S. Mandhana</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-wider">India</div>
+</div>
+</div>
+<div class="col-span-2 text-right font-body text-sm text-on-surface-variant">7</div>
+<div class="col-span-2 text-right font-headline font-bold text-on-surface text-base">325</div>
+<div class="col-span-3 flex items-center justify-end gap-2">
+<span class="font-body text-sm font-medium">118.9</span>
+<div class="w-12 h-1 bg-surface-bright rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (Analytics) -->
+<div class="xl:col-span-4 flex flex-col gap-8">
+<!-- Scoring Intensity (Glassmorphism) -->
+<div class="bg-surface-variant/60 backdrop-blur-xl rounded-2xl p-6 border border-outline-variant/15 flex flex-col relative overflow-hidden">
+<!-- Background Accent -->
+<div class="absolute bottom-0 right-0 w-32 h-32 bg-tertiary/10 rounded-tl-full blur-2xl pointer-events-none"></div>
+<h3 class="font-headline text-lg font-bold text-on-surface mb-1">Scoring Intensity</h3>
+<p class="text-xs text-on-surface-variant mb-6">Runs per ball faced (Tournament Avg: 0.85)</p>
+<!-- Intensity Gauge visualization -->
+<div class="flex items-end gap-4 mb-4">
+<div class="flex-1 flex flex-col gap-2">
+<div class="flex justify-between items-baseline">
+<span class="text-sm font-semibold text-tertiary">Aggressive</span>
+<span class="text-xs text-on-surface-variant">&gt; 1.2 RPB</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-tertiary to-error w-[35%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-end gap-4 mb-4">
+<div class="flex-1 flex flex-col gap-2">
+<div class="flex justify-between items-baseline">
+<span class="text-sm font-semibold text-secondary">Balanced</span>
+<span class="text-xs text-on-surface-variant">0.8 - 1.2 RPB</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-secondary-container w-[50%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center mt-auto pt-4 border-t border-outline-variant/15">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Top Intensity</span>
+<span class="font-headline font-bold text-sm">S. Devine</span>
+</div>
+<div class="font-headline text-xl font-extrabold text-tertiary">1.52 <span class="text-xs font-normal text-on-surface-variant">RPB</span></div>
+</div>
+</div>
+<!-- Innings Breakdown Card -->
+<div class="bg-surface-container-high rounded-2xl p-6 flex flex-col border border-outline-variant/10">
+<h3 class="font-headline text-lg font-bold text-on-surface mb-1">Innings Breakdown</h3>
+<p class="text-xs text-on-surface-variant mb-6">Run distribution for top 5 batters</p>
+<!-- Mini Chart Area -->
+<div class="flex-1 flex flex-col gap-4">
+<!-- Legend -->
+<div class="flex gap-4 mb-2">
+<div class="flex items-center gap-1.5">
+<div class="w-2.5 h-2.5 rounded-sm bg-tertiary"></div>
+<span class="text-xs text-on-surface-variant">Boundaries</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-2.5 h-2.5 rounded-sm bg-primary"></div>
+<span class="text-xs text-on-surface-variant">Running</span>
+</div>
+</div>
+<!-- Bar 1 -->
+<div class="flex items-center gap-3">
+<div class="w-8 text-xs font-semibold text-right">L.W.</div>
+<div class="flex-1 h-3 flex rounded-full overflow-hidden bg-surface-container-lowest">
+<div class="h-full bg-tertiary w-[62%]"></div>
+<div class="h-full bg-primary w-[38%]"></div>
+</div>
+</div>
+<!-- Bar 2 -->
+<div class="flex items-center gap-3">
+<div class="w-8 text-xs font-semibold text-right">M.L.</div>
+<div class="flex-1 h-3 flex rounded-full overflow-hidden bg-surface-container-lowest">
+<div class="h-full bg-tertiary w-[55%]"></div>
+<div class="h-full bg-primary w-[45%]"></div>
+</div>
+</div>
+<!-- Bar 3 -->
+<div class="flex items-center gap-3">
+<div class="w-8 text-xs font-semibold text-right">S.D.</div>
+<div class="flex-1 h-3 flex rounded-full overflow-hidden bg-surface-container-lowest">
+<div class="h-full bg-tertiary w-[78%]"></div>
+<div class="h-full bg-primary w-[22%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

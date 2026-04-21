@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Batter Performance - The Kinetic Analyst{% endblock %}
+{% block page_header %}Batter Performance{% endblock %}
+
+{% block topbar_search %}
+<div class="relative hidden md:block">
+    <input id="batter-search" class="w-72 bg-surface-container-highest rounded-full border-none py-2 pl-10 pr-4 text-sm placeholder:text-slate-400 focus:ring-2 focus:ring-secondary/30" placeholder="Search batters..." type="text" />
+    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="mb-8">
+    <h2 class="font-headline text-4xl font-extrabold tracking-tight">Batter Performance</h2>
+    <p class="text-on-surface-variant mt-2 text-sm max-w-2xl">Leaderboard and scoring intensity analytics for the tournament's elite strikers.</p>
+</div>
+
+<div class="grid grid-cols-12 gap-8">
+    <section class="col-span-12 xl:col-span-8 bg-surface-container-high rounded-xl p-6">
+        <div class="flex justify-between items-end mb-5">
+            <div>
+                <h3 class="font-headline text-xl font-bold">Tournament Leaderboard</h3>
+                <p class="text-xs text-on-surface-variant">Ranked by total runs accumulated</p>
+            </div>
+            <a class="text-tertiary text-sm" href="{{ url_for('api_batters') }}">API JSON</a>
+        </div>
+
+        <div class="grid grid-cols-12 gap-4 pb-3 border-b border-outline-variant/20 text-xs font-semibold text-on-surface-variant uppercase">
+            <div class="col-span-4">Batter</div>
+            <div class="col-span-2 text-right">Inns</div>
+            <div class="col-span-2 text-right text-secondary">Runs</div>
+            <div class="col-span-2 text-right">SR</div>
+            <div class="col-span-2 text-right">Boundary%</div>
+        </div>
+
+        <div id="batters-table" class="mt-2 space-y-1">
+            {% for b in data.leaderboard %}
+            {% set boundary_share = (b.boundary_runs / b.runs * 100) if b.runs > 0 else 0 %}
+            <div class="grid grid-cols-12 gap-4 items-center py-3 px-2 rounded-lg hover:bg-surface-container-highest/70 transition-colors batter-row">
+                <div class="col-span-4">
+                    <div class="font-headline font-bold text-sm">{{ b.batter }}</div>
+                    <div class="text-[10px] text-on-surface-variant uppercase">{{ b.team }}</div>
+                </div>
+                <div class="col-span-2 text-right text-sm">{{ b.innings }}</div>
+                <div class="col-span-2 text-right font-headline font-bold text-secondary text-lg">{{ b.runs }}</div>
+                <div class="col-span-2 text-right text-sm">{{ '%.1f'|format(b.strike_rate) }}</div>
+                <div class="col-span-2 text-right text-sm text-tertiary">{{ '%.1f'|format(boundary_share) }}%</div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <aside class="col-span-12 xl:col-span-4 space-y-6">
+        <div class="bg-surface-container-high rounded-xl p-6">
+            <h3 class="font-headline text-xl font-bold mb-3">Scoring Intensity</h3>
+            <p class="text-sm text-on-surface-variant">Top batter by runs-per-ball</p>
+            {% if data.top_intensity %}
+            <p class="text-secondary text-lg font-semibold mt-2">{{ data.top_intensity.batter }}</p>
+            <p class="text-on-surface-variant text-sm">{{ data.top_intensity.team }} · {{ data.top_intensity.rpb }} runs/ball</p>
+            {% endif %}
+        </div>
+
+        <div class="bg-surface-container-high rounded-xl p-6">
+            <h3 class="font-headline text-xl font-bold mb-3">Distribution</h3>
+            <div class="space-y-3 text-sm">
+                <div class="flex justify-between"><span>Aggressive (RPB > 1.2)</span><span class="text-secondary">{{ data.aggressive_count }}</span></div>
+                <div class="flex justify-between"><span>Balanced (0.8 - 1.2)</span><span class="text-tertiary">{{ data.balanced_count }}</span></div>
+                <div class="flex justify-between"><span>Tournament Avg RPB</span><span>{{ data.tournament_avg_rpb }}</span></div>
+            </div>
+        </div>
+    </aside>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  (function () {
+    const search = document.getElementById('batter-search');
+    const rows = Array.from(document.querySelectorAll('.batter-row'));
+    if (!search) return;
+    search.addEventListener('input', function () {
+      const q = search.value.trim().toLowerCase();
+      rows.forEach((row) => {
+        row.style.display = row.innerText.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+  })();
+</script>
+{% endblock %}

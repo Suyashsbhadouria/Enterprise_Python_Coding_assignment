@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Bowling and Team Insights - The Kinetic Analyst{% endblock %}
+{% block page_header %}Bowling and Team Insights{% endblock %}
+
+{% block content %}
+<div class="mb-8">
+    <h2 class="font-headline text-4xl font-extrabold tracking-tight">Bowling and Team Insights</h2>
+    <p class="text-on-surface-variant mt-2 text-sm max-w-2xl">Analysis of bowling economy, runs conceded, and comparative team strengths across the tournament.</p>
+</div>
+
+<div class="grid grid-cols-12 gap-8">
+    <section class="col-span-12 xl:col-span-8 bg-surface-container-high rounded-xl p-6">
+        <div class="flex items-end justify-between mb-6">
+            <div>
+                <h3 class="font-headline text-xl font-bold">Elite Economy Bowlers</h3>
+                <p class="text-xs text-on-surface-variant">Minimum 100 legal deliveries.</p>
+            </div>
+            <a href="{{ url_for('api_teams') }}" class="text-tertiary text-sm">API JSON</a>
+        </div>
+        <div class="space-y-3">
+            {% for b in data.elite_bowlers %}
+            <div class="bg-surface-container-low rounded-lg p-4 hover:bg-surface-container-highest transition-colors">
+                <div class="flex items-center justify-between gap-4">
+                    <div>
+                        <p class="font-headline font-bold text-sm">{{ b.bowler }}</p>
+                        <p class="text-xs text-on-surface-variant">{{ b.team }}</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-6 text-right text-sm">
+                        <div>
+                            <p class="text-on-surface-variant text-xs">Deliveries</p>
+                            <p>{{ b.deliveries }}</p>
+                        </div>
+                        <div>
+                            <p class="text-on-surface-variant text-xs">Runs</p>
+                            <p>{{ b.runs_total }}</p>
+                        </div>
+                        <div>
+                            <p class="text-on-surface-variant text-xs">Economy</p>
+                            <p class="text-secondary font-bold">{{ b.economy }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <aside class="col-span-12 xl:col-span-4 space-y-6">
+        <div class="bg-surface-container-high rounded-xl p-6">
+            <h3 class="font-headline text-xl font-bold mb-4">Avg Runs Conceded / Match</h3>
+            <div class="space-y-3">
+                {% for t in data.avg_conceded[:8] %}
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span>{{ t.team }}</span>
+                        <span>{{ t.avg }}</span>
+                    </div>
+                    <div class="h-2 rounded-full bg-surface-container-lowest overflow-hidden">
+                        <div class="h-full bg-secondary" style="width: {{ (t.avg / data.max_avg_conceded * 100)|round(1) }}%"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="bg-surface-container-high rounded-xl p-6">
+            <h3 class="font-headline text-xl font-bold">Sub-4.20 Economy Teams</h3>
+            <div class="flex flex-wrap gap-2 mt-3">
+                {% for team in data.low_econ_teams %}
+                <span class="text-xs bg-surface-container-low px-3 py-1 rounded-full border border-outline-variant/20">{{ team }}</span>
+                {% endfor %}
+            </div>
+            {% if not data.low_econ_teams %}
+            <div class="mt-4 rounded-lg border border-outline-variant/20 bg-surface-container-low p-4 text-sm text-on-surface-variant">
+                No team finished below 4.20 economy in this dataset. The closest teams are shown below.
+            </div>
+            <div class="flex flex-wrap gap-2 mt-3">
+                {% for team in data.closest_low_economy_teams %}
+                <span class="text-xs bg-surface-container-low px-3 py-1 rounded-full border border-outline-variant/20">
+                    {{ team.team }} · {{ team.economy }}
+                </span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </aside>
+</div>
+{% endblock %}

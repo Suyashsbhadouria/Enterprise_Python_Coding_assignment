@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %}Tournament Overview - The Kinetic Analyst{% endblock %}
+{% block page_header %}Tournament Overview{% endblock %}
+
+{% block content %}
+<div class="mb-8">
+    <h2 class="font-headline text-4xl font-extrabold tracking-tight">Tournament Overview</h2>
+    <p class="text-on-surface-variant mt-2 text-sm max-w-2xl">High-level performance metrics and aggregated tournament data across all participating nations and venues.</p>
+</div>
+
+<div class="grid grid-cols-12 gap-6">
+    <div class="col-span-12 md:col-span-3 bg-surface-container-high rounded-xl p-6">
+        <p class="text-sm text-on-surface-variant">Total Matches</p>
+        <h3 class="font-headline text-4xl font-bold mt-1">{{ data.total_matches }}</h3>
+        <p class="text-secondary text-sm mt-4">Tournament Complete</p>
+    </div>
+    <div class="col-span-12 md:col-span-3 bg-surface-container-high rounded-xl p-6">
+        <p class="text-sm text-on-surface-variant">Total Runs Scored</p>
+        <h3 class="font-headline text-4xl font-bold mt-1">{{ '{:,}'.format(data.total_runs) }}</h3>
+        <p class="text-tertiary text-sm mt-4">High Scoring Event</p>
+    </div>
+    <div class="col-span-12 md:col-span-3 bg-surface-container-low rounded-xl p-6">
+        <p class="text-sm text-on-surface-variant">Participating Teams</p>
+        <h3 class="font-headline text-3xl font-bold mt-1">{{ data.team_count }}</h3>
+        <div class="flex -space-x-2 mt-4">
+            {% for team in data.teams[:4] %}
+            <div class="w-8 h-8 rounded-full bg-surface-bright border-2 border-surface flex items-center justify-center text-[10px] font-bold">{{ team|team_abbr }}</div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-span-12 md:col-span-3 bg-surface-container-low rounded-xl p-6">
+        <p class="text-sm text-on-surface-variant">Venues / Cities</p>
+        <h3 class="font-headline text-3xl font-bold mt-1">{{ data.venue_count }} / {{ data.city_count }}</h3>
+        <p class="text-sm text-on-surface-variant mt-4">Top host city: <span class="text-secondary">{{ data.top_city[0] }}</span></p>
+    </div>
+
+    <div class="col-span-12 xl:col-span-8 bg-surface-container-high rounded-xl p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="font-headline text-xl font-bold">Winning Momentum</h3>
+            <a class="text-tertiary text-sm" href="{{ url_for('teams_page') }}">View Team Insights</a>
+        </div>
+        <div class="space-y-3">
+            {% for team, wins in data.top_winners %}
+            <div>
+                <div class="flex justify-between text-sm mb-1">
+                    <span>{{ team }}</span>
+                    <span>{{ wins }} wins</span>
+                </div>
+                <div class="h-2 rounded-full bg-surface-container-lowest overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-secondary to-secondary-container" style="width: {{ (wins / data.max_wins * 100)|round(1) }}%"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="col-span-12 xl:col-span-4 bg-surface-container-high rounded-xl p-6">
+        <h3 class="font-headline text-xl font-bold mb-4">Recent Results</h3>
+        <div class="space-y-3">
+            {% for m in data.recent_results %}
+            <div class="bg-surface-container-low rounded-lg p-3">
+                <p class="text-xs text-on-surface-variant">{{ m.date }} · {{ m.stage }}</p>
+                <p class="text-sm font-semibold mt-1">{{ m.team1 }} vs {{ m.team2 }}</p>
+                <p class="text-xs text-secondary mt-1">{{ m.result_text }}</p>
+                <p class="text-xs text-on-surface-variant mt-1">{{ m.venue }}, {{ m.city }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="col-span-12 bg-surface-container-high rounded-xl p-6">
+        <h3 class="font-headline text-xl font-bold mb-4">Runs Per Match Timeline</h3>
+        {% set timeline = data.runs_per_match %}
+        {% if timeline %}
+        {% set max_runs = (timeline | map(attribute='total_runs') | max) %}
+        {% set label_step = (timeline|length // 8) if (timeline|length) > 8 else 1 %}
+        {% set y1 = (max_runs * 0.75)|round(0, 'floor')|int %}
+        {% set y2 = (max_runs * 0.50)|round(0, 'floor')|int %}
+        {% set y3 = (max_runs * 0.25)|round(0, 'floor')|int %}
+        <div class="overflow-x-auto pb-3">
+            <div class="inline-block min-w-full">
+                <div class="flex gap-3 min-w-max">
+                    <div class="w-12 h-56 shrink-0 flex flex-col justify-between text-[10px] text-on-surface-variant text-right pr-1">
+                        <span>{{ max_runs }}</span>
+                        <span>{{ y1 }}</span>
+                        <span>{{ y2 }}</span>
+                        <span>{{ y3 }}</span>
+                        <span>0</span>
+                    </div>
+
+                    <div>
+                        <div class="relative h-56 w-max pr-2">
+                            <div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+                                <div class="border-t border-outline-variant/25"></div>
+                                <div class="border-t border-outline-variant/20"></div>
+                                <div class="border-t border-outline-variant/20"></div>
+                                <div class="border-t border-outline-variant/20"></div>
+                                <div class="border-t border-outline-variant/30"></div>
+                            </div>
+
+                            <div class="relative z-10 flex items-end gap-1 h-full w-max">
+                                {% for r in timeline %}
+                                {% set raw_height = ((r.total_runs / max_runs) * 100) if max_runs else 0 %}
+                                {% set bar_height = raw_height if raw_height > 4 else 4 %}
+                                <div class="group relative w-3 shrink-0 h-full flex items-end">
+                                    <div class="w-full rounded-t bg-secondary/85 hover:bg-secondary transition-all" style="height: {{ bar_height|round(1) }}%" title="{{ r.date }} | {{ r.team1 }} vs {{ r.team2 }} | {{ r.total_runs }} runs"></div>
+                                    <div class="hidden group-hover:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-surface-container-lowest text-xs px-2 py-1 rounded border border-outline-variant/30 z-10">
+                                        {{ r.team1 }} vs {{ r.team2 }}: {{ r.total_runs }}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="mt-4 border-t border-outline-variant/20 pt-2">
+                            <div class="flex justify-between gap-2 text-[10px] text-on-surface-variant">
+                                {% for i in range(0, timeline|length, label_step) %}
+                                <span class="whitespace-nowrap">{{ timeline[i].date }}</span>
+                                {% endfor %}
+                                {% if ((timeline|length) - 1) % label_step != 0 %}
+                                <span class="whitespace-nowrap">{{ timeline[(timeline|length) - 1].date }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-sm text-on-surface-variant">No match timeline data available.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
