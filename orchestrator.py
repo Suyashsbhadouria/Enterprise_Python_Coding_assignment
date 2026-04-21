@@ -7,6 +7,7 @@ import os
 import time
 import glob
 import schedule
+import requests  # <-- ADDED: Needed to send the webhook to Slack
 
 # 1. Import your team's custom logger
 from logging_config import configure_logging
@@ -15,7 +16,6 @@ from logging_config import configure_logging
 from etl_pipeline import run_pipeline, DATASET_DIR
 
 # 3. Initialize the logger specifically for the orchestrator
-# Passing "orchestrator" renames the tag in the log file so you know who is talking
 logger = configure_logging(name="orchestrator")
 
 
@@ -35,12 +35,23 @@ def check_upstream_data():
 def send_alert(message):
     """
     RELIABILITY - ALERTING:
-    Triggers when the pipeline completely fails. 
-    In production, this would send a Slack/Teams webhook or an email.
+    Sends a live notification to Slack using an Environment Variable.
     """
     logger.error(f"🚨 CRITICAL ALERT TRIGGERED: {message}")
-    # Example: requests.post(WEBHOOK_URL, json={"text": message})
-
+    
+    # This pulls the URL from your computer's settings, not the code!
+    WEBHOOK_URL = os.getenv("SLACK_WEBHOOK_URL")
+    
+    if WEBHOOK_URL:
+        try:
+            slack_payload = {"text": f"🚨 *ETL FAILURE* 🚨\n{message}"}
+            response = requests.post(WEBHOOK_URL, json=slack_payload)
+            response.raise_for_status()
+            logger.info("✅ Alert successfully sent to Slack.")
+        except Exception as e:
+            logger.error(f"❌ Failed to send Slack alert: {e}")
+    else:
+        logger.warning("⚠️ SLACK_WEBHOOK_URL not found in environment. Skipping alert.")
 
 def execute_with_reliability(max_retries=3, delay=5):
     """
@@ -74,7 +85,7 @@ def execute_with_reliability(max_retries=3, delay=5):
             attempt += 1
 
     # 3. Alert if all retries are exhausted
-    send_alert("ETL Pipeline failed completely after exhausting all retries.")
+    send_alert(f"Pipeline failed completely after {max_retries} attempts.")
 
 
 def start_scheduler():
@@ -85,11 +96,9 @@ def start_scheduler():
     logger.info("Starting Enterprise Orchestrator...")
     
     # Schedule the job. 
-    # For production it might look like: schedule.every().day.at("02:00").do(execute_with_reliability)
-    # For your testing right now, it runs every 10 minutes:
     schedule.every(10).minutes.do(execute_with_reliability)
     
-    # Run once immediately on startup so you don't have to wait 10 mins to test it
+    # Run once immediately on startup
     execute_with_reliability()
 
     # Keep the script running to check the schedule
@@ -100,3 +109,4 @@ def start_scheduler():
 
 if __name__ == "__main__":
     start_scheduler()
+    # send_alert("🚀 MANUAL TEST: The Slack integration is working perfectly!")
