@@ -6,6 +6,8 @@ Loads transformed CSV data and serves the 'The Kinetic Analyst' dashboard.
 import os
 import csv
 import time
+import uuid
+import logging
 from collections import defaultdict, Counter
 from flask import Flask, render_template, jsonify, request, g
 from etl_pipeline import run_pipeline
@@ -16,26 +18,34 @@ logger = configure_logging(__name__)
 
 CSV_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "csv_data")
 
+# Cache statistics tracking
+_cache_stats = {"matches": 0, "batting": 0, "bowling": 0}
+
 
 def ensure_csv_data():
     """Generate CSV outputs from dataset JSON files if required files are missing."""
     required = ["matches.csv", "deliveries.csv", "batting.csv", "bowling.csv"]
     missing = [name for name in required if not os.path.exists(os.path.join(CSV_DIR, name))]
     if missing:
-        logger.info("Missing CSV outputs detected (%s); running ETL pipeline", ", ".join(missing))
+        logger.warning("Missing CSV outputs: %s; running ETL pipeline", ", ".join(missing))
         run_pipeline()
     else:
-        logger.info("CSV outputs are present; skipping ETL bootstrap")
+        logger.info("CSV data ready; all required files present")
 
 
 def load_csv(filename):
     """Load a CSV file and return list of dicts."""
     filepath = os.path.join(CSV_DIR, filename)
-    logger.debug("Loading CSV file: %s", filepath)
-    with open(filepath, "r", encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
-    logger.info("Loaded %s rows from %s", len(rows), filename)
-    return rows
+    start_time = time.perf_counter()
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            rows = list(csv.DictReader(f))
+        elapsed_ms = (time.perf_counter() - start_time) * 1000
+        logger.debug("CSV load: file=%s rows=%d time=%.1fms", filename, len(rows), elapsed_ms)
+        return rows
+    except Exception as e:
+        logger.exception("Failed to load CSV: %s", filename)
+        raise
 
 
 # ─── Data Loading (cached at module level) ───
@@ -47,24 +57,33 @@ _bowling = None
 def get_matches():
     global _matches
     if _matches is None:
-        logger.info("Cache miss for matches; loading data")
+        _cache_stats["matches"] = 0
         _matches = load_csv("matches.csv")
+        logger.info("Cache miss: loaded matches (%d records)", len(_matches))
+    else:
+        _cache_stats["matches"] += 1
     return _matches
 
 
 def get_batting():
     global _batting
     if _batting is None:
-        logger.info("Cache miss for batting; loading data")
+        _cache_stats["batting"] = 0
         _batting = load_csv("batting.csv")
+        logger.info("Cache miss: loaded batting (%d records)", len(_batting))
+    else:
+        _cache_stats["batting"] += 1
     return _batting
 
 
 def get_bowling():
     global _bowling
     if _bowling is None:
-        logger.info("Cache miss for bowling; loading data")
+        _cache_stats["bowling"] = 0
         _bowling = load_csv("bowling.csv")
+        logger.info("Cache miss: loaded bowling (%d records)", len(_bowling))
+    else:
+        _cache_stats["bowling"] += 1
     return _bowling
 
 
@@ -172,34 +191,55 @@ def transform_overview():
 
 @app.before_request
 def log_request_start():
+    """Log request start with unique request ID."""
+    g.request_id = str(uuid.uuid4())[:8]
     g.request_start = time.perf_counter()
-    logger.info("Request started %s %s", request.method, request.path)
+    
+    # Log request details
+    query_str = f"?{request.query_string.decode()}" if request.query_string else ""
+    logger.info(
+        "REQUEST_START [%s] %s %s%s | UA=%s",
+        g.request_id,
+        request.method,
+        request.path,
+        query_str,
+        request.user_agent.browser or "unknown",
+    )
 
 
 @app.after_request
 def log_request_end(response):
+    """Log request completion with timing and status."""
+    request_id = getattr(g, "request_id", "unknown")
     start_time = getattr(g, "request_start", None)
     if start_time is not None:
         elapsed_ms = (time.perf_counter() - start_time) * 1000
-        logger.info(
-            "Request completed %s %s -> %s in %.1fms",
+        content_length = response.content_length or len(response.get_data())
+        log_level = logging.WARNING if response.status_code >= 400 else logging.INFO
+        logger.log(
+            log_level,
+            "REQUEST_END [%s] %s %s -> %s | time=%.1fms size=%dB",
+            request_id,
             request.method,
             request.path,
             response.status_code,
             elapsed_ms,
+            content_length,
         )
     return response
 
 
 @app.errorhandler(404)
 def handle_not_found(error):
-    logger.warning("Not found: %s %s", request.method, request.path)
+    request_id = getattr(g, "request_id", "unknown")
+    logger.warning("404_NOT_FOUND [%s] %s %s", request_id, request.method, request.path)
     return render_template("info.html", title="Not Found", subtitle="The requested page does not exist.", message="Check the URL and try again.", active_page=""), 404
 
 
 @app.errorhandler(500)
 def handle_server_error(error):
-    logger.exception("Unhandled server error on %s %s", request.method, request.path)
+    request_id = getattr(g, "request_id", "unknown")
+    logger.error("500_SERVER_ERROR [%s] %s %s", request_id, request.method, request.path, exc_info=True)
     return render_template("info.html", title="Server Error", subtitle="An unexpected error occurred.", message="Please try again or check the application logs.", active_page=""), 500
 
 

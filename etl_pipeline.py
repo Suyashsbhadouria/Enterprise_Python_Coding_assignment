@@ -7,6 +7,7 @@ import json
 import csv
 import os
 import glob
+import time
 from collections import defaultdict
 
 from logging_config import configure_logging
@@ -242,19 +243,24 @@ def parse_innings_data(match_id, data):
 
 def run_pipeline():
     """Main ETL pipeline execution."""
-    logger.info("Starting ETL pipeline")
+    pipeline_start = time.perf_counter()
+    logger.info("ETL_PIPELINE_START: Initializing extraction from %s", DATASET_DIR)
+    
     ensure_output_dir()
 
     json_files = glob.glob(os.path.join(DATASET_DIR, "*.json"))
-    logger.info("Found %s JSON files in %s", len(json_files), DATASET_DIR)
+    logger.info("ETL_DISCOVERY: Found %d JSON files in dataset directory", len(json_files))
 
     if not json_files:
-        logger.warning("No JSON files found in dataset directory; generated CSV files will be empty")
+        logger.warning("ETL_WARNING: No JSON files found; generated CSV files will be empty")
 
     all_matches = []
     all_deliveries = []
     all_batting = []
     all_bowling = []
+    
+    parse_errors = 0
+    parse_start = time.perf_counter()
 
     for index, filepath in enumerate(sorted(json_files), start=1):
         match_id = os.path.splitext(os.path.basename(filepath))[0]
@@ -262,11 +268,13 @@ def run_pipeline():
             with open(filepath, "r", encoding="utf-8") as f:
                 data = json.load(f)
         except Exception as e:
-            logger.exception("Failed to read JSON file %s", filepath)
+            parse_errors += 1
+            logger.error("ETL_JSON_ERROR: Failed to parse %s (match_id=%s): %s", filepath, match_id, str(e))
             continue
 
+        # Log progress at intervals
         if index == 1 or index % 25 == 0 or index == len(json_files):
-            logger.info("Processing match file %s/%s: %s", index, len(json_files), os.path.basename(filepath))
+            logger.info("ETL_PROGRESS: %d/%d files processed", index, len(json_files))
 
         # Extract match info
         match_row = parse_match_info(match_id, data)
@@ -278,7 +286,11 @@ def run_pipeline():
         all_batting.extend(batting)
         all_bowling.extend(bowling)
 
+    parse_elapsed = (time.perf_counter() - parse_start) * 1000
+    logger.info("ETL_PARSE_COMPLETE: Processed %d matches in %.1fms (errors=%d)", len(json_files) - parse_errors, parse_elapsed, parse_errors)
+
     # Write matches.csv
+    write_start = time.perf_counter()
     matches_path = os.path.join(OUTPUT_DIR, "matches.csv")
     matches_fields = [
         "match_id", "date", "city", "venue", "team1", "team2",
@@ -290,9 +302,10 @@ def run_pipeline():
         writer = csv.DictWriter(f, fieldnames=matches_fields)
         writer.writeheader()
         writer.writerows(all_matches)
-    logger.info("Wrote matches.csv with %s rows", len(all_matches))
+    logger.debug("ETL_CSV_WRITE: matches.csv - %d rows in %.1fms", len(all_matches), (time.perf_counter() - write_start) * 1000)
 
     # Write deliveries.csv
+    write_start = time.perf_counter()
     deliveries_path = os.path.join(OUTPUT_DIR, "deliveries.csv")
     deliveries_fields = [
         "match_id", "innings", "over", "ball", "batter", "bowler",
@@ -303,9 +316,10 @@ def run_pipeline():
         writer = csv.DictWriter(f, fieldnames=deliveries_fields)
         writer.writeheader()
         writer.writerows(all_deliveries)
-    logger.info("Wrote deliveries.csv with %s rows", len(all_deliveries))
+    logger.debug("ETL_CSV_WRITE: deliveries.csv - %d rows in %.1fms", len(all_deliveries), (time.perf_counter() - write_start) * 1000)
 
     # Write batting.csv
+    write_start = time.perf_counter()
     batting_path = os.path.join(OUTPUT_DIR, "batting.csv")
     batting_fields = [
         "match_id", "innings", "batter", "team", "runs", "balls_faced",
@@ -315,9 +329,10 @@ def run_pipeline():
         writer = csv.DictWriter(f, fieldnames=batting_fields)
         writer.writeheader()
         writer.writerows(all_batting)
-    logger.info("Wrote batting.csv with %s rows", len(all_batting))
+    logger.debug("ETL_CSV_WRITE: batting.csv - %d rows in %.1fms", len(all_batting), (time.perf_counter() - write_start) * 1000)
 
     # Write bowling.csv
+    write_start = time.perf_counter()
     bowling_path = os.path.join(OUTPUT_DIR, "bowling.csv")
     bowling_fields = [
         "match_id", "innings", "bowler", "team", "overs", "deliveries",
@@ -328,10 +343,12 @@ def run_pipeline():
         writer = csv.DictWriter(f, fieldnames=bowling_fields)
         writer.writeheader()
         writer.writerows(all_bowling)
-    logger.info("Wrote bowling.csv with %s rows", len(all_bowling))
+    logger.debug("ETL_CSV_WRITE: bowling.csv - %d rows in %.1fms", len(all_bowling), (time.perf_counter() - write_start) * 1000)
 
+    pipeline_elapsed = (time.perf_counter() - pipeline_start) * 1000
     logger.info(
-        "ETL pipeline complete: matches=%s deliveries=%s batting=%s bowling=%s output_dir=%s",
+        "ETL_PIPELINE_COMPLETE: Total time=%.1fms | matches=%d deliveries=%d batting=%d bowling=%d | output_dir=%s",
+        pipeline_elapsed,
         len(all_matches),
         len(all_deliveries),
         len(all_batting),
