@@ -75,6 +75,12 @@ Or use a local `.env` file in project root:
 GEMINI_API_KEY=your_api_key_here
 GEMINI_MODEL=gemini-2.5-flash-lite
 APP_NAME=BoundaryLine Intelligence
+
+
+
+
+# Database Configuration
+SQLALCHEMY_DATABASE_URI=sqlite:///users.db
 ```
 
 Notes:
