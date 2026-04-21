@@ -16,15 +16,12 @@ from urllib.parse import quote_plus
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 from dotenv import load_dotenv
-<<<<<<< HEAD
 from flask import Flask, render_template, jsonify, request, g, session, redirect, url_for
 from etl_pipeline import run_pipeline
-=======
 from flask import Flask, render_template, jsonify, request, g
 from Appwrite.appwrite_db import get_matches as appwrite_get_matches
 from Appwrite.appwrite_db import get_batting as appwrite_get_batting
 from Appwrite.appwrite_db import get_bowling as appwrite_get_bowling
->>>>>>> origin
 from logging_config import configure_logging, get_log_file_path
 
 # Import our new modular extensions
@@ -976,11 +973,7 @@ def safe_int(value):
     
 if __name__ == "__main__":
     logger.info("Starting dashboard bootstrap")
-<<<<<<< HEAD
     with app.app_context():
         db.create_all()
-    ensure_csv_data()
-=======
->>>>>>> origin
     logger.info("Starting Flask development server on 0.0.0.0:5000")
     app.run(debug=True, host="0.0.0.0", port=5000)
