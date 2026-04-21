@@ -55,7 +55,7 @@ Install dependencies (if needed):
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
-
+install the dependencies
 Start server:
 
 ```powershell
