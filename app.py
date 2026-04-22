@@ -1,7 +1,17 @@
 """
-app.py
-Flask Web Application for Women's Cricket World Cup Analytics Dashboard.
-Loads transformed CSV data and serves the analytics dashboard.
+app.py - Flask Web Application for Women's Cricket World Cup Analytics Dashboard.
+
+NOTE: This file now uses the modular service layer for new functionality.
+The modular structure is available in the `app/` directory:
+  - app/services/ - Business logic (TransformService, ChatService, etc.)
+  - app/api/ - API blueprints
+  - app/utils/ - Shared utilities
+
+For new development, prefer:
+  from app.services import TransformService
+  from app import create_app  # For app factory
+
+This file maintains backward compatibility with existing code.
 """
 import os
 import time
@@ -15,13 +25,21 @@ from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 from dotenv import load_dotenv
 from flask import Flask, render_template, jsonify, request, g, session, redirect, url_for
-from flask import Flask, render_template, jsonify, request, g
 from Appwrite.appwrite_db import get_matches as appwrite_get_matches
 from Appwrite.appwrite_db import get_batting as appwrite_get_batting
 from Appwrite.appwrite_db import get_bowling as appwrite_get_bowling
 
 from Logger.logging_config import configure_logging, get_log_file_path
 from caching.cache import redis_cache
+
+# Import modular service layer (new structure)
+try:
+    from app.services import TransformService, ChatService, DataService, LogService
+    from app.utils.parsers import DateParser, safe_int
+    from app.utils.validators import ChatValidator, LogValidator
+    MODULAR_IMPORTS_AVAILABLE = True
+except ImportError:
+    MODULAR_IMPORTS_AVAILABLE = False
 
 # Import our new modular extensions
 from Auth.extensions import db, oauth
