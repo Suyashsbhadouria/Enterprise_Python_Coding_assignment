@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }} - {{ APP_NAME }}{% endblock %}
+{% block page_header %}{{ title }}{% endblock %}
+{% block page_subheader %}Review system telemetry and application logs.{% endblock %}
+
+{% block content %}
+<section class="hero" data-reveal style="--reveal-delay:0s; margin-bottom: 2rem;">
+    <span class="eyebrow">
+        <span class="material-symbols-outlined">terminal</span>
+        System Audit Trail
+    </span>
+    <h2>{{ title }}</h2>
+    <p>Monitor real-time system events, track performance metrics, and debug potential issues directly from the backend logs. This area is restricted to administrators.</p>
+</section>
+
+<div class="grid-main" data-reveal style="--reveal-delay:.08s;">
+    <!-- System Logs Table -->
+    <section class="card" style="display: flex; flex-direction: column;">
+        <div class="panel-head">
+            <div>
+                <h3 class="section-title">Application Logs</h3>
+                <p class="section-subtitle">Auto-fetching latest 100 entries via /api/logs</p>
+            </div>
+            
+            <!-- Controls -->
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <select id="log-level-filter" class="select" style="min-width: 120px; font-size: 0.75rem; padding: 0.4rem 0.6rem;">
+                    <option value="">All Levels</option>
+                    <option value="INFO">INFO</option>
+                    <option value="WARNING">WARNING</option>
+                    <option value="ERROR">ERROR</option>
+                </select>
+                <button type="button" class="button" id="refresh-logs-btn" style="padding: 0.4rem 0.7rem; font-size: 0.75rem; display: flex; align-items: center; gap: 0.3rem;">
+                    <span class="material-symbols-outlined" style="font-size: 1rem;">refresh</span> Reload
+                </button>
+            </div>
+        </div>
+        
+        <div class="table-shell" style="margin-top: 1.2rem; flex: 1; min-height: 400px; display: flex; flex-direction: column;">
+            <div style="overflow-y: auto; max-height: 500px; padding: 0;">
+                <table class="data-table" style="margin: 0; min-width: 600px;">
+                    <thead style="position: sticky; top: 0; z-index: 5;">
+                        <tr>
+                            <th style="width: 140px;">Timestamp</th>
+                            <th style="width: 80px;">Level</th>
+                            <th style="width: 120px;">Component</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logs-tbody">
+                        <tr><td colspan="4" style="text-align: center; padding: 2rem;" class="empty-note">Loading system logs...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Administrative Quick Actions -->
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <section class="card">
+            <h3 class="section-title">System Status</h3>
+            <div class="stat-list" style="margin-top: 1rem;">
+                <div class="stat-row">
+                    <span class="metric-label">Status</span>
+                    <span style="display: flex; align-items: center; gap: 0.4rem; color: var(--success);"><span style="width: 8px; height: 8px; background: var(--success); border-radius: 50%; box-shadow: 0 0 8px var(--success);"></span> Operational</span>
+                </div>
+                <hr style="border: 0; border-top: 1px solid var(--line-soft); margin: 0;">
+                <div class="stat-row">
+                    <span class="metric-label">Appwrite Integration</span>
+                    <span style="color: var(--highlight);">Active</span>
+                </div>
+                <hr style="border: 0; border-top: 1px solid var(--line-soft); margin: 0;">
+                <div class="stat-row">
+                    <span class="metric-label">Gemini AI Model</span>
+                    <span>{{ GEMINI_MODEL|default('Configured') }}</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" style="background: linear-gradient(135deg, var(--surface-strong), var(--surface-muted));">
+            <h3 class="section-title">Documentation Links</h3>
+            <div class="progress-list" style="margin-top: 1rem;">
+                <div class="progress-item">
+                    <div class="row">
+                        <a href="/api/overview" target="_blank" style="color: var(--accent-deep); font-weight: 500; display: flex; align-items: center; gap: 0.3rem;"><span class="material-symbols-outlined" style="font-size: 1.1rem;">api</span> View Overview JSON API</a>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="row">
+                        <a href="/api/matches" target="_blank" style="color: var(--accent-deep); font-weight: 500; display: flex; align-items: center; gap: 0.3rem;"><span class="material-symbols-outlined" style="font-size: 1.1rem;">api</span> View Matches JSON API</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const tbody = document.getElementById("logs-tbody");
+    const refreshBtn = document.getElementById("refresh-logs-btn");
+    const filterSelect = document.getElementById("log-level-filter");
+
+    const fetchLogs = async () => {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 2rem;" class="empty-note">Fetching logs...</td></tr>';
+        
+        const level = filterSelect.value;
+        const url = `/api/logs?limit=100${level ? '&level=' + level : ''}`;
+        
+        try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const data = await res.json();
+            
+            if (data.entries && data.entries.length > 0) {
+                // Reverse to show newest at top (if api returns oldest first)
+                // Actually the api likely reads files chronologically, so let's reverse to show newest first
+                const entriesList = [...data.entries].reverse();
+                
+                tbody.innerHTML = entriesList.map(log => {
+                    let levelColor = "var(--text-muted)";
+                    if (log.level === 'ERROR' || log.level === 'CRITICAL') levelColor = "var(--highlight)";
+                    if (log.level === 'WARNING') levelColor = "#d97706";
+                    if (log.level === 'INFO') levelColor = "var(--accent)";
+                    
+                    return `
+                    <tr>
+                        <td style="color: var(--text-muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;">${log.timestamp}</td>
+                        <td><span style="color: ${levelColor}; font-weight: 700; font-size: 0.75rem;">${log.level}</span></td>
+                        <td style="color: var(--accent-deep); font-weight: 500;">${log.logger}</td>
+                        <td style="word-break: break-word;">${log.message}</td>
+                    </tr>
+                    `;
+                }).join("");
+            } else {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 2rem;" class="empty-note">No log entries found.</td></tr>';
+            }
+        } catch (err) {
+            tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--highlight); padding: 2rem;" class="empty-note">Error loading logs: ${err.message}</td></tr>`;
+        }
+    };
+
+    refreshBtn.addEventListener("click", fetchLogs);
+    filterSelect.addEventListener("change", fetchLogs);
+    
+    // Initial fetch
+    fetchLogs();
+});
+</script>
+{% endblock %}

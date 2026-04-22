@@ -4,12 +4,13 @@ End-to-end ELT + Analytics Dashboard for ICC Women's Cricket World Cup data.
 
 ## What This Project Delivers
 
-- ELT pipeline that reads all JSON files from `dataset/`.
-- Generated CSV layers in `csv_data/`:
-	- `matches.csv`
-	- `deliveries.csv`
-	- `batting.csv`
-	- `bowling.csv`
+- ELT pipeline that reads all JSON files from `Dataset/Raw/` and can generate transformed CSVs.
+- Flask app fetches analytics datasets at runtime from Appwrite Database (not from local CSV files).
+- Four Appwrite collections mirror the CSV schemas exactly:
+	- `matches`
+	- `deliveries`
+	- `batting`
+	- `bowling`
 - Flask web application with a multi-page UI inspired by the provided design references in `stitch_women_s_world_cup_analytics/`.
 - Working navigation and interactions:
 	- Overview
@@ -22,17 +23,38 @@ End-to-end ELT + Analytics Dashboard for ICC Women's Cricket World Cup data.
 ## Project Structure
 
 - `etl_pipeline.py`: Extract + load + transform JSON into CSV outputs.
-- `app.py`: Flask app, analytics transforms, page routes, API routes.
+- `app.py`: Flask routes and analytics orchestration.
+- `Appwrite/schema.py`: Canonical schema definitions for all four collections.
 - `templates/`: Jinja templates for all dashboard pages.
 - `dataset/`: source JSON match files.
 - `csv_data/`: ELT output data used by the dashboard.
 - `stitch_women_s_world_cup_analytics/`: UI reference screens/code.
 
-## ELT Workflow
+## Appwrite Runtime Setup
+
+The dashboard reads analytics data at runtime from Appwrite collections.
+
+Set these environment variables before starting the app:
+
+```env
+APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+APPWRITE_PROJECT_ID=your_project_id
+APPWRITE_API_KEY=your_api_key
+APPWRITE_DATABASE_ID=your_database_id
+
+APPWRITE_COLLECTION_MATCHES_ID=matches
+APPWRITE_COLLECTION_DELIVERIES_ID=deliveries
+APPWRITE_COLLECTION_BATTING_ID=batting
+APPWRITE_COLLECTION_BOWLING_ID=bowling
+
+APPWRITE_CACHE_TTL_SECONDS=300
+```
+
+## ELT Workflow (optional for DB seeding)
 
 1. Extract from all `*.json` files in `dataset/`.
 2. Transform into match-level and ball/player-level analytics tables.
-3. Load transformed outputs into CSV files under `csv_data/`.
+3. Load transformed outputs into CSV files (optional staging before inserting into Appwrite).
 
 Run ELT manually:
 
@@ -40,7 +62,7 @@ Run ELT manually:
 .\.venv\Scripts\python.exe etl_pipeline.py
 ```
 
-Latest successful run metrics:
+Latest local run metrics:
 
 - 102 JSON files processed
 - 102 match rows
@@ -76,12 +98,19 @@ Or use a local `.env` file in project root:
 GEMINI_API_KEY=your_api_key_here
 GEMINI_MODEL=gemini-2.5-flash-lite
 APP_NAME=BoundaryLine Intelligence
+
+
+
+
+# Database Configuration
+SQLALCHEMY_DATABASE_URI=sqlite:///users.db
 ```
 
 Notes:
 
 - If `GEMINI_API_KEY` is not set, chatbot replies with a configuration prompt.
 - Chatbot is restricted to cricket questions and instructed to answer from dashboard dataset context only.
+- Runtime analytics data is fetched from Appwrite collections.
 
 Logging configuration (optional):
 
@@ -119,8 +148,77 @@ Open:
 
 Notes:
 
-- The container automatically ensures CSV files are present before starting the app.
+- The container expects Appwrite environment variables to be set.
 - Works on any machine with Docker installed (Windows, macOS, Linux).
+
+## Table Schema (Appwrite)
+
+Canonical schema lives in `Appwrite/schema.py`. The table/collection fields are:
+
+### `matches`
+
+- `match_id` (string)
+- `date` (string)
+- `city` (string)
+- `venue` (string)
+- `team1` (string)
+- `team2` (string)
+- `winner` (string)
+- `win_by` (string)
+- `win_margin` (integer)
+- `event_name` (string)
+- `event_stage` (string)
+- `match_type` (string)
+- `gender` (string)
+- `toss_winner` (string)
+- `toss_decision` (string)
+- `player_of_match` (string)
+- `season` (string)
+- `overs` (integer)
+
+### `deliveries`
+
+- `match_id` (string)
+- `innings` (integer)
+- `over` (integer)
+- `ball` (integer)
+- `batter` (string)
+- `bowler` (string)
+- `non_striker` (string)
+- `batter_runs` (integer)
+- `extras` (integer)
+- `total_runs` (integer)
+- `extras_type` (string)
+- `wicket_type` (string)
+- `player_dismissed` (string)
+
+### `batting`
+
+- `match_id` (string)
+- `innings` (integer)
+- `batter` (string)
+- `team` (string)
+- `runs` (integer)
+- `balls_faced` (integer)
+- `fours` (integer)
+- `sixes` (integer)
+- `strike_rate` (double)
+- `is_out` (integer)
+- `dismissal_kind` (string)
+
+### `bowling`
+
+- `match_id` (string)
+- `innings` (integer)
+- `bowler` (string)
+- `team` (string)
+- `overs` (string)
+- `deliveries` (integer)
+- `legal_deliveries` (integer)
+- `runs_conceded` (integer)
+- `wickets` (integer)
+- `economy` (double)
+- `extras_given` (integer)
 
 ## Routes
 
@@ -170,7 +268,7 @@ Supported query parameters:
 ## Submission Readiness Checklist
 
 - ELT pipeline runs end-to-end from JSON to CSV.
-- Dashboard pages render with transformed CSV data.
+- Dashboard pages render with transformed Appwrite data.
 - All primary navigation and call-to-actions resolve to working routes.
 - Filters/search on key pages are functional.
 - API endpoints return JSON successfully.

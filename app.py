@@ -1,10 +1,9 @@
 """
+app.py
 Flask Web Application for Women's Cricket World Cup Analytics Dashboard.
 Loads transformed CSV data and serves the analytics dashboard.
 """
-
 import os
-import csv
 import time
 import json
 import re
@@ -15,17 +14,42 @@ from urllib.parse import quote_plus
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 from dotenv import load_dotenv
+from flask import Flask, render_template, jsonify, request, g, session, redirect, url_for
 from flask import Flask, render_template, jsonify, request, g
-from etl_pipeline import run_pipeline
-from logging_config import configure_logging, get_log_file_path
+from Appwrite.appwrite_db import get_matches as appwrite_get_matches
+from Appwrite.appwrite_db import get_batting as appwrite_get_batting
+from Appwrite.appwrite_db import get_bowling as appwrite_get_bowling
+
+from Logger.logging_config import configure_logging, get_log_file_path
+from caching.cache import redis_cache
+
+# Import our new modular extensions
+from Auth.extensions import db, oauth
+from Auth.auth import auth_bp, admin_required
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 app = Flask(__name__)
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "fallback_secret_for_dev_change_me")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI", "sqlite:///users.db")
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Initialize modular plugins
+db.init_app(app)
+oauth.init_app(app)
+oauth.register(
+    name='google',
+    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
+    client_id=os.getenv("GOOGLE_CLIENT_ID"),
+    client_secret=os.getenv("GOOGLE_CLIENT_SECRET"),
+    client_kwargs={'scope': 'openid email profile'}
+)
+
+app.register_blueprint(auth_bp)
+
 logger = configure_logging(__name__)
 
-CSV_DIR = os.path.join(BASE_DIR, "csv_data")
 LOG_FILE_PATH = get_log_file_path()
 
 DATE_FORMATS = ("%Y-%m-%d", "%d-%m-%Y", "%d/%m/%Y", "%m/%d/%Y")
@@ -47,16 +71,6 @@ CORE_CRICKET_KEYWORDS = {
 _chat_base_context = None
 _cricket_lexicon = None
 
-def ensure_csv_data():
-    """Generate CSV outputs from dataset JSON files if required files are missing."""
-    required = ["matches.csv", "deliveries.csv", "batting.csv", "bowling.csv"]
-    missing = [name for name in required if not os.path.exists(os.path.join(CSV_DIR, name))]
-    if missing:
-        logger.info("Missing CSV outputs detected (%s); running ETL pipeline", ", ".join(missing))
-        run_pipeline()
-    else:
-        logger.info("CSV outputs are present; skipping ETL bootstrap")
-
 
 @app.context_processor
 def inject_global_template_vars():
@@ -64,44 +78,19 @@ def inject_global_template_vars():
     return {"APP_NAME": APP_NAME}
 
 
-def load_csv(filename):
-    """Load a CSV file and return list of dicts."""
-    filepath = os.path.join(CSV_DIR, filename)
-    logger.debug("Loading CSV file: %s", filepath)
-    with open(filepath, "r", encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
-    logger.info("Loaded %s rows from %s", len(rows), filename)
-    return rows
-
-
-# ─── Data Loading (cached at module level) ───
-_matches = None
-_batting = None
-_bowling = None
-
-
 def get_matches():
-    global _matches
-    if _matches is None:
-        logger.info("Cache miss for matches; loading data")
-        _matches = load_csv("matches.csv")
-    return _matches
+    """Return match-level rows from Appwrite source."""
+    return appwrite_get_matches()
 
 
 def get_batting():
-    global _batting
-    if _batting is None:
-        logger.info("Cache miss for batting; loading data")
-        _batting = load_csv("batting.csv")
-    return _batting
+    """Return batting rows from Appwrite source."""
+    return appwrite_get_batting()
 
 
 def get_bowling():
-    global _bowling
-    if _bowling is None:
-        logger.info("Cache miss for bowling; loading data")
-        _bowling = load_csv("bowling.csv")
-    return _bowling
+    """Return bowling rows from Appwrite source."""
+    return appwrite_get_bowling()
 
 
 def parse_match_date(value):
@@ -279,7 +268,7 @@ def build_chat_base_context():
     teams = transform_teams()
 
     lines = [
-        "DATASET_SCOPE: Women's Cricket World Cup analytics sourced only from local csv_data outputs.",
+        "DATASET_SCOPE: Women's Cricket World Cup analytics sourced only from Appwrite database collections.",
         f"TOTAL_MATCHES: {overview['total_matches']}",
         f"TOTAL_RUNS: {overview['total_runs']}",
         f"TEAM_COUNT: {overview['team_count']}",
@@ -479,109 +468,80 @@ def call_gemini_chat(message, history, context_block, api_key):
 
 
 # ─── Transform Functions ───
-
+@redis_cache(key_prefix="overview", ttl=300)
 def transform_overview():
-    """Compute Tournament Overview analytics."""
     matches = get_matches()
     batting = get_batting()
 
     total_matches = len(matches)
 
-    # Total runs scored across tournament
-    total_runs = sum(int(b["runs"]) for b in batting if b.get("runs"))
+    # ✅ O(N) instead of O(N²)
+    runs_by_match = defaultdict(int)
+    for b in batting:
+        runs_by_match[b.get("match_id")] += safe_int(b.get("runs"))
 
-    # Unique teams
+    total_runs = sum(runs_by_match.values())
+
     teams = set()
     for m in matches:
-        teams.add(m["team1"])
-        teams.add(m["team2"])
-    participating_teams = sorted(teams)
+        teams.add(m.get("team1"))
+        teams.add(m.get("team2"))
 
-    # Unique venues/cities
-    venues = set(m["venue"] for m in matches if m["venue"])
-    cities = set(m["city"] for m in matches if m["city"])
+    venues = {m.get("venue") for m in matches if m.get("venue")}
+    cities = {m.get("city") for m in matches if m.get("city")}
 
-    # Top winning teams
-    win_counts = Counter()
-    for m in matches:
-        if m["winner"] and m["winner"] not in ("no result", "tie", ""):
-            win_counts[m["winner"]] += 1
+    win_counts = Counter(m.get("winner") for m in matches if m.get("winner"))
     top_winners = win_counts.most_common(10)
-    max_wins = top_winners[0][1] if top_winners else 1
 
-    # Runs progression over tournament (total runs per match sorted by date)
-    matches_sorted = sorted(
-        matches,
-        key=lambda x: (parse_match_date(x.get("date")), x.get("match_id", "")),
-    )
-    runs_per_match = []
-    for m in matches_sorted:
-        match_runs = sum(int(b["runs"]) for b in batting if b["match_id"] == m["match_id"] and b.get("runs"))
-        runs_per_match.append({
-            "match_id": m["match_id"],
-            "date": m["date"],
-            "total_runs": match_runs,
-            "team1": m["team1"],
-            "team2": m["team2"],
-            "event_stage": m["event_stage"],
-        })
-
-    # Recent match results (last 5 by date)
-    recent = matches_sorted[-5:][::-1]
-    recent_results = []
-    for m in recent:
-        result_text = ""
-        if m["winner"] and m["win_by"] and m["win_margin"]:
-            result_text = f"{m['winner']} won by {m['win_margin']} {m['win_by']}"
-        elif m["winner"]:
-            result_text = f"{m['winner']} won"
-        else:
-            result_text = m.get("winner", "No result")
-
-        # Determine stage name
-        stage = m.get("event_stage", "")
-        if not stage:
-            stage = "Group"
-
-        recent_results.append({
-            "match_id": m["match_id"],
-            "date": m["date"],
-            "team1": m["team1"],
-            "team2": m["team2"],
-            "winner": m["winner"],
-            "result_text": result_text,
-            "venue": m["venue"],
-            "city": m["city"],
-            "stage": stage,
-        })
-
-    # Determine which host country is dominant
-    city_counts = Counter(m["city"] for m in matches if m["city"])
+    city_counts = Counter(m.get("city") for m in matches if m.get("city"))
     top_city = city_counts.most_common(1)[0] if city_counts else ("", 0)
 
-    data = {
-        "total_matches": total_matches,
-        "total_runs": total_runs,
-        "teams": participating_teams,
-        "team_count": len(participating_teams),
-        "venue_count": len(venues),
-        "city_count": len(cities),
-        "top_winners": top_winners,
-        "max_wins": max_wins,
-        "runs_per_match": runs_per_match,
-        "recent_results": recent_results,
-        "top_city": top_city,
-    }
-    logger.info(
-        "Overview metrics prepared: matches=%s runs=%s teams=%s venues=%s cities=%s",
-        total_matches,
-        total_runs,
-        len(participating_teams),
-        len(venues),
-        len(cities),
-    )
-    return data
+    runs_per_match = [
+        {
+            "match_id": m.get("match_id"),
+            "date": m.get("date"),
+            "total_runs": runs_by_match[m.get("match_id")],
+            "team1": m.get("team1"),
+            "team2": m.get("team2"),
+        }
+        for m in matches
+    ]
 
+    max_wins = top_winners[0][1] if top_winners else 0
+    
+    return {
+    "total_matches": total_matches,
+    "total_runs": total_runs,
+    "teams": sorted(list(teams)),
+    "team_count": len(teams),
+    "venue_count": len(venues),
+    "city_count": len(cities),
+    "top_winners": top_winners,
+    "runs_per_match": runs_per_match,
+    "top_city": top_city,
+    "max_wins": max_wins,
+
+    # ALWAYS include all keys expected by UI
+    }  
+
+
+@app.before_request
+def global_auth_lockdown():
+    """Firewall: ensure all routes are protected unless explicitly exempted."""
+    allowed_endpoints = ['auth.login', 'auth.auth_callback', 'public_login_page', 'static']
+    if request.endpoint not in allowed_endpoints:
+        if 'user_id' not in session:
+            # For API routes, return 401 instead of redirecting
+            if request.path.startswith('/api/'):
+                return jsonify({"error": "Authentication required."}), 401
+            return redirect(url_for('public_login_page'))
+    
+    # Load user into global 'g' for templates if logged in
+    if 'user_id' in session:
+        from Auth.models import User
+        g.user = db.session.get(User, session['user_id'])
+    else:
+        g.user = None
 
 @app.before_request
 def log_request_start():
@@ -617,257 +577,201 @@ def handle_server_error(error):
 
 
 def transform_matches(city_filter=None, team_filter=None):
-    """Compute Match Analysis data."""
     matches = get_matches()
     batting = get_batting()
 
-    # Filter
+    # ── pre-build runs lookup (O(N), not O(N²)) ──────────────────────────
+    runs_by_match = defaultdict(int)
+    for b in batting:
+        runs_by_match[b.get("match_id", "")] += safe_int(b.get("runs"))
+
+    # ── filter ───────────────────────────────────────────────────────────
     filtered = matches
     if city_filter and city_filter != "All Cities":
-        filtered = [m for m in filtered if m["city"] == city_filter]
+        filtered = [m for m in filtered if m.get("city") == city_filter]
     if team_filter and team_filter != "All Teams":
-        filtered = [m for m in filtered if m["team1"] == team_filter or m["team2"] == team_filter]
+        filtered = [m for m in filtered if m.get("team1") == team_filter or m.get("team2") == team_filter]
 
-    # Sort by date descending
     filtered_sorted = sorted(
         filtered,
         key=lambda x: (parse_match_date(x.get("date")), x.get("match_id", "")),
         reverse=True,
     )
 
-    # Match history with computed match IDs
     match_history = []
     for idx, m in enumerate(filtered_sorted):
         match_history.append({
             "display_id": f"#M-{1000 + len(filtered_sorted) - idx}",
-            "match_id": m["match_id"],
-            "date": m["date"],
-            "team1": m["team1"],
-            "team2": m["team2"],
-            "venue": m["venue"],
-            "city": m["city"],
-            "winner": m["winner"],
+            "match_id":   m.get("match_id", ""),        # ← .get() not []
+            "date":       m.get("date", ""),
+            "team1":      m.get("team1", ""),
+            "team2":      m.get("team2", ""),
+            "venue":      m.get("venue", ""),
+            "city":       m.get("city", ""),
+            "winner":     m.get("winner", ""),
         })
 
-    # Venue volume
-    city_counts = Counter(m["city"] for m in matches if m["city"])
+    # ── venue volume ─────────────────────────────────────────────────────
+    city_counts = Counter(m.get("city") for m in matches if m.get("city"))
     venue_volume = city_counts.most_common(10)
     max_vol = venue_volume[0][1] if venue_volume else 1
 
-    # Highest avg score by venue
-    venue_scores = defaultdict(list)
+    # ── best venue by avg score (O(N) now) ───────────────────────────────
+    venue_scores  = defaultdict(list)
+    venue_to_city = {}
     for m in matches:
-        match_runs = sum(int(b["runs"]) for b in batting if b["match_id"] == m["match_id"] and b.get("runs"))
-        if m["venue"]:
-            venue_scores[m["venue"]].append(match_runs)
+        v = m.get("venue")
+        if v:
+            venue_scores[v].append(runs_by_match[m.get("match_id", "")])
+            venue_to_city.setdefault(v, m.get("city", ""))
 
-    best_venue = ""
-    best_avg = 0
-    best_city = ""
+    best_venue, best_avg, best_city = "", 0, ""
     for venue, scores in venue_scores.items():
         avg = sum(scores) / len(scores) if scores else 0
         if avg > best_avg:
-            best_avg = avg
-            best_venue = venue
-            # Find city for this venue
-            for m in matches:
-                if m["venue"] == venue:
-                    best_city = m["city"]
-                    break
+            best_avg, best_venue, best_city = avg, venue, venue_to_city[venue]
 
-    # Get all unique cities and teams for filters
-    all_cities = sorted(set(m["city"] for m in matches if m["city"]))
-    all_teams = sorted(set(m["team1"] for m in matches) | set(m["team2"] for m in matches))
+    all_cities = sorted({m.get("city") for m in matches if m.get("city")})
+    all_teams  = sorted({m.get("team1") for m in matches} | {m.get("team2") for m in matches} - {None, ""})
 
-    data = {
+    return {
         "match_history": match_history,
-        "venue_volume": venue_volume,
-        "max_volume": max_vol,
-        "best_venue": best_venue,
-        "best_avg": round(best_avg, 1),
-        "best_city": best_city,
-        "all_cities": all_cities,
-        "all_teams": all_teams,
+        "venue_volume":  venue_volume,
+        "max_volume":    max_vol,
+        "best_venue":    best_venue,
+        "best_avg":      round(best_avg, 1),
+        "best_city":     best_city,
+        "all_cities":    all_cities,
+        "all_teams":     all_teams,
     }
-    logger.info(
-        "Match analytics prepared: matches=%s cities=%s teams=%s best_venue=%s",
-        len(match_history),
-        len(all_cities),
-        len(all_teams),
-        best_venue or "n/a",
-    )
-    return data
 
-
+@redis_cache(key_prefix="batters", ttl=300)
 def transform_batters():
-    """Compute Batter Performance analytics."""
     batting = get_batting()
 
-    # Aggregate batter stats across all matches
-    batter_agg = defaultdict(lambda: {
-        "runs": 0, "balls_faced": 0, "innings": 0, "fours": 0, "sixes": 0,
-        "team": "", "boundary_runs": 0
+    agg = defaultdict(lambda: {
+        "runs": 0,
+        "balls": 0,
+        "innings_set": set(),
+        "fours": 0,
+        "sixes": 0,
+        "team": ""
     })
 
     for b in batting:
-        key = b["batter"]
-        runs = int(b["runs"] or 0)
-        balls = int(b["balls_faced"] or 0)
-        fours = int(b["fours"] or 0)
-        sixes = int(b["sixes"] or 0)
+        name = b.get("batter")
+        if not name:
+            continue
 
-        batter_agg[key]["runs"] += runs
-        batter_agg[key]["balls_faced"] += balls
-        batter_agg[key]["innings"] += 1
-        batter_agg[key]["fours"] += fours
-        batter_agg[key]["sixes"] += sixes
-        batter_agg[key]["team"] = b["team"]
-        batter_agg[key]["boundary_runs"] += (fours * 4) + (sixes * 6)
+        runs = safe_int(b.get("runs"))
+        balls = safe_int(b.get("balls_faced"))
 
-    # Build leaderboard sorted by runs
+        agg[name]["runs"] += runs
+        agg[name]["balls"] += balls
+        agg[name]["fours"] += safe_int(b.get("fours"))
+        agg[name]["sixes"] += safe_int(b.get("sixes"))
+        agg[name]["team"] = b.get("team")
+
+        # ✅ FIXED innings count
+        agg[name]["innings_set"].add((b.get("match_id"), b.get("innings")))
+
     leaderboard = []
-    for batter, stats in batter_agg.items():
-        sr = round((stats["runs"] / stats["balls_faced"]) * 100, 1) if stats["balls_faced"] > 0 else 0
-        rpb = round(stats["runs"] / stats["balls_faced"], 2) if stats["balls_faced"] > 0 else 0
+    for k, v in agg.items():
+        balls = v["balls"]
+        sr = (v["runs"] / balls * 100) if balls else 0
+        rpb = (v["runs"] / balls) if balls else 0
+        boundary_runs = (v["fours"] * 4) + (v["sixes"] * 6)
+
         leaderboard.append({
-            "batter": batter,
-            "team": stats["team"],
-            "runs": stats["runs"],
-            "innings": stats["innings"],
-            "balls_faced": stats["balls_faced"],
-            "fours": stats["fours"],
-            "sixes": stats["sixes"],
-            "strike_rate": sr,
-            "rpb": rpb,
-            "boundary_runs": stats["boundary_runs"],
-            "running_runs": stats["runs"] - stats["boundary_runs"],
+            "batter": k,
+            "team": v["team"],
+            "runs": v["runs"],
+            "strike_rate": round(sr, 1),
+            "innings": len(v["innings_set"]),
+            "boundary_runs": boundary_runs,
+            "rpb": round(rpb, 2),
         })
 
     leaderboard.sort(key=lambda x: x["runs"], reverse=True)
 
-    # Top 20 for display
-    top_batters = leaderboard[:20]
+    # Calculate metrics for Scoring Intensity and Player Distribution
+    top_intensity = max(leaderboard, key=lambda x: x["rpb"]) if leaderboard else None
+    
+    aggressive_count = sum(1 for b in leaderboard if b["rpb"] > 1.2)
+    balanced_count = sum(1 for b in leaderboard if 0.8 <= b["rpb"] <= 1.2)
+    
+    total_rpb = sum(b["rpb"] for b in leaderboard)
+    tournament_avg_rpb = round(total_rpb / len(leaderboard), 2) if leaderboard else 0
 
-    # Scoring intensity
-    if top_batters:
-        max_sr = max(b["strike_rate"] for b in top_batters)
-    else:
-        max_sr = 100
-
-    # Tournament avg RPB
-    total_runs = sum(b["runs"] for b in leaderboard)
-    total_balls = sum(b["balls_faced"] for b in leaderboard)
-    tournament_avg_rpb = round(total_runs / total_balls, 2) if total_balls > 0 else 0
-
-    # Aggressive / Balanced counts
-    aggressive = sum(1 for b in top_batters if b["rpb"] > 1.2)
-    balanced = sum(1 for b in top_batters if 0.8 <= b["rpb"] <= 1.2)
-
-    # Top intensity batter
-    top_intensity = max(top_batters, key=lambda x: x["rpb"]) if top_batters else None
-
-    data = {
-        "leaderboard": top_batters,
-        "max_sr": max_sr,
-        "tournament_avg_rpb": tournament_avg_rpb,
-        "aggressive_count": aggressive,
-        "balanced_count": balanced,
-        "total_batters": len(top_batters),
+    return {
+        "leaderboard": leaderboard[:20],
         "top_intensity": top_intensity,
+        "aggressive_count": aggressive_count,
+        "balanced_count": balanced_count,
+        "tournament_avg_rpb": tournament_avg_rpb,
+        "total_batters": len(leaderboard)
     }
-    logger.info(
-        "Batter analytics prepared: batters=%s avg_rpb=%s top_batter=%s",
-        len(top_batters),
-        tournament_avg_rpb,
-        top_intensity["batter"] if top_intensity else "n/a",
-    )
-    return data
 
-
+@redis_cache(key_prefix="teams", ttl=300)
 def transform_teams():
-    """Compute Team Insights (bowling & team) analytics."""
     bowling = get_bowling()
-    # Aggregate bowler stats
-    bowler_agg = defaultdict(lambda: {
-        "deliveries": 0, "legal_deliveries": 0, "runs_conceded": 0,
-        "wickets": 0, "team": ""
-    })
+    matches = get_matches()
+
+    # ── per-bowler aggregation (for elite_bowlers) ────────────────────────
+    bowler_agg = defaultdict(lambda: {"balls": 0, "runs": 0, "wickets": 0, "team": ""})
+    for b in bowling:
+        name = b.get("bowler")
+        if not name:
+            continue
+        bowler_agg[name]["balls"]   += safe_int(b.get("legal_deliveries"))
+        bowler_agg[name]["runs"]    += safe_int(b.get("runs_conceded"))
+        bowler_agg[name]["wickets"] += safe_int(b.get("wickets"))
+        bowler_agg[name]["team"]     = b.get("team") or bowler_agg[name]["team"]
+
+    bowlers = []
+    for k, v in bowler_agg.items():
+        if v["balls"] < 30:          # lowered from 100 — less aggressive filter
+            continue
+        economy = v["runs"] / (v["balls"] / 6)
+        bowlers.append({
+            "bowler":     k,
+            "team":       v["team"],
+            "economy":    round(economy, 2),
+            "wickets":    v["wickets"],
+            "deliveries": v["balls"],   # ← fixes the chat KeyError from earlier
+        })
+    bowlers.sort(key=lambda x: x["economy"])
+
+    # ── per-team avg runs conceded per match (for avg_conceded) ───────────
+    team_match_ids  = defaultdict(set)
+    team_runs_given = defaultdict(int)
 
     for b in bowling:
-        key = b["bowler"]
-        bowler_agg[key]["deliveries"] += int(b["deliveries"] or 0)
-        bowler_agg[key]["legal_deliveries"] += int(b["legal_deliveries"] or 0)
-        bowler_agg[key]["runs_conceded"] += int(b["runs_conceded"] or 0)
-        bowler_agg[key]["wickets"] += int(b["wickets"] or 0)
-        bowler_agg[key]["team"] = b["team"]
-
-    # Elite economy bowlers (min 100 legal deliveries)
-    elite_bowlers = []
-    for bowler, stats in bowler_agg.items():
-        if stats["legal_deliveries"] >= 100:
-            economy = round((stats["runs_conceded"] / (stats["legal_deliveries"] / 6)), 2) if stats["legal_deliveries"] > 0 else 0
-            elite_bowlers.append({
-                "bowler": bowler,
-                "team": stats["team"],
-                "deliveries": stats["legal_deliveries"],
-                "runs_total": stats["runs_conceded"],
-                "wickets": stats["wickets"],
-                "economy": economy,
-            })
-    elite_bowlers.sort(key=lambda x: x["economy"])
-    top_elite = elite_bowlers[:10]
-
-    # Avg runs conceded per match per team (bowling team)
-    team_runs_conceded = defaultdict(lambda: {"total_conceded": 0, "matches": set()})
-    for b in bowling:
-        team = b["team"]
-        mid = b["match_id"]
-        team_runs_conceded[team]["total_conceded"] += int(b["runs_conceded"] or 0)
-        team_runs_conceded[team]["matches"].add(mid)
+        team = b.get("team")
+        mid  = b.get("match_id")
+        if not team or not mid:
+            continue
+        team_runs_given[team] += safe_int(b.get("runs_conceded"))
+        team_match_ids[team].add(mid)
 
     avg_conceded = []
-    for team, data in team_runs_conceded.items():
-        num_matches = len(data["matches"])
-        avg = round(data["total_conceded"] / num_matches, 1) if num_matches > 0 else 0
-        avg_conceded.append({"team": team, "avg": avg, "matches": num_matches})
-
+    for team, match_ids in team_match_ids.items():
+        n = len(match_ids)
+        avg_conceded.append({
+            "team":          team,
+            "avg":           round(team_runs_given[team] / n, 1) if n else 0,
+            "matches":       n,
+            "total_conceded": team_runs_given[team],
+        })
     avg_conceded.sort(key=lambda x: x["avg"])
-    max_avg_conceded = max(a["avg"] for a in avg_conceded) if avg_conceded else 1
 
-    # Crucial metric: teams with economy under 4.20 win %
-    team_econ = defaultdict(lambda: {"total_deliveries": 0, "total_runs": 0})
-    for b in bowling:
-        team = b["team"]
-        team_econ[team]["total_deliveries"] += int(b["legal_deliveries"] or 0)
-        team_econ[team]["total_runs"] += int(b["runs_conceded"] or 0)
+    max_avg_conceded = max([x["avg"] for x in avg_conceded], default=1)
 
-    low_econ_teams = []
-    team_economies = []
-    for team, data in team_econ.items():
-        if data["total_deliveries"] > 0:
-            econ = (data["total_runs"] / (data["total_deliveries"] / 6))
-            team_economies.append({"team": team, "economy": round(econ, 2), "deliveries": data["total_deliveries"], "runs": data["total_runs"]})
-            if econ < 4.20:
-                low_econ_teams.append(team)
-
-    team_economies.sort(key=lambda x: x["economy"])
-    closest_low_economy_teams = team_economies[:5]
-    best_economy_team = team_economies[0] if team_economies else None
-
-    data = {
-        "elite_bowlers": top_elite,
-        "avg_conceded": avg_conceded,
+    return {
+        "elite_bowlers": bowlers[:10],
+        "avg_conceded":  avg_conceded,   # ← what teams.html needs
         "max_avg_conceded": max_avg_conceded,
-        "low_econ_teams": low_econ_teams,
-        "closest_low_economy_teams": closest_low_economy_teams,
-        "best_economy_team": best_economy_team,
     }
-    logger.info(
-        "Team analytics prepared: elite_bowlers=%s low_econ_teams=%s",
-        len(top_elite),
-        len(low_econ_teams),
-    )
-    return data
 
 
 @app.template_filter("team_abbr")
@@ -882,6 +786,12 @@ def team_abbr(name):
 
 
 # ─── Routes ───
+
+@app.route("/login-page")
+def public_login_page():
+    if 'user_id' in session:
+        return redirect(url_for('overview'))
+    return render_template("login.html")
 
 @app.route("/")
 def overview():
@@ -916,24 +826,28 @@ def live_match_center():
 
 
 @app.route("/settings")
+@admin_required
 def settings_page():
+    from Auth.models import User
+    users = User.query.all()
+    # Sort admins first, then alphabetically by email
+    users.sort(key=lambda u: (0 if u.is_admin() else 1, u.email))
+    
     return render_template(
-        "info.html",
-        title="Settings",
-        subtitle="Configure your analytics workspace preferences.",
-        message="Settings are available for presentation mode, default filters, and export behavior.",
-        active_page="settings",
+        "settings.html",
+        title="User & Access Management",
+        users=users,
+        active_page="settings"
     )
 
 
 @app.route("/support")
+@admin_required
 def support_page():
     return render_template(
-        "info.html",
-        title="Support",
-        subtitle="Need help with this analytics suite?",
-        message="Use the API endpoints or the CSV outputs for debugging and integrations.",
-        active_page="support",
+        "support.html",
+        title="System Diagnostics & Logs",
+        active_page="support"
     )
 
 
@@ -999,6 +913,7 @@ def api_chat():
 
 
 @app.route("/api/logs")
+@admin_required
 def api_logs():
     level = request.args.get("level", "").strip().upper()
     if level and level not in VALID_LOG_LEVELS:
@@ -1051,9 +966,15 @@ def api_logs():
         }
     )
 
-
+def safe_int(value):
+    try:
+        return int(value)
+    except:
+        return 0
+    
 if __name__ == "__main__":
     logger.info("Starting dashboard bootstrap")
-    ensure_csv_data()
+    with app.app_context():
+        db.create_all()
     logger.info("Starting Flask development server on 0.0.0.0:5000")
     app.run(debug=True, host="0.0.0.0", port=5000)

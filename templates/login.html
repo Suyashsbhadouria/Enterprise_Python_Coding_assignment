@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - {{ APP_NAME }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Plus Jakarta Sans", "ui-sans-serif", "system-ui", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        :root {
+            --pointer-x: 50%;
+            --pointer-y: 45%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+            color: #e9eeff;
+            background: #050b1a;
+            overflow: hidden;
+        }
+
+        .mesh-background {
+            position: absolute;
+            inset: -20% -10% -20% -10%;
+            z-index: -4;
+            background:
+                radial-gradient(circle at 10% 14%, rgba(18, 191, 200, 0.32), transparent 32%),
+                radial-gradient(circle at 86% 20%, rgba(136, 92, 246, 0.35), transparent 34%),
+                radial-gradient(circle at 40% 84%, rgba(99, 102, 241, 0.28), transparent 36%),
+                radial-gradient(circle at 70% 70%, rgba(16, 185, 129, 0.22), transparent 40%),
+                linear-gradient(138deg, #050b1a 10%, #0f1730 42%, #1a1845 72%, #0f1135 100%);
+            animation: meshShift 20s ease-in-out infinite alternate;
+        }
+
+        .cursor-light {
+            position: absolute;
+            inset: 0;
+            z-index: -3;
+            pointer-events: none;
+            background: radial-gradient(
+                340px circle at var(--pointer-x) var(--pointer-y),
+                rgba(161, 118, 255, 0.3) 0%,
+                rgba(89, 184, 236, 0.22) 24%,
+                rgba(25, 38, 74, 0.12) 45%,
+                rgba(5, 11, 26, 0) 72%
+            );
+            transition: background-position 110ms ease;
+        }
+
+        .fluid-orb {
+            position: absolute;
+            --px: 0px;
+            --py: 0px;
+            border-radius: 58% 42% 48% 52% / 45% 50% 50% 55%;
+            filter: blur(0.2px);
+            pointer-events: none;
+            z-index: -2;
+            will-change: transform, border-radius;
+        }
+
+        .fluid-orb.one {
+            width: 280px;
+            height: 280px;
+            top: 6%;
+            right: 4%;
+            background: linear-gradient(140deg, rgba(56, 189, 248, 0.28), rgba(99, 102, 241, 0.3));
+            animation: floatDrift 16s ease-in-out infinite;
+        }
+
+        .fluid-orb.two {
+            width: 340px;
+            height: 340px;
+            left: -90px;
+            bottom: -110px;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.26), rgba(168, 85, 247, 0.28));
+            animation: floatDrift 21s ease-in-out infinite reverse;
+        }
+
+        .fluid-orb.three {
+            width: 180px;
+            height: 180px;
+            top: 65%;
+            right: 24%;
+            background: linear-gradient(145deg, rgba(129, 140, 248, 0.24), rgba(34, 211, 238, 0.2));
+            animation: floatDrift 18s ease-in-out infinite;
+        }
+
+        .glass-card {
+            width: 100%;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(150deg, rgba(22, 33, 63, 0.72), rgba(15, 23, 42, 0.44));
+            box-shadow: 0 20px 60px rgba(7, 11, 30, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+            -webkit-backdrop-filter: blur(18px) saturate(145%);
+            backdrop-filter: blur(18px) saturate(145%);
+        }
+
+        .google-action {
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            background: linear-gradient(140deg, rgba(29, 43, 77, 0.88), rgba(40, 58, 101, 0.86));
+            box-shadow: 0 14px 30px rgba(10, 16, 40, 0.36);
+            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+        }
+
+        .google-action:hover {
+            transform: translateY(-2px);
+            border-color: rgba(138, 233, 255, 0.78);
+            box-shadow: 0 16px 34px rgba(13, 21, 45, 0.45);
+        }
+
+        .google-chip {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+        }
+
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 60;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(4, 9, 24, 0.55);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 260ms ease;
+        }
+
+        .loading-overlay[data-active="true"] {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .liquid-g {
+            position: relative;
+            width: 68px;
+            height: 68px;
+            border-radius: 58% 42% 53% 47% / 41% 56% 44% 59%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(140deg, #4285f4 8%, #8ab4f8 30%, #34a853 58%, #fbbc05 80%, #ea4335 100%);
+            box-shadow: 0 0 36px rgba(97, 187, 255, 0.54);
+            animation: liquidMorph 3.4s ease-in-out infinite, pulseAura 2.1s ease-in-out infinite;
+        }
+
+        .liquid-g::after {
+            content: "";
+            position: absolute;
+            inset: -10px;
+            border-radius: inherit;
+            border: 1px solid rgba(165, 216, 255, 0.55);
+            opacity: 0.7;
+            animation: pulseRing 2.6s ease-out infinite;
+        }
+
+        .liquid-g svg {
+            width: 30px;
+            height: 30px;
+            color: #ffffff;
+            filter: drop-shadow(0 2px 8px rgba(15, 23, 42, 0.45));
+        }
+
+        .status-text {
+            animation: fadeMessage 420ms ease both;
+        }
+
+        .skeleton {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: linear-gradient(130deg, rgba(64, 86, 128, 0.35), rgba(87, 109, 155, 0.48), rgba(64, 86, 128, 0.34));
+        }
+
+        .skeleton::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            transform: translateX(-110%);
+            background: linear-gradient(90deg, transparent, rgba(202, 224, 255, 0.45), transparent);
+            animation: shimmer 1.6s linear infinite;
+        }
+
+        @keyframes meshShift {
+            0% {
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+            100% {
+                transform: translate3d(0, -16px, 0) scale(1.06);
+            }
+        }
+
+        @keyframes floatDrift {
+            0% {
+                transform: translate3d(var(--px), var(--py), 0) rotate(0deg);
+                border-radius: 58% 42% 48% 52% / 45% 50% 50% 55%;
+            }
+            50% {
+                transform: translate3d(calc(var(--px) + 18px), calc(var(--py) - 26px), 0) rotate(7deg);
+                border-radius: 43% 57% 63% 37% / 52% 39% 61% 48%;
+            }
+            100% {
+                transform: translate3d(calc(var(--px) - 10px), calc(var(--py) + 10px), 0) rotate(-5deg);
+                border-radius: 58% 42% 48% 52% / 45% 50% 50% 55%;
+            }
+        }
+
+        @keyframes liquidMorph {
+            0% {
+                border-radius: 58% 42% 53% 47% / 41% 56% 44% 59%;
+                transform: scale(1);
+            }
+            50% {
+                border-radius: 45% 55% 39% 61% / 57% 39% 61% 43%;
+                transform: scale(1.06);
+            }
+            100% {
+                border-radius: 58% 42% 53% 47% / 41% 56% 44% 59%;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulseAura {
+            0%, 100% {
+                box-shadow: 0 0 24px rgba(99, 196, 255, 0.48);
+            }
+            50% {
+                box-shadow: 0 0 42px rgba(117, 214, 255, 0.82);
+            }
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: scale(0.92);
+                opacity: 0.62;
+            }
+            100% {
+                transform: scale(1.18);
+                opacity: 0;
+            }
+        }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(110%);
+            }
+        }
+
+        @keyframes fadeMessage {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .mesh-background,
+            .fluid-orb,
+            .liquid-g,
+            .liquid-g::after,
+            .skeleton::before,
+            .status-text {
+                animation: none !important;
+            }
+
+            .cursor-light {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-100">
+<div class="relative min-h-screen overflow-hidden px-4 py-8 sm:px-8" data-login-stage>
+    <div class="mesh-background"></div>
+    <div class="cursor-light"></div>
+    <div class="fluid-orb one" data-parallax="22"></div>
+    <div class="fluid-orb two" data-parallax="18"></div>
+    <div class="fluid-orb three" data-parallax="26"></div>
+
+    <main class="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-6xl items-center">
+        <div class="grid w-full gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+            <section class="hidden rounded-[30px] border border-white/15 bg-white/5 p-10 shadow-[0_16px_55px_rgba(7,11,30,0.35)] backdrop-blur-sm lg:flex lg:flex-col lg:justify-between">
+                <div>
+                    <p class="mb-4 inline-flex rounded-full border border-cyan-200/30 bg-cyan-100/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100/85">
+                        Human-Centric Experience
+                    </p>
+                    <h1 class="max-w-xl text-4xl font-bold leading-tight text-white xl:text-5xl">
+                        Analytics that feels alive, before you even enter the dashboard.
+                    </h1>
+                    <p class="mt-5 max-w-lg text-base leading-relaxed text-slate-200/90">
+                        Your workspace responds to your movement, keeps context in motion, and welcomes you with clarity instead of clutter.
+                    </p>
+                </div>
+                <div class="mt-8 grid grid-cols-2 gap-4">
+                    <div class="rounded-2xl border border-white/20 bg-white/10 p-4">
+                        <p class="text-xs uppercase tracking-[0.14em] text-slate-300/90">Data Scope</p>
+                        <p class="mt-2 text-xl font-semibold text-white">102 Matches</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/20 bg-white/10 p-4">
+                        <p class="text-xs uppercase tracking-[0.14em] text-slate-300/90">Signals</p>
+                        <p class="mt-2 text-xl font-semibold text-white">52k Deliveries</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass-card p-8 sm:p-10">
+                <p class="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-100/90">
+                    {{ APP_NAME }}
+                </p>
+                <h2 class="mt-6 text-3xl font-bold leading-tight text-white sm:text-[2.05rem]">
+                    Welcome back - let's get you started.
+                </h2>
+                <p class="mt-3 text-base leading-relaxed text-slate-200/88">
+                    Sign in with your Google account and we will bring your match intelligence workspace online.
+                </p>
+
+                <a id="google-login-btn" href="{{ url_for('auth.login') }}" class="google-action mt-8 inline-flex w-full items-center gap-4 px-4 py-4" aria-label="Sign in with Google">
+                    <span class="google-chip" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.805 12.228c0-.783-.066-1.355-.209-1.95H12v3.77h5.639c-.113.937-.723 2.35-2.076 3.298l-.019.126 3.082 2.338.213.021c1.96-1.768 2.966-4.367 2.966-7.603Z" fill="#4285F4"/>
+                            <path d="M12 22c2.762 0 5.078-.89 6.771-2.418l-3.226-2.485c-.864.593-2.028 1.007-3.545 1.007-2.705 0-4.999-1.739-5.816-4.143l-.122.01-3.204 2.428-.042.114C4.498 19.746 7.983 22 12 22Z" fill="#34A853"/>
+                            <path d="M6.184 13.96a5.948 5.948 0 0 1-.341-1.96c0-.682.124-1.345.331-1.96l-.006-.131-3.245-2.467-.106.049A9.774 9.774 0 0 0 2 12c0 1.57.38 3.056 1.051 4.342l3.133-2.382Z" fill="#FBBC05"/>
+                            <path d="M12 5.896c1.913 0 3.205.808 3.941 1.486l2.877-2.745C17.068 3.067 14.762 2 12 2 7.983 2 4.498 4.254 2.816 7.49l3.357 2.548c.826-2.403 3.12-4.142 5.827-4.142Z" fill="#EA4335"/>
+                        </svg>
+                    </span>
+                    <span class="text-left">
+                        <span class="block text-sm font-semibold tracking-[0.01em] text-white">Continue with Google</span>
+                        <span class="block text-xs text-slate-300">Secure access with your approved workspace account</span>
+                    </span>
+                </a>
+
+                <p class="mt-5 text-sm text-slate-300/90">
+                    We keep the sign-in flow lightweight and private, then route you straight into your analytics command center.
+                </p>
+            </section>
+        </div>
+    </main>
+</div>
+
+<section id="auth-loading" class="loading-overlay" aria-busy="true" aria-live="polite" hidden>
+    <div class="mx-auto w-full max-w-6xl px-4 sm:px-8">
+        <div class="glass-card p-6 sm:p-8 lg:p-10">
+            <div class="mb-6 flex items-center gap-4 sm:mb-8">
+                <div class="liquid-g" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545Z" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-100/85">Google Connection</p>
+                    <p id="auth-status-message" class="status-text mt-1 text-xl font-semibold text-white">Verifying your details...</p>
+                </div>
+            </div>
+
+            <div class="grid gap-4 lg:grid-cols-[250px_1fr]">
+                <div class="space-y-3 rounded-3xl border border-white/15 bg-white/5 p-4">
+                    <div class="skeleton h-8 w-24"></div>
+                    <div class="skeleton h-10 w-full"></div>
+                    <div class="skeleton h-10 w-full"></div>
+                    <div class="skeleton h-10 w-full"></div>
+                    <div class="skeleton h-10 w-full"></div>
+                    <div class="skeleton h-10 w-4/5"></div>
+                </div>
+
+                <div class="space-y-4 rounded-3xl border border-white/15 bg-white/5 p-4">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <div class="skeleton h-10 w-44"></div>
+                        <div class="skeleton h-10 w-32"></div>
+                    </div>
+                    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                        <div class="skeleton h-28 w-full"></div>
+                        <div class="skeleton h-28 w-full"></div>
+                        <div class="skeleton h-28 w-full"></div>
+                    </div>
+                    <div class="skeleton h-52 w-full rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    (function () {
+        const stage = document.querySelector("[data-login-stage]");
+        const root = document.documentElement;
+        const parallaxItems = Array.from(document.querySelectorAll("[data-parallax]"));
+        const loginButton = document.getElementById("google-login-btn");
+        const loadingOverlay = document.getElementById("auth-loading");
+        const statusMessage = document.getElementById("auth-status-message");
+
+        const loadingSteps = [
+            "Verifying your details...",
+            "Preparing your workspace...",
+            "Syncing your latest match insights..."
+        ];
+
+        let activeTimers = [];
+        let connecting = false;
+
+        function clearTimers() {
+            activeTimers.forEach(function (timer) {
+                clearTimeout(timer);
+            });
+            activeTimers = [];
+        }
+
+        function setPointer(event) {
+            if (!stage) {
+                return;
+            }
+
+            const rect = stage.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 100;
+            const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+            root.style.setProperty("--pointer-x", x.toFixed(2) + "%");
+            root.style.setProperty("--pointer-y", y.toFixed(2) + "%");
+
+            parallaxItems.forEach(function (item) {
+                const depth = Number(item.getAttribute("data-parallax")) || 24;
+                const moveX = (x - 50) / depth;
+                const moveY = (y - 50) / depth;
+                item.style.setProperty("--px", moveX.toFixed(2) + "px");
+                item.style.setProperty("--py", moveY.toFixed(2) + "px");
+            });
+        }
+
+        function resetPointer() {
+            root.style.setProperty("--pointer-x", "50%");
+            root.style.setProperty("--pointer-y", "45%");
+            parallaxItems.forEach(function (item) {
+                item.style.setProperty("--px", "0px");
+                item.style.setProperty("--py", "0px");
+            });
+        }
+
+        function showLoadingAndRedirect(event) {
+            if (!loginButton || connecting) {
+                event.preventDefault();
+                return;
+            }
+
+            connecting = true;
+            event.preventDefault();
+            clearTimers();
+
+            loginButton.setAttribute("aria-disabled", "true");
+            loginButton.classList.add("pointer-events-none", "opacity-70");
+
+            if (loadingOverlay) {
+                loadingOverlay.removeAttribute("hidden");
+                requestAnimationFrame(function () {
+                    loadingOverlay.setAttribute("data-active", "true");
+                });
+            }
+
+            if (statusMessage) {
+                statusMessage.textContent = loadingSteps[0];
+            }
+
+            loadingSteps.slice(1).forEach(function (step, index) {
+                activeTimers.push(
+                    setTimeout(function () {
+                        if (!statusMessage) {
+                            return;
+                        }
+                        statusMessage.textContent = step;
+                        statusMessage.classList.remove("status-text");
+                        void statusMessage.offsetWidth;
+                        statusMessage.classList.add("status-text");
+                    }, (index + 1) * 850)
+                );
+            });
+
+            activeTimers.push(
+                setTimeout(function () {
+                    window.location.assign(loginButton.href);
+                }, 2400)
+            );
+        }
+
+        if (stage) {
+            stage.addEventListener("pointermove", setPointer);
+            stage.addEventListener("pointerleave", resetPointer);
+        }
+
+        if (loginButton) {
+            loginButton.addEventListener("click", showLoadingAndRedirect);
+        }
+
+        window.addEventListener("beforeunload", clearTimers);
+    })();
+</script>
+</body>
+</html>

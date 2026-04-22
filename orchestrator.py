@@ -13,6 +13,11 @@ from logging_config import configure_logging
 
 # 2. Import the main pipeline function
 from etl_pipeline import run_pipeline, DATASET_DIR
+# 1. Import your team's custom logger
+from Logger.logging_config import configure_logging
+
+# 2. Import the main pipeline function from your actual ETL file
+from ETL.etl_pipeline import run_pipeline, DATASET_DIR
 
 # 3. IMPORT YOUR NEW ALERTING MODULE 👇
 from alerting import send_alert

@@ -65,6 +65,7 @@ a {
   display: flex;
   flex-direction: column;
   box-shadow: 14px 0 38px rgba(12, 24, 34, 0.24);
+  overflow-y: auto;
 }
 
 .brand {

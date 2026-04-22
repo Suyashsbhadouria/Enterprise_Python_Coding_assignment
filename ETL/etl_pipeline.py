@@ -9,7 +9,7 @@ import os
 import glob
 from collections import defaultdict
 
-from logging_config import configure_logging
+from Logger.logging_config import configure_logging
 
 
 DATASET_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dataset")
