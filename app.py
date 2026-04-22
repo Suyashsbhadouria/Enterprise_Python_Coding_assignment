@@ -17,7 +17,6 @@ from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 from dotenv import load_dotenv
 from flask import Flask, render_template, jsonify, request, g, session, redirect, url_for
-from ETL.etl_pipeline import run_pipeline
 from flask import Flask, render_template, jsonify, request, g
 from Appwrite.appwrite_db import get_matches as appwrite_get_matches
 from Appwrite.appwrite_db import get_batting as appwrite_get_batting
@@ -25,8 +24,8 @@ from Appwrite.appwrite_db import get_bowling as appwrite_get_bowling
 from Logger.logging_config import configure_logging, get_log_file_path
 
 # Import our new modular extensions
-from auth.extensions import db, oauth
-from auth.auth import auth_bp, admin_required
+from Auth.extensions import db, oauth
+from Auth.auth import auth_bp, admin_required
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR, ".env"))
@@ -539,7 +538,7 @@ def global_auth_lockdown():
     
     # Load user into global 'g' for templates if logged in
     if 'user_id' in session:
-        from auth.models import User
+        from Auth.models import User
         g.user = db.session.get(User, session['user_id'])
     else:
         g.user = None
