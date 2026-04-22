@@ -1,7 +1,12 @@
 import sys
+import os
+
+# Add the parent directory (project root) to sys.path so 'app.py' can be imported
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from app import app
-from auth.extensions import db
-from auth.models import User
+from Auth.extensions import db
+from Auth.models import User
 
 def promote_user(email):
     with app.app_context():
