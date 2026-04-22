@@ -10,10 +10,10 @@ import schedule
 import requests  # <-- ADDED: Needed to send the webhook to Slack
 
 # 1. Import your team's custom logger
-from logging_config import configure_logging
+from Logger.logging_config import configure_logging
 
 # 2. Import the main pipeline function from your actual ETL file
-from etl_pipeline import run_pipeline, DATASET_DIR
+from ETL.etl_pipeline import run_pipeline, DATASET_DIR
 
 # 3. Initialize the logger specifically for the orchestrator
 logger = configure_logging(name="orchestrator")
@@ -27,7 +27,12 @@ def check_upstream_data():
     """
     json_files = glob.glob(os.path.join(DATASET_DIR, "*.json"))
     if not json_files:
-        logger.warning("Upstream data not ready. No JSON files found in dataset directory.")
+        error_msg = "⚠️ *UPSTREAM DATA MISSING*: No JSON files found in the dataset directory. ETL cycle aborted."
+        logger.warning(error_msg)
+        
+        # 👇 ADD THIS LINE TO FIRE THE ALERT TO SLACK 👇
+        send_alert(error_msg) 
+        
         return False
     return True
 
