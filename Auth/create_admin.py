@@ -1,4 +1,9 @@
 import sys
+import os
+
+# Add the parent directory (project root) to sys.path so 'app.py' can be imported
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from app import app
 from Auth.extensions import db
 from Auth.models import User
