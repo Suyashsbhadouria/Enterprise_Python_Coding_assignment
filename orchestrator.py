@@ -10,10 +10,10 @@ import schedule
 import requests  # <-- ADDED: Needed to send the webhook to Slack
 
 # 1. Import your team's custom logger
-from logging_config import configure_logging
+from Logger.logging_config import configure_logging
 
 # 2. Import the main pipeline function from your actual ETL file
-from etl_pipeline import run_pipeline, DATASET_DIR
+from ETL.etl_pipeline import run_pipeline, DATASET_DIR
 
 # 3. Initialize the logger specifically for the orchestrator
 logger = configure_logging(name="orchestrator")

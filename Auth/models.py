@@ -1,4 +1,4 @@
-from extensions import db
+from Auth.extensions import db
 from datetime import datetime
 
 class User(db.Model):

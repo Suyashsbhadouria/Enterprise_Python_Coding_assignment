@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, url_for, session, current_app, request, abort
 from functools import wraps
-from extensions import oauth, db
-from models import User
+from Auth.extensions import oauth, db
+from Auth.models import User
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 

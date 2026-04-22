@@ -1,7 +1,7 @@
 import sys
 from app import app
-from extensions import db
-from models import User
+from auth.extensions import db
+from auth.models import User
 
 def promote_user(email):
     with app.app_context():
