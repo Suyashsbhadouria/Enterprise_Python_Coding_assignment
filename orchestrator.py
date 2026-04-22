@@ -27,7 +27,12 @@ def check_upstream_data():
     """
     json_files = glob.glob(os.path.join(DATASET_DIR, "*.json"))
     if not json_files:
-        logger.warning("Upstream data not ready. No JSON files found in dataset directory.")
+        error_msg = "⚠️ *UPSTREAM DATA MISSING*: No JSON files found in the dataset directory. ETL cycle aborted."
+        logger.warning(error_msg)
+        
+        # 👇 ADD THIS LINE TO FIRE THE ALERT TO SLACK 👇
+        send_alert(error_msg) 
+        
         return False
     return True
 

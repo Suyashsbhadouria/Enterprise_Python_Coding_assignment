@@ -15,7 +15,6 @@ from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 from dotenv import load_dotenv
 from flask import Flask, render_template, jsonify, request, g, session, redirect, url_for
-from ETL.etl_pipeline import run_pipeline
 from flask import Flask, render_template, jsonify, request, g
 from Appwrite.appwrite_db import get_matches as appwrite_get_matches
 from Appwrite.appwrite_db import get_batting as appwrite_get_batting
