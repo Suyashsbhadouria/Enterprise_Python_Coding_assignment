@@ -828,12 +828,16 @@ def live_match_center():
 @app.route("/settings")
 @admin_required
 def settings_page():
+    from Auth.models import User
+    users = User.query.all()
+    # Sort admins first, then alphabetically by email
+    users.sort(key=lambda u: (0 if u.is_admin() else 1, u.email))
+    
     return render_template(
-        "info.html",
-        title="Settings",
-        subtitle="Configure your analytics workspace preferences.",
-        message="Settings are available for presentation mode, default filters, and export behavior.",
-        active_page="settings",
+        "settings.html",
+        title="User & Access Management",
+        users=users,
+        active_page="settings"
     )
 
 
@@ -841,11 +845,9 @@ def settings_page():
 @admin_required
 def support_page():
     return render_template(
-        "info.html",
-        title="Support",
-        subtitle="Need help with this analytics suite?",
-        message="Use the API endpoints or Appwrite collections for debugging and integrations.",
-        active_page="support",
+        "support.html",
+        title="System Diagnostics & Logs",
+        active_page="support"
     )
 
 
