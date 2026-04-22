@@ -5,7 +5,7 @@ from functools import wraps
 import json
 import hashlib
 
-from logging_config import configure_logging, get_log_file_path
+from Logger.logging_config import configure_logging, get_log_file_path
 
 # Initialize Redis client
 redis_host = os.getenv("REDIS_HOST", "redis")
